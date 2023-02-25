@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint": "eslint --cache --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
@@ -35,7 +35,7 @@
   },
   "lint-staged": {
     "*.+(js|ts|tsx)": [
-      "eslint --fix"
+      "eslint --cache --fix"
     ],
     "*.+(js|ts|tsx|json|css|md|mdx)": [
       "prettier --write"
