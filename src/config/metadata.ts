@@ -9,8 +9,10 @@ export const authorMetadata = {
   },
 };
 
+const SITE_URL = 'https://melanies.dev';
+
 export const siteMetadata = {
-  siteUrl: 'https://melanies.dev',
+  siteUrl: SITE_URL,
   siteName: 'Developer blog of Melanie Seltzer',
   metaTitle: authorMetadata.name,
   metaDescription:
@@ -18,4 +20,7 @@ export const siteMetadata = {
   locale: 'en-US',
   timezone: 'America/Los_Angeles',
   theme: 'system',
+  images: {
+    socialBanner: SITE_URL + '/images/og-default.jpg',
+  },
 };

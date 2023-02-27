@@ -15,11 +15,10 @@ export function DefaultSEO(props: DefaultSeoProps) {
         siteName: siteMetadata.siteName,
         images: [
           {
-            // TODO: social banner https://github.com/melanieseltzer/melanies.dev/issues/4
-            url: 'https://www.test.ie/images/cover.jpg',
-            width: 850,
-            height: 650,
-            alt: 'Photo of text',
+            url: siteMetadata.images.socialBanner,
+            width: 1200,
+            height: 600,
+            alt: 'melanies.dev',
           },
         ],
       }}
