@@ -1,6 +1,6 @@
 import { ArticleJsonLd } from 'next-seo';
 
-import { authorMetadata } from '~/config/metadata';
+import { authorMetadata, siteMetadata } from '~/config/metadata';
 
 import { SEO } from './SEO';
 
@@ -44,8 +44,7 @@ export function BlogSEO({
         type="BlogPosting"
         url={canonicalUrl}
         title={title}
-        // TODO: social banner https://github.com/melanieseltzer/melanies.dev/issues/4
-        images={['https://example.com/photos/1x1/photo.jpg']}
+        images={[siteMetadata.images.socialBanner]}
         datePublished={publishedTime}
         dateModified={modifiedTime}
         authorName={authorMetadata.name}
