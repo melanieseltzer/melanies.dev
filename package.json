@@ -15,6 +15,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@fontsource/inter": "^4.5.15",
     "@headlessui/react": "^1.7.12",
     "clsx": "^1.2.1",
     "next": "13.2.1",
