@@ -13,7 +13,7 @@ export function MobileNav() {
   return (
     <div className="flex items-center sm:hidden">
       <button aria-label="Open Menu" onClick={() => setIsOpen(true)}>
-        <OpenIcon size={30} />
+        <OpenIcon size={20} />
       </button>
 
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
