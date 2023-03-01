@@ -15,6 +15,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@fontsource/inter": "^4.5.15",
     "@headlessui/react": "^1.7.12",
     "clsx": "^1.2.1",
     "next": "13.2.1",
@@ -31,6 +32,7 @@
     "@mels/eslint-config-typescript": "^1.0.1",
     "@mels/prettier-config": "^1.0.0",
     "@next/bundle-analyzer": "^13.2.1",
+    "@tailwindcss/typography": "^0.5.9",
     "@types/node": "18.14.1",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
