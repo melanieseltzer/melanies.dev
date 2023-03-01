@@ -6,7 +6,7 @@ import { Paragraph } from '~/components/Paragraph';
 
 export function HeroSection() {
   return (
-    <header className="py-32">
+    <header>
       <Heading className="text-5xl tracking-tight md:text-6xl lg:text-7xl">
         <Balancer>
           Crafting <GradientText>delightful experiences</GradientText> for the
