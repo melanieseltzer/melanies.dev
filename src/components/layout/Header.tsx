@@ -1,11 +1,12 @@
 import { clsx } from 'clsx';
 
 import { Link } from '~/components/Link';
-import { MaxWidthWrapper } from '~/components/MaxWidthWrapper';
 import { DesktopNav } from '~/components/navigation/DesktopNav';
 import { MobileNav } from '~/components/navigation/MobileNav';
 
 import { useScrollPosition } from '~/hooks/useScrollPosition';
+
+import { MaxWidthContainer } from './MaxWidthContainer';
 
 export function Header() {
   const { isTop } = useScrollPosition();
@@ -17,7 +18,7 @@ export function Header() {
         isTop ? 'border-none' : 'border-b border-gray-200 dark:border-gray-800'
       )}
     >
-      <MaxWidthWrapper>
+      <MaxWidthContainer>
         <div className="flex items-center justify-between py-4 sm:py-8">
           <div>
             <Link href="/">Logo</Link>
@@ -27,7 +28,7 @@ export function Header() {
 
           <MobileNav />
         </div>
-      </MaxWidthWrapper>
+      </MaxWidthContainer>
     </header>
   );
 }

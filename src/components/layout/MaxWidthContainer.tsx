@@ -7,19 +7,19 @@ type Props = {
   children: React.ReactNode;
 };
 
-export function MaxWidthWrapper({
+export function MaxWidthContainer({
   className = '',
   as: Tag = 'div',
   ...props
 }: Props) {
   const classes = twMerge(`
-    mx-auto
-    max-w-5xl
-    px-4
-    sm:px-6
-    lg:px-0
-    ${className}
-  `);
+   mx-auto
+   max-w-5xl
+   px-4
+   sm:px-6
+   lg:px-0
+   ${className}
+ `);
 
   return <Tag className={classes} {...props} />;
 }

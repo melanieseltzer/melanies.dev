@@ -1,9 +1,8 @@
 import { ReactNode } from 'react';
 
-import { MaxWidthWrapper } from '~/components/MaxWidthWrapper';
-
 import { Footer } from './Footer';
 import { Header } from './Header';
+import { MaxWidthContainer } from './MaxWidthContainer';
 
 type Props = {
   children: ReactNode;
@@ -15,10 +14,7 @@ export function PageLayout({ children }: Props) {
       <Header />
 
       <main>
-        <MaxWidthWrapper>
-          {children}
-          <div className="h-[1300px] ">{/* simulate scroll for testing */}</div>
-        </MaxWidthWrapper>
+        <MaxWidthContainer>{children}</MaxWidthContainer>
       </main>
 
       <Footer />
