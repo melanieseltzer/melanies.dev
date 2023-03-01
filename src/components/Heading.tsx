@@ -17,11 +17,11 @@ const styles = {
 export function Heading({ as = 'h1', className = '', ...props }: Props) {
   const Tag = `${as}` as React.ElementType;
 
-  const classes = twMerge(`
-    mb-4 text-gray-900 dark:text-white
-    ${styles[as]}
-    ${className}
-  `);
+  const classes = twMerge(
+    'mb-4 text-gray-900 dark:text-white',
+    styles[as],
+    className
+  );
 
   return <Tag className={classes} {...props} />;
 }
