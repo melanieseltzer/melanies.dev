@@ -3,6 +3,7 @@ import Balancer from 'react-wrap-balancer';
 import { GradientText } from '~/components/GradientText';
 import { Heading } from '~/components/Heading';
 import { Paragraph } from '~/components/Paragraph';
+import { Spacer } from '~/components/Spacer';
 
 export function HeroSection() {
   return (
@@ -13,7 +14,10 @@ export function HeroSection() {
           web
         </Balancer>
       </Heading>
-      <Paragraph className="md:text-xl">
+
+      <Spacer size="4" />
+
+      <Paragraph lead>
         <Balancer>
           Hello 👋 I&apos;m{' '}
           <GradientText className="font-semibold">Melanie Seltzer</GradientText>
