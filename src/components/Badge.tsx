@@ -5,12 +5,19 @@ import { Link } from './Link';
 type Props = {
   children: React.ReactNode;
   href?: string;
+  size?: keyof typeof sizes;
 };
 
-export function Badge({ children, href }: Props) {
+const sizes = {
+  sm: 'text-xs py-1 px-2',
+  lg: 'text-base py-1.5 px-3',
+};
+
+export function Badge({ children, href, size = 'lg' }: Props) {
   const classes = clsx(
-    'rounded bg-primary-50 py-1.5 px-3 font-medium text-primary-700',
-    href && 'hover:bg-primary-100'
+    'rounded bg-primary-50 text-primary-700',
+    href && 'hover:bg-primary-100',
+    sizes[size]
   );
 
   if (!href) {
