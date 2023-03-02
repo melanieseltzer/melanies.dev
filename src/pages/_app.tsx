@@ -1,3 +1,4 @@
+import { Provider as ReactWrapBalancerProvider } from 'react-wrap-balancer';
 import type { AppProps } from 'next/app';
 
 import { PageLayout } from '~/components/layout/PageLayout';
@@ -11,9 +12,11 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <DefaultSEO />
 
-      <PageLayout>
-        <Component {...pageProps} />
-      </PageLayout>
+      <ReactWrapBalancerProvider>
+        <PageLayout>
+          <Component {...pageProps} />
+        </PageLayout>
+      </ReactWrapBalancerProvider>
     </>
   );
 }
