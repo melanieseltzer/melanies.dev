@@ -17,6 +17,9 @@ module.exports = {
       typography: theme => ({
         DEFAULT: {
           css: {
+            'p, li': {
+              color: theme('colors.gray.500'),
+            },
             a: {
               color: theme('colors.primary.700'),
               '&:hover': {
@@ -31,6 +34,7 @@ module.exports = {
               fontStyle: 'normal',
               padding: '1.25rem',
               p: {
+                color: 'inherit',
                 margin: 0,
               },
               color: theme('colors.secondary.600'),

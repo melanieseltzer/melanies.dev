@@ -18,7 +18,7 @@ export default function Blog() {
       />
 
       {/* eslint-disable */}
-      <div className="prose mx-auto">
+      <div className="prose prose-lg prose-slate mx-auto">
         <p className="text-center">Posted Aug 27, 2022</p>
         <h1 className="text-center">This is an article title example</h1>
         <hr />
