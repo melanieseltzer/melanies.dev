@@ -1,10 +1,4 @@
-import { Heading } from '~/components/Heading';
-import { BlogPostList } from '~/components/home/BlogPostList';
-import { PageIntro } from '~/components/PageIntro';
-import { Paragraph } from '~/components/Paragraph';
-import { SEO } from '~/components/seo';
-import { Spacer } from '~/components/Spacer';
-import { TagsList } from '~/components/TagsList';
+import { BlogPostIndexPage } from '~/views/BlogPostIndexPage';
 
 const posts = [
   {
@@ -53,29 +47,5 @@ const allTags = [
 ];
 
 export default function BlogIndex() {
-  return (
-    <>
-      <SEO
-        title="Blog"
-        description="Content focusing on React, JavaScript, Node.js, and more."
-      />
-
-      <PageIntro
-        title="Blog"
-        description="Thoughts, mental models, and notes on all things dev ✍️"
-      />
-
-      <BlogPostList posts={posts} />
-
-      <Spacer size="16" />
-
-      <section className="rounded border p-4 sm:p-8">
-        <Heading as="h2">Tags</Heading>
-
-        <Spacer size="4" />
-
-        <TagsList tags={allTags} />
-      </section>
-    </>
-  );
+  return <BlogPostIndexPage posts={posts} tags={allTags} />;
 }
