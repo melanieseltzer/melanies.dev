@@ -12,14 +12,7 @@ export function MaxWidthContainer({
   as: Tag = 'div',
   ...props
 }: Props) {
-  const classes = twMerge(`
-   mx-auto
-   max-w-5xl
-   px-4
-   sm:px-6
-   lg:px-0
-   ${className}
- `);
+  const classes = twMerge('mx-auto max-w-5xl px-4 sm:px-6 xl:px-0', className);
 
   return <Tag className={classes} {...props} />;
 }
