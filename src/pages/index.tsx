@@ -12,7 +12,7 @@ const posts = [
       'This is a blog post summary. We will be going over some sort of topic.',
   },
   {
-    slug: '/blog/asdf',
+    slug: '/blog/ghjk',
     date: '2022-12-15T15:00:00.000Z',
     title: 'JavaScript is really cool',
     summary:
