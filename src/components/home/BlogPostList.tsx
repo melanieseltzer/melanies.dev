@@ -12,10 +12,12 @@ type Props = {
 };
 
 export function BlogPostList({ posts }: Props) {
+  if (!posts.length) {
+    return <Paragraph>No posts.</Paragraph>;
+  }
+
   return (
     <>
-      {!posts.length && <Paragraph>No posts.</Paragraph>}
-
       {posts.map(({ slug, title, summary, date }) => (
         <article key={slug} className="grid border-t py-6 sm:grid-cols-4">
           <div className="order-2 sm:order-1 sm:col-span-3">
