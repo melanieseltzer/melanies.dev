@@ -18,11 +18,11 @@ export function MobileNav() {
 
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
         <div
-          className="fixed inset-0 bg-black/20 backdrop-blur-sm"
+          className="fixed inset-0 z-30 bg-black/20 backdrop-blur-sm"
           aria-hidden="true"
         />
 
-        <Dialog.Panel className="fixed top-4 right-4 w-full max-w-xs rounded-lg bg-white p-6 text-base font-semibold text-slate-900 shadow-lg">
+        <Dialog.Panel className="fixed top-4 right-4 z-50 w-full max-w-xs rounded-lg bg-white p-6 text-base font-semibold text-slate-900 shadow-lg">
           <button
             className="absolute right-4 top-4"
             aria-label="Close Menu"
