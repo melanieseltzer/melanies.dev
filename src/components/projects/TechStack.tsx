@@ -1,3 +1,4 @@
+import { IconType } from 'react-icons';
 import {
   SiCss3 as CSSIcon,
   SiJavascript as JSIcon,
@@ -8,6 +9,15 @@ import {
 } from 'react-icons/si';
 
 import { Badge } from '~/components/Badge';
+
+const techIconMap: Record<string, IconType> = {
+  React: ReactIcon,
+  TypeScript: TSIcon,
+  JavaScript: JSIcon,
+  CSS: CSSIcon,
+  'Tailwind CSS': TailwindIcon,
+  'Next.js': NextJSIcon,
+};
 
 type Props = {
   tech: string[];
@@ -21,9 +31,11 @@ export function TechStackDisplay({ tech }: Props) {
       <div className="mb-4 flex flex-wrap items-center gap-2">
         {tech.map(name => {
           if (name in techIconMap) {
+            const Icon = techIconMap[name];
+
             return (
               <span key={name}>
-                {techIconMap[name]}
+                <Icon size={20} className="text-gray-700 dark:text-white" />
                 <span className="sr-only">{name}</span>
               </span>
             );
@@ -39,17 +51,3 @@ export function TechStackDisplay({ tech }: Props) {
     </>
   );
 }
-
-const sharedProps = {
-  size: 20,
-  className: 'text-gray-700 dark:text-white',
-};
-
-const techIconMap: Record<string, JSX.Element> = {
-  React: <ReactIcon {...sharedProps} />,
-  TypeScript: <TSIcon {...sharedProps} />,
-  JavaScript: <JSIcon {...sharedProps} />,
-  CSS: <CSSIcon {...sharedProps} />,
-  'Tailwind CSS': <TailwindIcon {...sharedProps} />,
-  'Next.js': <NextJSIcon {...sharedProps} />,
-};
