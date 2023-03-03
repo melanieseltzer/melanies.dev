@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { twMerge } from 'tailwind-merge';
 
-type Props = {
+type Props = React.HTMLAttributes<HTMLHeadingElement> & {
   children: React.ReactNode;
   as?: HeadingLevel;
   className?: string;
