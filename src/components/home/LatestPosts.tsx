@@ -11,6 +11,7 @@ type Props = {
     title: string;
     summary: string;
     date: string;
+    tags: string[];
   }[];
 };
 
