@@ -40,13 +40,11 @@ export default function Tag() {
 
       <Spacer size="8" />
 
-      <header>
-        <Paragraph lead>
-          <Balancer>{`${count} posts tagged:`}</Balancer>
-        </Paragraph>
+      <Paragraph lead>
+        <Balancer>{`${count} posts tagged:`}</Balancer>
+      </Paragraph>
 
-        <Heading>{tag}</Heading>
-      </header>
+      <Heading>{tag}</Heading>
 
       <Spacer size="8" />
 

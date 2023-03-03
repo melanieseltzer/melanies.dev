@@ -14,15 +14,13 @@ export function PageIntro({ title, description }: Props) {
     <>
       <Spacer size="16" />
 
-      <header>
-        <Heading>{title}</Heading>
+      <Heading>{title}</Heading>
 
-        {description ? (
-          <Paragraph lead>
-            <Balancer>{description}</Balancer>
-          </Paragraph>
-        ) : null}
-      </header>
+      {description ? (
+        <Paragraph lead>
+          <Balancer>{description}</Balancer>
+        </Paragraph>
+      ) : null}
 
       <Spacer size="16" />
     </>
