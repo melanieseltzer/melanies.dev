@@ -4,7 +4,7 @@ import NextLink, { LinkProps as NextLinkProps } from 'next/link';
 
 import { siteMetadata } from '~/config/metadata';
 
-type LinkProps = Omit<NextLinkProps, 'href'> &
+export type LinkProps = Omit<NextLinkProps, 'href'> &
   Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & {
     href: string;
   };

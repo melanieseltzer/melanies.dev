@@ -1,6 +1,6 @@
 import { twMerge } from 'tailwind-merge';
 
-type Props = {
+export type CardProps = {
   children: React.ReactNode;
   className?: string;
   as?: React.ElementType;
@@ -11,7 +11,7 @@ export function Card({
   as: Tag = 'div',
   className,
   ...props
-}: Props) {
+}: CardProps) {
   const classes = twMerge(
     'block rounded-md border p-4 sm:p-8 border-gray-200 dark:border-gray-700',
     className
