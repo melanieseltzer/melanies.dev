@@ -41,7 +41,7 @@ export function BlogPostList({ posts }: Props) {
                 href={slug}
                 className="font-medium text-primary-700 transition-colors hover:text-primary-800"
               >
-                Read more &rarr;
+                Read more <span className="sr-only">, {title}</span> &rarr;
               </Link>
             </div>
 
