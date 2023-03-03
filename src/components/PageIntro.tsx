@@ -5,24 +5,49 @@ import { Paragraph } from '~/components/Paragraph';
 import { Spacer } from '~/components/Spacer';
 
 type Props = {
-  title: string;
-  description?: string;
+  heading: string;
+  subheading?: string;
+  reverse?: boolean;
+  compact?: boolean;
 };
 
-export function PageIntro({ title, description }: Props) {
-  return (
+export function PageIntro({
+  heading,
+  subheading,
+  reverse = false,
+  compact = false,
+}: Props) {
+  let tags = (
     <>
-      <Spacer size="16" />
-
-      <Heading>{title}</Heading>
-
-      {description ? (
+      <Heading>{heading}</Heading>
+      {subheading ? (
         <Paragraph lead>
-          <Balancer>{description}</Balancer>
+          <Balancer>{subheading}</Balancer>
         </Paragraph>
       ) : null}
+    </>
+  );
 
-      <Spacer size="16" />
+  if (reverse) {
+    tags = (
+      <>
+        {subheading ? (
+          <Paragraph lead>
+            <Balancer>{subheading}</Balancer>
+          </Paragraph>
+        ) : null}
+        <Heading>{heading}</Heading>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <Spacer size={compact ? '8' : '16'} />
+
+      {tags}
+
+      <Spacer size={compact ? '8' : '16'} />
     </>
   );
 }

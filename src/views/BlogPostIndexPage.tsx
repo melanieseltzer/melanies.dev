@@ -24,8 +24,8 @@ export function BlogPostIndexPage({ posts, tags }: Props) {
       />
 
       <PageIntro
-        title="Blog"
-        description="Thoughts, mental models, and notes on all things dev ✍️"
+        heading="Blog"
+        subheading="Thoughts, mental models, and notes on all things dev ✍️"
       />
 
       <BlogPostList posts={posts} />

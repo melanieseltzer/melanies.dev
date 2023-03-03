@@ -2,6 +2,7 @@ import Balancer from 'react-wrap-balancer';
 
 import { Heading } from '~/components/Heading';
 import { BlogPostList } from '~/components/home/BlogPostList';
+import { PageIntro } from '~/components/PageIntro';
 import { Paragraph } from '~/components/Paragraph';
 import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
@@ -38,15 +39,12 @@ export default function Tag() {
         description="Content focusing on React, JavaScript, Node.js, and more."
       />
 
-      <Spacer size="8" />
-
-      <Paragraph lead>
-        <Balancer>{`${count} posts tagged:`}</Balancer>
-      </Paragraph>
-
-      <Heading>{tag}</Heading>
-
-      <Spacer size="8" />
+      <PageIntro
+        compact
+        reverse
+        heading={tag}
+        subheading={`${count} posts tagged:`}
+      />
 
       <BlogPostList posts={posts} />
     </>
