@@ -1,11 +1,6 @@
-import Balancer from 'react-wrap-balancer';
-
-import { Heading } from '~/components/Heading';
 import { BlogPostList } from '~/components/home/BlogPostList';
 import { PageIntro } from '~/components/PageIntro';
-import { Paragraph } from '~/components/Paragraph';
 import { SEO } from '~/components/seo';
-import { Spacer } from '~/components/Spacer';
 
 const posts = [
   {
