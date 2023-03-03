@@ -1,9 +1,8 @@
-import { Heading } from '~/components/Heading';
+import { ExploreByTopic } from '~/components/blog/ExploreByTopic';
 import { BlogPostList } from '~/components/home/BlogPostList';
 import { PageIntro } from '~/components/PageIntro';
 import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
-import { TagsList } from '~/components/TagsList';
 
 type Props = {
   posts: {
@@ -33,13 +32,7 @@ export function BlogPostIndexPage({ posts, tags }: Props) {
 
       <Spacer size="16" />
 
-      <section className="rounded border p-4 sm:p-8">
-        <Heading as="h2">Tags</Heading>
-
-        <Spacer size="4" />
-
-        <TagsList tags={tags} />
-      </section>
+      <ExploreByTopic tags={tags} />
     </>
   );
 }
