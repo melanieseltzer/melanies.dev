@@ -7,13 +7,18 @@ import { Spacer } from '~/components/Spacer';
 
 export function HeroSection() {
   return (
-    <header>
-      <Heading className="text-5xl tracking-tight md:text-6xl lg:text-7xl">
-        <Balancer>
-          Crafting <GradientText>delightful experiences</GradientText> for the
-          web
-        </Balancer>
-      </Heading>
+    <section aria-labelledby="hero-title">
+      <header>
+        <Heading
+          id="hero-title"
+          className="text-5xl tracking-tight md:text-6xl lg:text-7xl"
+        >
+          <Balancer>
+            Crafting <GradientText>delightful experiences</GradientText> for the
+            web
+          </Balancer>
+        </Heading>
+      </header>
 
       <Spacer size="4" />
 
@@ -25,6 +30,6 @@ export function HeroSection() {
           things with JavaScript. Welcome to my little digital home.
         </Balancer>
       </Paragraph>
-    </header>
+    </section>
   );
 }

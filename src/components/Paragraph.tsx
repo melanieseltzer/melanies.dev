@@ -14,6 +14,6 @@ const styles = {
 
 export function Paragraph({ className = '', lead = false, ...props }: Props) {
   const key = lead ? 'lead' : 'default';
-  const classes = twMerge('mb-4 text-lg leading-8', styles[key], className);
+  const classes = twMerge('mb-4 text-lg', styles[key], className);
   return <p className={classes} {...props} />;
 }
