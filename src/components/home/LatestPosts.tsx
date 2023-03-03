@@ -17,9 +17,11 @@ type Props = {
 
 export function LatestPosts({ posts }: Props) {
   return (
-    <section>
+    <section aria-labelledby="latest-posts">
       <header className="relative">
-        <Heading as="h2">Latest Posts</Heading>
+        <Heading id="latest-posts" as="h2">
+          Latest Posts
+        </Heading>
         <Paragraph lead>
           A little bit of this and a little bit of that ✍️
         </Paragraph>
