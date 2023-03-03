@@ -13,9 +13,7 @@ export function PageLayout({ children }: Props) {
     <>
       <Header />
 
-      <main>
-        <MaxWidthContainer>{children}</MaxWidthContainer>
-      </main>
+      <MaxWidthContainer as="main">{children}</MaxWidthContainer>
 
       <Footer />
     </>
