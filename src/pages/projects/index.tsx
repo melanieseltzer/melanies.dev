@@ -2,9 +2,9 @@ import { CardLink } from '~/components/CardLink';
 import { Heading } from '~/components/Heading';
 import { PageIntro } from '~/components/PageIntro';
 import { Paragraph } from '~/components/Paragraph';
-import { TechStack } from '~/components/projects/TechStack';
 import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
+import { TechStack } from '~/components/TechStack';
 
 const projects = [
   {
