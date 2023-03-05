@@ -47,7 +47,7 @@ export function TechStack({
 
       <ul
         className={clsx(
-          'mb-4 flex flex-wrap items-center',
+          'flex flex-wrap items-center',
           size === 'sm' ? 'gap-2' : 'gap-3'
         )}
       >

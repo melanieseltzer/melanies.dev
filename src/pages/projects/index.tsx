@@ -74,6 +74,8 @@ export default function ProjectsIndex() {
 
                 <TechStack tech={techStack} />
 
+                <Spacer size="4" />
+
                 <Paragraph className="text-base">{summary}</Paragraph>
 
                 {body ? (

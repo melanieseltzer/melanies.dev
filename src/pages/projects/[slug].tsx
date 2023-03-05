@@ -1,8 +1,11 @@
+import { RxDividerVertical as Separator } from 'react-icons/rx';
+
 import { PageIntro } from '~/components/PageIntro';
 import { DemoButton } from '~/components/projects/DemoButton';
 import { SourceCodeButton } from '~/components/projects/SourceCodeButton';
 import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
+import { TechStack } from '~/components/TechStack';
 
 export default function Project() {
   return (
@@ -13,19 +16,25 @@ export default function Project() {
         description="This is an example project summary."
       />
 
-      <Spacer size="8" />
-
-      <div className="flex flex-wrap gap-2">
-        <DemoButton href="https://test.com" />
-
-        <SourceCodeButton href="https://github.com/melanieseltzer" />
-      </div>
-
       <PageIntro
         compact
         heading="This is an example project title that is really long and wraps"
         subheading="This is an example project summary"
       />
+
+      <div className="-mt-8 flex flex-wrap items-center gap-4">
+        <TechStack tech={['React', 'TypeScript', 'Next.js', 'CSS']} />
+
+        <Separator aria-hidden={true} size={15} className="text-gray-400" />
+
+        <div className="flex flex-wrap gap-2">
+          <DemoButton href="https://test.com" />
+
+          <SourceCodeButton href="https://github.com/melanieseltzer" />
+        </div>
+      </div>
+
+      <Spacer size="16" />
 
       {/* eslint-disable */}
       <div className="prose prose-lg prose-slate">
@@ -39,7 +48,7 @@ export default function Project() {
           markdown file, it can be surprising and unintuitive.
         </p>
 
-        <h3>Tech stack</h3>
+        <h2>Tech stack</h2>
 
         <ul>
           <li>So here is the first item in this list.</li>
