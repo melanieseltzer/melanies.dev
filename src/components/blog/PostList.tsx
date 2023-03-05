@@ -1,7 +1,7 @@
+import { PostTagsList } from '~/components/blog/PostTagsList';
 import { Heading } from '~/components/Heading';
 import { Link } from '~/components/Link';
 import { Paragraph } from '~/components/Paragraph';
-import { TagsList } from '~/components/TagsList';
 
 type Props = {
   posts: {
@@ -47,7 +47,7 @@ export function PostList({ posts }: Props) {
 
               <dt className="sr-only">Related tags:</dt>
               <dd>
-                <TagsList className="md:justify-end" compact tags={tags} />
+                <PostTagsList className="md:justify-end" compact tags={tags} />
               </dd>
             </dl>
           </article>

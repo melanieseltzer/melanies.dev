@@ -2,7 +2,7 @@ import clsx from 'clsx';
 
 import { Badge } from '~/components/Badge';
 
-import { Paragraph } from './Paragraph';
+import { Paragraph } from '../Paragraph';
 
 type Props = {
   tags: string[];
@@ -10,7 +10,7 @@ type Props = {
   className?: string;
 };
 
-export function TagsList({ tags, compact, className }: Props) {
+export function PostTagsList({ tags, compact, className }: Props) {
   if (!tags.length) return <Paragraph>No tags found.</Paragraph>;
 
   return (
