@@ -3,24 +3,26 @@ import { twMerge } from 'tailwind-merge';
 
 type Props = React.HTMLAttributes<HTMLHeadingElement> & {
   children: React.ReactNode;
-  as?: HeadingLevel;
+  as?: 'h1' | 'h2' | 'h3';
   className?: string;
+  size?: keyof typeof styles;
 };
-
-type HeadingLevel = keyof typeof styles;
 
 const styles = {
-  h1: 'text-3xl font-extrabold md:text-4xl lg:text-5xl lg:leading-[3.5rem]',
-  h2: 'text-2xl font-bold md:text-3xl lg:text-4xl',
-  h3: 'text-lg font-bold md:text-xl lg:text-2xl',
+  lg: 'text-3xl font-extrabold md:text-4xl lg:text-5xl lg:leading-[3.5rem]',
+  md: 'text-2xl font-bold md:text-3xl lg:text-4xl',
+  sm: 'text-lg font-bold md:text-xl lg:text-2xl',
 };
 
-export function Heading({ as = 'h1', className = '', ...props }: Props) {
-  const Tag = `${as}` as React.ElementType;
-
+export function Heading({
+  size = 'lg',
+  as: Tag = 'h1',
+  className = '',
+  ...props
+}: Props) {
   const classes = twMerge(
     'mb-4 text-gray-900 dark:text-white',
-    styles[as],
+    styles[size],
     className
   );
 

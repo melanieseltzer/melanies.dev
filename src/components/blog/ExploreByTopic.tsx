@@ -11,7 +11,7 @@ export function ExploreByTopic({ tags }: Props) {
   return (
     <>
       <Card as="section" aria-labelledby="explore-by-topic">
-        <Heading id="explore-by-topic" as="h2">
+        <Heading id="explore-by-topic" size="md" as="h2">
           Explore by Topic
         </Heading>
 

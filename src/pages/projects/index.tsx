@@ -58,50 +58,57 @@ export default function ProjectsIndex() {
       />
 
       <PageIntro
-        compact
         heading="Projects"
         subheading="A showcase of my open-source side projects and everything I am tinkering on."
       />
 
-      <ul className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        {projects.map(
-          ({ slug, title, techStack, summary, repoUrl, demoUrl, body }) => (
-            <li key={title}>
-              <Card className="h-full transition-all hover:border-gray-300">
-                <Heading as="h3" className="mb-2">
-                  {title}
-                </Heading>
+      <section aria-labelledby="oss">
+        <header>
+          <Heading id="oss" size="md" as="h2">
+            OSS
+          </Heading>
+        </header>
 
-                <TechStack tech={techStack} />
+        <ul className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          {projects.map(
+            ({ slug, title, techStack, summary, repoUrl, demoUrl, body }) => (
+              <li key={title}>
+                <Card className="h-full transition-all hover:border-gray-300">
+                  <Heading size="sm" as="h3" className="mb-2">
+                    {title}
+                  </Heading>
 
-                <Spacer size="4" />
+                  <TechStack tech={techStack} />
 
-                <Paragraph className="text-base">{summary}</Paragraph>
+                  <Spacer size="4" />
 
-                {body ? (
-                  <>
-                    <Link
-                      href={`/projects/${slug}`}
-                      className="font-medium text-primary-700 transition-colors hover:text-primary-800"
-                    >
-                      Read more{' '}
-                      <span className="sr-only">about the project</span>{' '}
-                      <span aria-hidden="true">&rarr;</span>
-                    </Link>
-                    <Spacer size="4" />
-                  </>
-                ) : null}
+                  <Paragraph className="text-base">{summary}</Paragraph>
 
-                <div className="flex flex-wrap gap-2">
-                  <DemoButton href={demoUrl} />
+                  {body ? (
+                    <>
+                      <Link
+                        href={`/projects/${slug}`}
+                        className="font-medium text-primary-700 transition-colors hover:text-primary-800"
+                      >
+                        Read more{' '}
+                        <span className="sr-only">about the project</span>{' '}
+                        <span aria-hidden="true">&rarr;</span>
+                      </Link>
+                      <Spacer size="4" />
+                    </>
+                  ) : null}
 
-                  <SourceCodeButton href={repoUrl} />
-                </div>
-              </Card>
-            </li>
-          )
-        )}
-      </ul>
+                  <div className="flex flex-wrap gap-2">
+                    <DemoButton href={demoUrl} />
+
+                    <SourceCodeButton href={repoUrl} />
+                  </div>
+                </Card>
+              </li>
+            )
+          )}
+        </ul>
+      </section>
     </>
   );
 }

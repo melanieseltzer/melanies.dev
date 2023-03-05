@@ -26,7 +26,7 @@ export function BlogPostList({ posts }: Props) {
           className="flex flex-col justify-between gap-4 border-t py-6 md:flex-row"
         >
           <div>
-            <Heading as="h3" className="mb-2">
+            <Heading size="sm" as="h3" className="mb-2">
               {title}
             </Heading>
 

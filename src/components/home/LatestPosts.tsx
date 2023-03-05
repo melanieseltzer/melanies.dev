@@ -19,7 +19,7 @@ export function LatestPosts({ posts }: Props) {
   return (
     <section aria-labelledby="latest-posts">
       <header className="relative">
-        <Heading id="latest-posts" as="h2">
+        <Heading id="latest-posts" size="md" as="h2">
           Latest Posts
         </Heading>
         <Paragraph lead>
