@@ -41,7 +41,7 @@ export function BlogPostList({ posts }: Props) {
             </Link>
           </div>
 
-          <dl className="mt-4 flex flex-col gap-2 md:mt-0">
+          <dl className="mt-4 flex flex-col gap-2 md:mt-0 md:items-end">
             <dt className="sr-only">Published on:</dt>
             <dd className="whitespace-nowrap text-base leading-6 text-gray-500 dark:text-gray-400">
               <time dateTime={date}>December 27, 2022</time>
