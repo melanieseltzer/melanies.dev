@@ -11,7 +11,7 @@ type Props = React.HTMLAttributes<HTMLHeadingElement> & {
 const styles = {
   lg: 'text-3xl font-extrabold md:text-4xl lg:text-5xl lg:leading-[3.5rem]',
   md: 'text-2xl font-bold md:text-3xl lg:text-4xl',
-  sm: 'text-lg font-bold md:text-xl lg:text-2xl',
+  sm: 'text-xl font-bold',
 };
 
 export function Heading({

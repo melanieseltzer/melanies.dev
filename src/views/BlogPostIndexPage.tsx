@@ -1,6 +1,6 @@
 import { ExploreByTopic } from '~/components/blog/ExploreByTopic';
+import { PostList } from '~/components/blog/PostList';
 import { Heading } from '~/components/Heading';
-import { BlogPostList } from '~/components/home/BlogPostList';
 import { PageIntro } from '~/components/PageIntro';
 import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
@@ -38,7 +38,7 @@ export function BlogPostIndexPage({ posts, tags }: Props) {
 
         <Spacer size="4" />
 
-        <BlogPostList posts={posts} />
+        <PostList posts={posts} />
       </section>
 
       <Spacer size="16" />
