@@ -1,4 +1,4 @@
-import { BlogPostList } from '~/components/home/BlogPostList';
+import { PostList } from '~/components/blog/PostList';
 import { PageIntro } from '~/components/PageIntro';
 import { SEO } from '~/components/seo';
 
@@ -41,7 +41,7 @@ export default function Tag() {
         subheading={`${count} posts tagged:`}
       />
 
-      <BlogPostList posts={posts} />
+      <PostList posts={posts} />
     </>
   );
 }

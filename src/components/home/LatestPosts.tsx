@@ -3,7 +3,7 @@ import { Link } from '~/components/Link';
 import { Paragraph } from '~/components/Paragraph';
 import { Spacer } from '~/components/Spacer';
 
-import { BlogPostList } from './BlogPostList';
+import { PostList } from '../blog/PostList';
 
 type Props = {
   posts: {
@@ -38,7 +38,7 @@ export function LatestPosts({ posts }: Props) {
 
       <Spacer size="8" />
 
-      <BlogPostList posts={posts} />
+      <PostList posts={posts} />
     </section>
   );
 }

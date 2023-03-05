@@ -13,7 +13,7 @@ type Props = {
   }[];
 };
 
-export function BlogPostList({ posts }: Props) {
+export function PostList({ posts }: Props) {
   if (!posts.length) {
     return <Paragraph>No posts.</Paragraph>;
   }
