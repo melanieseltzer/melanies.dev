@@ -82,7 +82,7 @@ export default function ProjectsIndex() {
 
                   <Spacer size="4" />
 
-                  <Paragraph className="text-base">{summary}</Paragraph>
+                  <Paragraph>{summary}</Paragraph>
 
                   {body ? (
                     <>

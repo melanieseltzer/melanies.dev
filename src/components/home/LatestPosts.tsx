@@ -1,4 +1,4 @@
-import { PostList } from '~/components/blog/PostList';
+import { CompactPostList } from '~/components/blog/CompactPostList';
 import { ButtonLink } from '~/components/ButtonLink';
 import { Heading } from '~/components/Heading';
 import { Paragraph } from '~/components/Paragraph';
@@ -21,17 +21,19 @@ export function LatestPosts({ posts }: Props) {
         <Heading id="latest-posts" size="md" as="h2">
           Latest Posts
         </Heading>
-        <Paragraph lead>
-          A little bit of this and a little bit of that ✍️
-        </Paragraph>
+        <Paragraph lead>Sometimes I write about tech ✍️</Paragraph>
       </header>
+
+      <Spacer size="4" />
+
+      <CompactPostList posts={posts} />
 
       <Spacer size="8" />
 
-      <PostList posts={posts} />
-
-      <div className="text-right">
-        <ButtonLink href="/blog">All posts &rarr;</ButtonLink>
+      <div className="sm:text-right">
+        <ButtonLink href="/blog">
+          <span className="sr-only">View</span> All posts &rarr;
+        </ButtonLink>
       </div>
     </section>
   );
