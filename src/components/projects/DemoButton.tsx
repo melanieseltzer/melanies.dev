@@ -14,9 +14,9 @@ export function DemoButton({ href }: Props) {
       aria-label="View the demo"
       className="inline-flex items-center gap-2"
     >
-      <DemoIcon aria-hidden={true} size={20} />
+      <DemoIcon aria-hidden="true" size={20} />
       Demo
-      <ExternalIcon aria-hidden={true} />
+      <ExternalIcon aria-hidden="true" />
     </ButtonLink>
   );
 }

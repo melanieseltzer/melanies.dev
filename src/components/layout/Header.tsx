@@ -18,16 +18,12 @@ export function Header() {
         isTop ? 'border-none' : 'border-b border-gray-200 dark:border-gray-800'
       )}
     >
-      <MaxWidthContainer>
-        <div className="flex items-center justify-between py-4 sm:py-8">
-          <div>
-            <Link href="/">Logo</Link>
-          </div>
+      <MaxWidthContainer className="flex items-center justify-between py-4 sm:py-8">
+        <Link href="/">Logo</Link>
 
-          <DesktopNav />
+        <DesktopNav />
 
-          <MobileNav />
-        </div>
+        <MobileNav />
       </MaxWidthContainer>
     </header>
   );

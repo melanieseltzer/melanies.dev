@@ -1,4 +1,5 @@
 import { ExploreByTopic } from '~/components/blog/ExploreByTopic';
+import { Heading } from '~/components/Heading';
 import { BlogPostList } from '~/components/home/BlogPostList';
 import { PageIntro } from '~/components/PageIntro';
 import { SEO } from '~/components/seo';
@@ -28,7 +29,17 @@ export function BlogPostIndexPage({ posts, tags }: Props) {
         subheading="Thoughts, mental models, and notes on all things dev ✍️"
       />
 
-      <BlogPostList posts={posts} />
+      <section aria-labelledby="all-posts">
+        <header>
+          <Heading id="all-posts" size="md" as="h2">
+            All Posts
+          </Heading>
+        </header>
+
+        <Spacer size="4" />
+
+        <BlogPostList posts={posts} />
+      </section>
 
       <Spacer size="16" />
 

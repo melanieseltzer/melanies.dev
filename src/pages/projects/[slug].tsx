@@ -25,7 +25,7 @@ export default function Project() {
       <div className="-mt-8 flex flex-wrap items-center gap-4">
         <TechStack tech={['React', 'TypeScript', 'Next.js', 'CSS']} />
 
-        <Separator aria-hidden={true} size={15} className="text-gray-400" />
+        <Separator aria-hidden="true" size={15} className="text-gray-400" />
 
         <div className="flex flex-wrap gap-2">
           <DemoButton href="https://test.com" />

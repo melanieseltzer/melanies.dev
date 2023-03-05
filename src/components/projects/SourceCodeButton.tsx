@@ -14,9 +14,9 @@ export function SourceCodeButton({ href }: Props) {
       aria-label="View the source code"
       className="inline-flex items-center gap-2"
     >
-      <GitHubIcon aria-hidden={true} size={20} />
+      <GitHubIcon aria-hidden="true" size={20} />
       Source
-      <ExternalIcon aria-hidden={true} />
+      <ExternalIcon aria-hidden="true" />
     </ButtonLink>
   );
 }
