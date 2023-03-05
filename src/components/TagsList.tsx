@@ -19,7 +19,7 @@ export function TagsList({ tags, compact, className }: Props) {
     >
       {tags.map(tag => (
         <li key={tag}>
-          <Badge size={compact ? 'sm' : 'lg'} href={`/tags/${tag}`}>
+          <Badge size={compact ? 'sm' : 'lg'} href={`/blog/tags/${tag}`}>
             {tag}
           </Badge>
         </li>
