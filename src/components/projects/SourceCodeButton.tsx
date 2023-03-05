@@ -9,7 +9,11 @@ type Props = {
 
 export function SourceCodeButton({ href }: Props) {
   return (
-    <ButtonLink href={href} className="inline-flex items-center gap-2">
+    <ButtonLink
+      href={href}
+      aria-label="View the source code"
+      className="inline-flex items-center gap-2"
+    >
       <GitHubIcon aria-hidden={true} size={20} />
       Source
       <ExternalIcon aria-hidden={true} />

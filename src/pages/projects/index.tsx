@@ -58,23 +58,16 @@ export default function ProjectsIndex() {
       />
 
       <PageIntro
+        compact
         heading="Projects"
         subheading="A showcase of my open-source side projects and everything I am tinkering on."
       />
 
-      <section aria-labelledby="oss-projects">
-        <header className="relative">
-          <Heading id="oss-projects" as="h2">
-            OSS
-          </Heading>
-        </header>
-
-        <Spacer size="4" />
-
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          {projects.map(
-            ({ slug, title, techStack, summary, repoUrl, demoUrl, body }) => (
-              <Card key={title}>
+      <ul className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        {projects.map(
+          ({ slug, title, techStack, summary, repoUrl, demoUrl, body }) => (
+            <li key={title}>
+              <Card>
                 <Heading as="h3" className="mb-2">
                   {title}
                 </Heading>
@@ -103,10 +96,10 @@ export default function ProjectsIndex() {
                   <SourceCodeButton href={repoUrl} />
                 </div>
               </Card>
-            )
-          )}
-        </div>
-      </section>
+            </li>
+          )
+        )}
+      </ul>
     </>
   );
 }
