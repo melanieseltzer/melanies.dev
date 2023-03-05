@@ -58,7 +58,7 @@ export function TechStack({
             return (
               <li key={name}>
                 <Icon
-                  aria-hidden={true}
+                  aria-hidden="true"
                   size={size === 'sm' ? 20 : 24}
                   className={`text-gray-500 transition-colors dark:text-white ${accentColor}`}
                 />
