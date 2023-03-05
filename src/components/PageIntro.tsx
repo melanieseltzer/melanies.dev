@@ -19,7 +19,9 @@ export function PageIntro({
 }: Props) {
   let tags = (
     <>
-      <Heading>{heading}</Heading>
+      <Heading>
+        <Balancer>{heading}</Balancer>
+      </Heading>
       {subheading ? (
         <Paragraph lead>
           <Balancer>{subheading}</Balancer>
@@ -36,7 +38,9 @@ export function PageIntro({
             <Balancer>{subheading}</Balancer>
           </Paragraph>
         ) : null}
-        <Heading>{heading}</Heading>
+        <Heading>
+          <Balancer>{heading}</Balancer>
+        </Heading>
       </>
     );
   }

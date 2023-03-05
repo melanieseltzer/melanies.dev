@@ -10,7 +10,7 @@ type Props = React.HTMLAttributes<HTMLHeadingElement> & {
 type HeadingLevel = keyof typeof styles;
 
 const styles = {
-  h1: 'text-3xl font-extrabold md:text-4xl lg:text-5xl',
+  h1: 'text-3xl font-extrabold md:text-4xl lg:text-5xl lg:leading-[3.5rem]',
   h2: 'text-2xl font-bold md:text-3xl lg:text-4xl',
   h3: 'text-lg font-bold md:text-xl lg:text-2xl',
 };
