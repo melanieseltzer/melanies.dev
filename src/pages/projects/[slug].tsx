@@ -1,11 +1,6 @@
-import { FiArrowUpRight as ExternalIcon } from 'react-icons/fi';
-import { MdWeb as DemoIcon } from 'react-icons/md';
-import { SiGithub as GitHubIcon } from 'react-icons/si';
-
-import { Button } from '~/components/Button';
-import { ButtonLink } from '~/components/ButtonLink';
-import { Link } from '~/components/Link';
 import { PageIntro } from '~/components/PageIntro';
+import { DemoButton } from '~/components/projects/DemoButton';
+import { SourceCodeButton } from '~/components/projects/SourceCodeButton';
 import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 
@@ -20,24 +15,10 @@ export default function Project() {
 
       <Spacer size="8" />
 
-      <div className="flex flex-wrap gap-4">
-        <ButtonLink
-          href="https://test.com"
-          className="inline-flex items-center gap-2"
-        >
-          <DemoIcon aria-hidden={true} size={20} />
-          Live demo
-          <ExternalIcon aria-hidden={true} />
-        </ButtonLink>
+      <div className="flex flex-wrap gap-2">
+        <DemoButton href="https://test.com" />
 
-        <ButtonLink
-          href="https://github.com/melanieseltzer"
-          className="inline-flex items-center gap-2"
-        >
-          <GitHubIcon aria-hidden={true} size={20} />
-          Source code
-          <ExternalIcon aria-hidden={true} />
-        </ButtonLink>
+        <SourceCodeButton href="https://github.com/melanieseltzer" />
       </div>
 
       <PageIntro

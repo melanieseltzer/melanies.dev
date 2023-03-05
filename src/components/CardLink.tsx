@@ -9,7 +9,7 @@ export function CardLink(props: Props) {
   return (
     <Card
       as={Link}
-      className="transition-all hover:scale-105 hover:border-gray-300 hover:bg-neutral-50"
+      className="transition-all hover:border-gray-300 hover:bg-neutral-50"
       {...props}
     />
   );

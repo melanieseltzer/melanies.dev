@@ -13,7 +13,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const classes = twMerge(
-    'rounded-md border border-neutral-200 bg-neutral-50 py-1.5 px-3 text-gray-700 transition-colors hover:bg-neutral-100',
+    'text-sm rounded-md border border-neutral-200 bg-neutral-50 py-1.5 px-3 text-gray-700 transition-colors hover:bg-neutral-100',
     className
   );
 

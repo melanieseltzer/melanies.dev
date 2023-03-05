@@ -1,20 +1,26 @@
-import { CardLink } from '~/components/CardLink';
+import { Card } from '~/components/Card';
 import { Heading } from '~/components/Heading';
+import { Link } from '~/components/Link';
 import { PageIntro } from '~/components/PageIntro';
 import { Paragraph } from '~/components/Paragraph';
+import { DemoButton } from '~/components/projects/DemoButton';
+import { SourceCodeButton } from '~/components/projects/SourceCodeButton';
 import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 import { TechStack } from '~/components/TechStack';
 
 const projects = [
   {
-    title: 'Some Test Project with a longer title',
+    slug: 'some-test-project',
+    title: 'Some Test Project',
     summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     techStack: ['React', 'JavaScript', 'Next.js', 'HTML'],
     repoUrl: 'https://github.com',
     demoUrl: 'https://test.com',
+    body: 'asdf',
   },
   {
+    slug: 'some-test-project',
     title: 'Some Test Project',
     summary:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo cursus turpis, vel consectetur orci tempus nec.',
@@ -23,6 +29,7 @@ const projects = [
     demoUrl: 'https://test.com',
   },
   {
+    slug: 'some-test-project',
     title: 'Some Test Project',
     summary:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo cursus turpis, vel consectetur orci tempus nec.',
@@ -31,11 +38,14 @@ const projects = [
     demoUrl: 'https://test.com',
   },
   {
+    slug: 'some-test-project',
     title: 'Some Test Project',
     summary:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo cursus turpis, vel consectetur orci tempus nec.',
     techStack: ['React', 'Tailwind CSS'],
     repoUrl: 'https://github.com',
+    demoUrl: 'https://test.com',
+    body: 'asdf',
   },
 ];
 
@@ -62,15 +72,39 @@ export default function ProjectsIndex() {
         <Spacer size="4" />
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          {projects.map(({ title, techStack, summary }) => (
-            <CardLink key={title} href="/projects/asdf">
-              <Heading as="h3">{title}</Heading>
+          {projects.map(
+            ({ slug, title, techStack, summary, repoUrl, demoUrl, body }) => (
+              <Card key={title}>
+                <Heading as="h3" className="mb-2">
+                  {title}
+                </Heading>
 
-              <Paragraph>{summary}</Paragraph>
+                <TechStack tech={techStack} />
 
-              <TechStack tech={techStack} />
-            </CardLink>
-          ))}
+                <Paragraph className="text-base">{summary}</Paragraph>
+
+                {body ? (
+                  <>
+                    <Link
+                      href={`/projects/${slug}`}
+                      className="font-medium text-primary-700 transition-colors hover:text-primary-800"
+                    >
+                      Read more{' '}
+                      <span className="sr-only">about the project</span>{' '}
+                      <span aria-hidden="true">&rarr;</span>
+                    </Link>
+                    <Spacer size="4" />
+                  </>
+                ) : null}
+
+                <div className="flex flex-wrap gap-2">
+                  <DemoButton href={demoUrl} />
+
+                  <SourceCodeButton href={repoUrl} />
+                </div>
+              </Card>
+            )
+          )}
         </div>
       </section>
     </>
