@@ -1,7 +1,6 @@
 import { CompactPostList } from '~/components/blog/CompactPostList';
 import { ButtonLink } from '~/components/ButtonLink';
-import { Heading } from '~/components/Heading';
-import { Paragraph } from '~/components/Paragraph';
+import { Section } from '~/components/Section';
 import { Spacer } from '~/components/Spacer';
 
 type Props = {
@@ -16,14 +15,11 @@ type Props = {
 
 export function LatestPosts({ posts }: Props) {
   return (
-    <section aria-labelledby="latest-posts">
-      <header>
-        <Heading id="latest-posts" size="md" as="h2">
-          Latest Posts
-        </Heading>
-        <Paragraph lead>Sometimes I write about tech ✍️</Paragraph>
-      </header>
-
+    <Section
+      id="latest-posts"
+      heading="Latest Posts"
+      subheading="Sometimes I write about tech ✍️"
+    >
       <Spacer size="4" />
 
       <CompactPostList posts={posts} />
@@ -35,6 +31,6 @@ export function LatestPosts({ posts }: Props) {
           <span className="sr-only">View</span> All posts &rarr;
         </ButtonLink>
       </div>
-    </section>
+    </Section>
   );
 }

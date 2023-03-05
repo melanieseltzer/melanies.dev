@@ -5,6 +5,7 @@ import { PageIntro } from '~/components/PageIntro';
 import { Paragraph } from '~/components/Paragraph';
 import { DemoButton } from '~/components/projects/DemoButton';
 import { SourceCodeButton } from '~/components/projects/SourceCodeButton';
+import { Section } from '~/components/Section';
 import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 import { TechStack } from '~/components/TechStack';
@@ -62,13 +63,7 @@ export default function ProjectsIndex() {
         subheading="A showcase of my open-source side projects and everything I am tinkering on."
       />
 
-      <section aria-labelledby="oss">
-        <header>
-          <Heading id="oss" size="md" as="h2">
-            OSS
-          </Heading>
-        </header>
-
+      <Section id="oss" heading="OSS">
         <ul className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {projects.map(
             ({ slug, title, techStack, summary, repoUrl, demoUrl, body }) => (
@@ -108,7 +103,7 @@ export default function ProjectsIndex() {
             )
           )}
         </ul>
-      </section>
+      </Section>
     </>
   );
 }
