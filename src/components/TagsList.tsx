@@ -7,18 +7,23 @@ import { Paragraph } from './Paragraph';
 type Props = {
   tags: string[];
   compact?: boolean;
+  className?: string;
 };
 
-export function TagsList({ tags, compact }: Props) {
+export function TagsList({ tags, compact, className }: Props) {
   if (!tags.length) return <Paragraph>No tags found.</Paragraph>;
 
   return (
-    <div className={clsx('flex flex-wrap', compact ? 'gap-2' : 'gap-3')}>
+    <ul
+      className={clsx('flex flex-wrap', compact ? 'gap-2' : 'gap-3', className)}
+    >
       {tags.map(tag => (
-        <Badge size={compact ? 'sm' : 'lg'} key={tag} href={`/tags/${tag}`}>
-          {tag}
-        </Badge>
+        <li key={tag}>
+          <Badge size={compact ? 'sm' : 'lg'} href={`/tags/${tag}`}>
+            {tag}
+          </Badge>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
