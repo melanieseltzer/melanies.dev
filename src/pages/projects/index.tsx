@@ -63,11 +63,11 @@ export default function ProjectsIndex() {
         subheading="A showcase of my open-source side projects and everything I am tinkering on."
       />
 
-      <ul className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+      <ul className="grid grid-cols-1 gap-8 md:grid-cols-2">
         {projects.map(
           ({ slug, title, techStack, summary, repoUrl, demoUrl, body }) => (
             <li key={title}>
-              <Card>
+              <Card className="h-full transition-all hover:border-gray-300">
                 <Heading as="h3" className="mb-2">
                   {title}
                 </Heading>
