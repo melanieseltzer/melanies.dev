@@ -1,7 +1,6 @@
 import { Heading } from '~/components/Heading';
 import { Link } from '~/components/Link';
 import { Paragraph } from '~/components/Paragraph';
-import { Spacer } from '~/components/Spacer';
 import { TagsList } from '~/components/TagsList';
 
 type Props = {
@@ -22,17 +21,14 @@ export function BlogPostList({ posts }: Props) {
   return (
     <>
       {posts.map(({ slug, title, summary, date, tags }) => (
-        <article key={slug} className="grid border-t py-6 md:grid-cols-4">
-          <div className="order-2 md:order-1 md:col-span-3">
+        <article
+          key={slug}
+          className="flex flex-col justify-between gap-4 border-t py-6 md:flex-row"
+        >
+          <div>
             <Heading as="h3" className="mb-2">
-              <Link href={slug} className="hover:underline">
-                {title}
-              </Link>
+              {title}
             </Heading>
-
-            <TagsList compact tags={tags} />
-
-            <Spacer size="4" />
 
             <Paragraph>{summary}</Paragraph>
 
@@ -40,18 +36,22 @@ export function BlogPostList({ posts }: Props) {
               href={slug}
               className="font-medium text-primary-700 transition-colors hover:text-primary-800"
             >
-              Read more <span className="sr-only">, {title}</span> &rarr;
+              Read more <span className="sr-only">, {title}</span>
+              <span aria-hidden="true">&rarr;</span>
             </Link>
           </div>
 
-          <div className="order-1 md:order-2 md:text-right">
-            <dl>
-              <dt className="sr-only">Published on</dt>
-              <dd className="mb-2 whitespace-nowrap text-base leading-6 text-gray-500 dark:text-gray-400 md:mb-0">
-                <time dateTime={date}>December 27, 2022</time>
-              </dd>
-            </dl>
-          </div>
+          <dl className="mt-4 flex flex-col gap-2 md:mt-0">
+            <dt className="sr-only">Published on:</dt>
+            <dd className="whitespace-nowrap text-base leading-6 text-gray-500 dark:text-gray-400">
+              <time dateTime={date}>December 27, 2022</time>
+            </dd>
+
+            <dt className="sr-only">Related tags:</dt>
+            <dd>
+              <TagsList className="md:justify-end" compact tags={tags} />
+            </dd>
+          </dl>
         </article>
       ))}
     </>
