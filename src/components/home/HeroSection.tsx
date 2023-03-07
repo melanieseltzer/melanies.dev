@@ -10,14 +10,11 @@ import { TerminalPrompt } from '../TerminalPrompt';
 export function HeroSection() {
   return (
     <section
-      aria-labelledby="hero-title"
+      aria-label="Hero intro"
       className="mt-8 mb-20 flex flex-col justify-between gap-4 lg:my-28 lg:flex-row lg:items-center lg:gap-10"
     >
-      <header className="lg:max-w-lg">
-        <Heading
-          id="hero-title"
-          className="text-5xl tracking-tight md:text-6xl lg:text-7xl"
-        >
+      <div className="lg:max-w-lg">
+        <Heading className="text-5xl tracking-tight md:text-6xl lg:text-7xl">
           <Balancer>
             Crafting <GradientText>delightful experiences</GradientText> for the
             web
@@ -36,7 +33,7 @@ export function HeroSection() {
             things with JavaScript. Welcome to my little digital home.
           </Balancer>
         </Paragraph>
-      </header>
+      </div>
 
       <div className="max-w-md flex-auto">
         <TerminalPrompt />
