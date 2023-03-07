@@ -1,5 +1,3 @@
-import { clsx } from 'clsx';
-
 import { Spacer } from '~/components/Spacer';
 
 export function TerminalPrompt() {
@@ -24,7 +22,7 @@ export function TerminalPrompt() {
 
       <Spacer size="2" />
 
-      <div className={clsx('flex gap-2 text-2xl text-primary-500')}>
+      <div className="flex gap-2 text-2xl text-primary-500">
         {/* arrow prompt */}
         &#10095;
         {/* blinking cursor */}
