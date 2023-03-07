@@ -5,7 +5,7 @@ import { Heading } from '~/components/Heading';
 import { Paragraph } from '~/components/Paragraph';
 import { Spacer } from '~/components/Spacer';
 
-import { TerminalPrompt } from '../TerminalPrompt';
+import { TerminalWindow } from './TerminalWindow';
 
 export function HeroSection() {
   return (
@@ -36,7 +36,7 @@ export function HeroSection() {
       </div>
 
       <div className="max-w-md flex-auto">
-        <TerminalPrompt />
+        <TerminalWindow />
       </div>
     </section>
   );
