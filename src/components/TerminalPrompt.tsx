@@ -5,7 +5,7 @@ export function TerminalPrompt() {
     <div
       role="img"
       aria-label="Illustration of my terminal window using Sindre Sorhus' Pure prompt"
-      className="h-72 w-96 rounded-md border bg-gray-900 p-4 font-mono text-xl font-semibold shadow-2xl dark:bg-gray-800"
+      className="h-72 w-full max-w-md rounded-lg border bg-gray-900 p-4 font-mono text-xl font-semibold shadow-2xl shadow-secondary-500/50 dark:bg-gray-800"
     >
       <div className="flex gap-2 pb-4">
         <WindowButton color="red" />
@@ -22,7 +22,7 @@ export function TerminalPrompt() {
 
       <Spacer size="2" />
 
-      <div className="flex gap-2 text-2xl text-primary-500">
+      <div className="flex cursor-text gap-2 text-2xl text-primary-500">
         {/* arrow prompt */}
         &#10095;
         {/* blinking cursor */}
