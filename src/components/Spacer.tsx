@@ -8,6 +8,7 @@ type Props = {
 // We have to generate this manually, unfortunately :(
 // ref: https://tailwindcss.com/docs/content-configuration#dynamic-class-names
 const spacerSizes = {
+  '2': 'h-2',
   '4': 'h-4',
   '5': 'h-5',
   '6': 'h-6',
