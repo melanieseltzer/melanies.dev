@@ -11,12 +11,12 @@ export function HeroSection() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="flex flex-col gap-4 lg:flex-row lg:items-center"
+      className="mt-8 mb-20 flex flex-col justify-between gap-4 lg:my-28 lg:flex-row lg:items-center lg:gap-10"
     >
-      <header className="flex-auto">
+      <header className="lg:max-w-lg">
         <Heading
           id="hero-title"
-          className="text-5xl tracking-tight md:text-6xl lg:text-8xl"
+          className="text-5xl tracking-tight md:text-6xl lg:text-7xl"
         >
           <Balancer>
             Crafting <GradientText>delightful experiences</GradientText> for the
@@ -38,7 +38,7 @@ export function HeroSection() {
         </Paragraph>
       </header>
 
-      <div className="hidden lg:block">
+      <div className="max-w-md flex-auto">
         <TerminalPrompt />
       </div>
     </section>

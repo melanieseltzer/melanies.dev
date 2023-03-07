@@ -1,7 +1,6 @@
 import { HeroSection } from '~/components/home/HeroSection';
 import { LatestPosts } from '~/components/home/LatestPosts';
 import { SEO } from '~/components/seo';
-import { Spacer } from '~/components/Spacer';
 
 const posts = [
   {
@@ -36,11 +35,7 @@ export default function Home() {
     <>
       <SEO />
 
-      <Spacer size="32" />
-
       <HeroSection />
-
-      <Spacer size="32" />
 
       <LatestPosts posts={posts} />
     </>
