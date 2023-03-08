@@ -31,7 +31,7 @@ export function MobileNav() {
             aria-label="Close Menu"
             onClick={() => setIsOpen(false)}
           >
-            <CloseIcon size={40} />
+            <CloseIcon size={26} />
           </button>
 
           <Spacer size="12" />
