@@ -1,9 +1,12 @@
 import * as React from 'react';
-import { HiOutlineDotsVertical as OpenIcon } from 'react-icons/hi';
-import { IoClose as CloseIcon } from 'react-icons/io5';
+import {
+  RxCross1 as CloseIcon,
+  RxHamburgerMenu as OpenIcon,
+} from 'react-icons/rx';
 import { Dialog } from '@headlessui/react';
 
 import { Link } from '~/components/Link';
+import { Spacer } from '~/components/Spacer';
 
 import { routes } from './routes';
 
@@ -13,7 +16,7 @@ export function MobileNav() {
   return (
     <div className="flex items-center sm:hidden">
       <button aria-label="Open Menu" onClick={() => setIsOpen(true)}>
-        <OpenIcon size={20} />
+        <OpenIcon size={26} />
       </button>
 
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
@@ -22,19 +25,21 @@ export function MobileNav() {
           aria-hidden="true"
         />
 
-        <Dialog.Panel className="fixed top-4 right-4 z-50 w-full max-w-xs rounded-lg bg-white p-6 text-base font-semibold text-slate-900 shadow-lg">
+        <Dialog.Panel className="fixed top-0 right-0 z-50 flex h-full w-full flex-col overflow-y-scroll bg-white p-6 text-gray-900 dark:bg-gray-900 dark:text-white">
           <button
-            className="absolute right-4 top-4"
+            className="ml-auto"
             aria-label="Close Menu"
             onClick={() => setIsOpen(false)}
           >
-            <CloseIcon size={30} />
+            <CloseIcon size={40} />
           </button>
 
+          <Spacer size="12" />
+
           <nav>
-            <ul className="flex flex-col">
+            <ul className="flex flex-col space-y-6 text-2xl font-semibold">
               {routes.map(route => (
-                <li key={route.title} className="py-2">
+                <li key={route.title}>
                   <Link
                     className="p-2"
                     href={route.href}
