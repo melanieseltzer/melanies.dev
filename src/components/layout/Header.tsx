@@ -6,6 +6,7 @@ import { MobileNav } from '~/components/navigation/MobileNav';
 
 import { useScrollPosition } from '~/hooks/useScrollPosition';
 
+import { Logo } from './Logo';
 import { MaxWidthContainer } from './MaxWidthContainer';
 
 export function Header() {
@@ -14,12 +15,14 @@ export function Header() {
   return (
     <header
       className={clsx(
-        'sticky top-0 z-10 bg-white bg-opacity-50 backdrop-blur backdrop-filter',
+        'sticky top-0 z-10 bg-white dark:bg-gray-900',
         isTop ? 'border-none' : 'border-b border-gray-200 dark:border-gray-800'
       )}
     >
-      <MaxWidthContainer className="flex items-center justify-between py-4 sm:py-8">
-        <Link href="/">Logo</Link>
+      <MaxWidthContainer className="flex items-center justify-between py-2">
+        <Link href="/">
+          <Logo />
+        </Link>
 
         <DesktopNav />
 
