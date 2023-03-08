@@ -20,7 +20,7 @@ export function Header() {
       )}
     >
       <MaxWidthContainer className="flex items-center justify-between py-2">
-        <Link href="/">
+        <Link href="/" aria-label="Homepage">
           <Logo />
         </Link>
 
