@@ -1,3 +1,4 @@
+import { PostTagsList } from '~/components/blog/PostTagsList';
 import { BlogSEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 
@@ -35,6 +36,13 @@ export default function Blog() {
               </dd>
             </dl>
           </div>
+
+          <dl className="not-prose -mt-4">
+            <dt className="sr-only">Related tags:</dt>
+            <dd>
+              <PostTagsList tags={['Next-js', 'JavaScript']} />
+            </dd>
+          </dl>
 
           {/* SUMMARY */}
           <p className="lead">
