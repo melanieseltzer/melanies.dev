@@ -20,30 +20,32 @@ export default function Project() {
 
       <div className="prose prose-lg prose-slate mx-auto">
         <article>
-          <h1>
-            This is an example project title that is really long and wraps
-          </h1>
+          <header className="mb-12 border-b pb-8">
+            <h1>
+              This is an example project title that is really long and wraps
+            </h1>
 
-          <p className="lead">
-            Until now, trying to style an article, document, or blog post with
-            Tailwind has been a tedious task that required a keen eye for
-            typography and a lot of complex custom CSS.
-          </p>
+            <p className="lead">
+              Until now, trying to style an article, document, or blog post with
+              Tailwind has been a tedious task that required a keen eye for
+              typography and a lot of complex custom CSS.
+            </p>
 
-          <Spacer size="4" />
+            <div className="not-prose flex flex-wrap items-center gap-4">
+              <div className="flex flex-wrap gap-2">
+                <DemoButton href="https://test.com" />
 
-          <div className="not-prose flex flex-wrap items-center gap-4">
-            <div className="flex flex-wrap gap-2">
-              <DemoButton href="https://test.com" />
+                <SourceCodeButton href="https://github.com/melanieseltzer" />
+              </div>
 
-              <SourceCodeButton href="https://github.com/melanieseltzer" />
+              <Separator
+                aria-hidden="true"
+                size={15}
+                className="text-gray-400"
+              />
+              <TechStack tech={['React', 'TypeScript', 'Next.js', 'CSS']} />
             </div>
-
-            <Separator aria-hidden="true" size={15} className="text-gray-400" />
-            <TechStack tech={['React', 'TypeScript', 'Next.js', 'CSS']} />
-          </div>
-
-          <hr />
+          </header>
 
           {/* eslint-disable */}
           <h2>Summary</h2>

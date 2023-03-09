@@ -23,35 +23,33 @@ export default function Blog() {
 
       <div className="prose prose-lg prose-slate mx-auto">
         <article className="relative pt-10">
-          {/* TITLE */}
-          <h1>This is an example blog title that is really long and wraps</h1>
+          <header className="mb-12 border-b">
+            <h1>This is an example blog title that is really long and wraps</h1>
 
-          <div className="absolute top-0 text-base leading-6">
-            <dl>
-              <dt className="sr-only">Published on:</dt>
-              <dd className="text-gray-500 dark:text-gray-400">
-                <time dateTime="2022-12-15T15:00:00.000Z">
-                  December 15, 2022
-                </time>
+            <div className="absolute top-0 text-base leading-6">
+              <dl>
+                <dt className="sr-only">Published on:</dt>
+                <dd className="text-gray-500 dark:text-gray-400">
+                  <time dateTime="2022-12-15T15:00:00.000Z">
+                    December 15, 2022
+                  </time>
+                </dd>
+              </dl>
+            </div>
+
+            <dl className="not-prose -mt-4">
+              <dt className="sr-only">Related tags:</dt>
+              <dd>
+                <PostTagsList tags={['Next-js', 'JavaScript']} />
               </dd>
             </dl>
-          </div>
 
-          <dl className="not-prose -mt-4">
-            <dt className="sr-only">Related tags:</dt>
-            <dd>
-              <PostTagsList tags={['Next-js', 'JavaScript']} />
-            </dd>
-          </dl>
-
-          {/* SUMMARY */}
-          <p className="lead">
-            Until now, trying to style an article, document, or blog post with
-            Tailwind has been a tedious task that required a keen eye for
-            typography and a lot of complex custom CSS.
-          </p>
-
-          <hr />
+            <p className="lead">
+              Until now, trying to style an article, document, or blog post with
+              Tailwind has been a tedious task that required a keen eye for
+              typography and a lot of complex custom CSS.
+            </p>
+          </header>
 
           {/* eslint-disable */}
           <p>
