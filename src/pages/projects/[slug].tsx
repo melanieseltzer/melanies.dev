@@ -11,6 +11,7 @@ export default function Project() {
   return (
     <div className="mx-auto max-w-3xl">
       <SEO
+        titleTemplate="%s"
         // TODO: replace mocked content
         title="This is an example project title"
         description="This is an example project summary."

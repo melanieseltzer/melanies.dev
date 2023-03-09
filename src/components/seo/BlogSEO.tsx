@@ -24,7 +24,7 @@ export function BlogSEO({
   return (
     <>
       <SEO
-        titleTemplate={undefined} // not needed since the blog post title will be used
+        titleTemplate="%s"
         title={title}
         description={description}
         openGraph={{

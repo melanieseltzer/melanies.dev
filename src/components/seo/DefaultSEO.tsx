@@ -6,7 +6,7 @@ import { authorMetadata, siteMetadata } from '~/config/metadata';
 export function DefaultSEO(props: DefaultSeoProps) {
   return (
     <NextDefaultSeo
-      title={siteMetadata.metaTitle}
+      defaultTitle={siteMetadata.metaTitle}
       description={siteMetadata.metaDescription}
       openGraph={{
         type: 'website',
