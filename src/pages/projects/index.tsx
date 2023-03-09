@@ -68,7 +68,10 @@ export default function ProjectsIndex() {
           {projects.map(
             ({ slug, title, techStack, summary, repoUrl, demoUrl, body }) => (
               <li key={title}>
-                <Card className="h-full transition-all hover:border-gray-300">
+                <Card
+                  as="article"
+                  className="h-full transition-all hover:border-gray-300"
+                >
                   <Heading size="sm" as="h3" className="mb-2">
                     {title}
                   </Heading>
