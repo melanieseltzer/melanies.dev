@@ -3,6 +3,8 @@ import { PageIntro } from '~/components/PageIntro';
 import { SEO } from '~/components/seo';
 import { TechStack } from '~/components/TechStack';
 
+import Avatar from '../../public/images/avatar.jpg';
+
 export default function About() {
   return (
     <>
@@ -16,15 +18,15 @@ export default function About() {
         subheading="Software engineer and perpetual tinkerer specializing in front-end JavaScript development."
       />
 
-      <div className="flex flex-wrap justify-between gap-4">
+      <div className="flex flex-wrap justify-between gap-8">
         <div className="mb-12">
           <div className="sticky top-28 flex flex-col items-center gap-8">
             <Image
+              src={Avatar}
               className="rounded-full p-1 ring-4 ring-secondary-600"
-              src="/images/avatar.jpg"
               alt="Portrait photo of Melanie"
+              placeholder="blur"
               width={192}
-              height={192}
             />
 
             <TechStack
