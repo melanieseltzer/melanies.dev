@@ -6,6 +6,7 @@ import {
   SiReact as ReactIcon,
   SiTailwindcss as TailwindIcon,
   SiTypescript as TSIcon,
+  SiVisualstudiocode as VSCodeIcon,
 } from 'react-icons/si';
 import clsx from 'clsx';
 
@@ -17,7 +18,8 @@ const techIconMap: Record<string, { icon: IconType; accentColor: string }> = {
   JavaScript: { icon: JSIcon, accentColor: 'hover:text-[#f1e05a]' },
   CSS: { icon: CSSIcon, accentColor: 'hover:text-[#563d7c]' },
   'Tailwind CSS': { icon: TailwindIcon, accentColor: 'hover:text-[#06B6D4]' },
-  'Next.js': { icon: NextJSIcon, accentColor: 'hover:text-[#000000]' },
+  'Next.js': { icon: NextJSIcon, accentColor: 'hover:text-[#000]' },
+  VSCode: { icon: VSCodeIcon, accentColor: 'hover:text-[#007ACC]' },
 };
 
 type Props = {
@@ -34,7 +36,7 @@ export function TechStack({
   showLabel = false,
 }: Props) {
   return (
-    <>
+    <div>
       <span
         className={clsx(
           showLabel
@@ -74,6 +76,6 @@ export function TechStack({
           );
         })}
       </ul>
-    </>
+    </div>
   );
 }
