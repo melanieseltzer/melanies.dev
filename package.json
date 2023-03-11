@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "analyze": "cross-env ANALYZE=true next build",
-    "lint": "eslint --cache --ext .js,.ts,.tsx .",
+    "lint": "next lint --dir .",
     "lint:fix": "yarn lint --fix",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
