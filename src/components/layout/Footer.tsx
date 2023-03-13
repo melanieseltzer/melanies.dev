@@ -22,7 +22,10 @@ export function Footer() {
 
       <footer className="text-gray-500 dark:text-gray-400">
         <MaxWidthContainer className="flex flex-col items-center justify-between py-16 sm:flex-row">
-          {`© ${new Date().getFullYear()}`} Melanie Seltzer
+          <div className="text-sm">{`© ${new Date().getFullYear()} ${
+            authorMetadata.name
+          }`}</div>
+
           <ul className="mt-4 flex items-center space-x-6 sm:mt-0">
             <li>
               <Link
