@@ -12,7 +12,8 @@
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
     "prepare": "husky install",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "postinstall": "contentlayer build"
   },
   "dependencies": {
     "@fontsource/inter": "^4.5.15",
