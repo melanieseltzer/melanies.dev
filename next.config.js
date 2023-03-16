@@ -1,3 +1,4 @@
+const { withContentlayer } = require('next-contentlayer');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
@@ -64,7 +65,7 @@ const nextConfig = {
   },
 };
 
-const plugins = [withBundleAnalyzer];
+const plugins = [withBundleAnalyzer, withContentlayer];
 
 const composePlugins = (phase, defaultConfig) =>
   plugins.reduce(
