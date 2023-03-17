@@ -1,4 +1,5 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+import remarkGfm from 'remark-gfm';
 
 import { siteMetadata } from './src/config/metadata';
 
@@ -39,5 +40,8 @@ export default makeSource({
   documentTypes: [Page, BlogPost],
   date: {
     timezone: siteMetadata.timezone,
+  },
+  mdx: {
+    remarkPlugins: [remarkGfm],
   },
 });
