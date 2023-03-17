@@ -31,7 +31,7 @@ export function PostList({ posts }: Props) {
               <Paragraph>{summary}</Paragraph>
 
               <Link
-                href={slug}
+                href={`/blog/${slug}`}
                 className="font-medium text-primary-700 transition-colors hover:text-primary-800"
               >
                 Read more <span className="sr-only">, {title}</span>

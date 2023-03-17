@@ -1,5 +1,7 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 
+import { siteMetadata } from './src/config/metadata';
+
 export const Page = defineDocumentType(() => ({
   name: 'Page',
   filePathPattern: 'pages/**/*.mdx',
@@ -21,7 +23,7 @@ export const BlogPost = defineDocumentType(() => ({
     summary: { type: 'string', required: true },
     date: { type: 'date', required: true },
     tags: { type: 'list', required: true, of: { type: 'string' } },
-    lastmod: { type: 'date' },
+    lastmod: { type: 'date', required: true },
     draft: { type: 'boolean' },
   },
   computedFields: {
@@ -35,4 +37,7 @@ export const BlogPost = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: 'content',
   documentTypes: [Page, BlogPost],
+  date: {
+    timezone: siteMetadata.timezone,
+  },
 });
