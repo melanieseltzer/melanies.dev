@@ -6,7 +6,7 @@ import { PageIntro } from '~/components/PageIntro';
 import { SEO } from '~/components/seo';
 import { TechStack } from '~/components/TechStack';
 
-import { getPageContent } from '~/lib/content';
+import { getPage } from '~/lib/content';
 import { Page } from '~/types/content';
 
 import Avatar from '../../public/images/avatar.jpg';
@@ -61,7 +61,7 @@ export default function About({
 }
 
 export const getStaticProps: GetStaticProps<{ content: Page }> = () => {
-  const content = getPageContent('about');
+  const content = getPage('about');
 
   return {
     props: {

@@ -46,9 +46,28 @@ export const BlogPost = defineDocumentType(() => ({
   },
 }));
 
+export const Project = defineDocumentType(() => ({
+  name: 'Project',
+  filePathPattern: 'projects/**/*.mdx',
+  contentType: 'mdx',
+  fields: {
+    ...sharedFields,
+    techStack: {
+      type: 'list',
+      of: { type: 'string' },
+      required: true,
+    },
+    repoUrl: { type: 'string', required: true },
+    demoUrl: { type: 'string' },
+  },
+  computedFields: {
+    ...sharedComputedFields,
+  },
+}));
+
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [Page, BlogPost],
+  documentTypes: [Page, BlogPost, Project],
   date: {
     timezone: siteMetadata.timezone,
   },
