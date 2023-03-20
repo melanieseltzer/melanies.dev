@@ -3,14 +3,11 @@ import { Heading } from '~/components/Heading';
 import { Link } from '~/components/Link';
 import { Paragraph } from '~/components/Paragraph';
 
+import { BlogPost } from '~/types/content';
+import { formatDate } from '~/utils/date';
+
 type Props = {
-  posts: {
-    slug: string;
-    title: string;
-    summary: string;
-    date: string;
-    tags: string[];
-  }[];
+  posts: BlogPost[];
 };
 
 export function PostList({ posts }: Props) {
@@ -42,7 +39,7 @@ export function PostList({ posts }: Props) {
             <dl className="mt-4 flex flex-col gap-2 md:mt-0 md:items-end">
               <dt className="sr-only">Published on:</dt>
               <dd className="whitespace-nowrap text-base leading-6 text-gray-500 dark:text-gray-400">
-                <time dateTime={date}>December 27, 2022</time>
+                <time dateTime={date}>{formatDate(date)}</time>
               </dd>
 
               <dt className="sr-only">Related tags:</dt>

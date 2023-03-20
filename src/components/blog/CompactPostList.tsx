@@ -2,14 +2,11 @@ import { Heading } from '~/components/Heading';
 import { Link } from '~/components/Link';
 import { Paragraph } from '~/components/Paragraph';
 
+import { BlogPost } from '~/types/content';
+import { formatDate } from '~/utils/date';
+
 type Props = {
-  posts: {
-    slug: string;
-    title: string;
-    summary: string;
-    date: string;
-    tags: string[];
-  }[];
+  posts: BlogPost[];
 };
 
 export function CompactPostList({ posts }: Props) {
@@ -33,7 +30,7 @@ export function CompactPostList({ posts }: Props) {
               <dl>
                 <dt className="sr-only">Published on:</dt>
                 <dd className="whitespace-nowrap text-base leading-6 text-gray-500 dark:text-gray-400">
-                  <time dateTime={date}>December 27, 2022</time>
+                  <time dateTime={date}>{formatDate(date)}</time>
                 </dd>
               </dl>
             </Link>
