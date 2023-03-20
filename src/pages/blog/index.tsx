@@ -31,6 +31,12 @@ const allTags = [
   'javascript',
 ];
 
+export default function BlogIndex({
+  posts,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  return <BlogPostIndexPage posts={posts} tags={allTags} />;
+}
+
 export const getStaticProps: GetStaticProps<{
   posts: BlogPost[];
 }> = () => {
@@ -42,9 +48,3 @@ export const getStaticProps: GetStaticProps<{
     },
   };
 };
-
-export default function BlogIndex({
-  posts,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
-  return <BlogPostIndexPage posts={posts} tags={allTags} />;
-}

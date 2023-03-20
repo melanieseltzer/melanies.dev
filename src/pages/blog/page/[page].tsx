@@ -1,23 +1,8 @@
-import { BlogPostIndexPage } from '~/views/BlogPostIndexPage';
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 
-const posts = [
-  {
-    slug: '/blog/asdf',
-    date: '2022-12-15T15:00:00.000Z',
-    title: 'Some blog post title',
-    summary:
-      'This is a blog post summary. We will be going over some sort of topic.',
-    tags: ['react', 'next-js'],
-  },
-  {
-    slug: '/blog/ghjk',
-    date: '2022-12-15T15:00:00.000Z',
-    title: 'JavaScript is really cool',
-    summary:
-      'I bet you did not know that JavaScript is the coolest. In this post, we will discuss it. This is an extra long description because I need to see what that looks like.',
-    tags: ['javascript'],
-  },
-];
+import { getAllBlogPosts } from '~/lib/content';
+import { BlogPost } from '~/types/content';
+import { BlogPostIndexPage } from '~/views/BlogPostIndexPage';
 
 const allTags = [
   'next-js',
@@ -46,6 +31,34 @@ const allTags = [
   'javascript',
 ];
 
-export default function BlogPagination() {
+export default function BlogPage({
+  posts,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return <BlogPostIndexPage posts={posts} tags={allTags} />;
 }
+
+export const getStaticPaths: GetStaticPaths = () => {
+  // TODO: hardcoded for now until pagination is wired up properly
+  const paths = [
+    {
+      params: { page: '2' },
+    },
+  ];
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps<{
+  posts: BlogPost[];
+}> = () => {
+  const posts = getAllBlogPosts();
+
+  return {
+    props: {
+      posts,
+    },
+  };
+};

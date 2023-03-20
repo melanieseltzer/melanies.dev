@@ -11,16 +11,6 @@ import { Page } from '~/types/content';
 
 import Avatar from '../../public/images/avatar.jpg';
 
-export const getStaticProps: GetStaticProps<{ content: Page }> = () => {
-  const content = getPageContent('about');
-
-  return {
-    props: {
-      content,
-    },
-  };
-};
-
 export default function About({
   content,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -69,3 +59,13 @@ export default function About({
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps<{ content: Page }> = () => {
+  const content = getPageContent('about');
+
+  return {
+    props: {
+      content,
+    },
+  };
+};

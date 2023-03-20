@@ -1,4 +1,6 @@
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { ParsedUrlQuery } from 'querystring';
+
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 
 import { PostTagsList } from '~/components/blog/PostTagsList';
 import { MDXComponent } from '~/components/MDXComponent';
@@ -13,32 +15,6 @@ import {
 } from '~/lib/content';
 import type { BlogPost } from '~/types/content';
 import { formatDate } from '~/utils/date';
-
-export function getStaticPaths() {
-  const posts = getAllBlogPosts();
-
-  return {
-    paths: posts.map(p => ({
-      params: {
-        slug: formatBlogPostSlug(p.slug).split('/'),
-      },
-    })),
-    fallback: false,
-  };
-}
-
-export const getStaticProps: GetStaticProps<{
-  post: BlogPost;
-}> = ({ params }) => {
-  const slug = (params?.slug as string[]).join('/');
-  const post = getBlogPost(slug);
-
-  return {
-    props: {
-      post,
-    },
-  };
-};
 
 export default function Blog({
   post,
@@ -88,3 +64,35 @@ export default function Blog({
     </>
   );
 }
+
+export const getStaticPaths: GetStaticPaths = () => {
+  const posts = getAllBlogPosts();
+
+  return {
+    paths: posts.map(p => ({
+      params: {
+        slug: formatBlogPostSlug(p.slug).split('/'),
+      },
+    })),
+    fallback: false,
+  };
+};
+
+interface Params extends ParsedUrlQuery {
+  slug: string[];
+}
+
+type Props = {
+  post: BlogPost;
+};
+
+export const getStaticProps: GetStaticProps<Props, Params> = ({ params }) => {
+  const slug = params!.slug.join('/');
+  const post = getBlogPost(slug);
+
+  return {
+    props: {
+      post,
+    },
+  };
+};
