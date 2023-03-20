@@ -1,4 +1,5 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+import rehypePresetMinify from 'rehype-preset-minify';
 import remarkGfm from 'remark-gfm';
 
 import { siteMetadata } from './src/config/metadata';
@@ -43,5 +44,6 @@ export default makeSource({
   },
   mdx: {
     remarkPlugins: [remarkGfm],
+    rehypePlugins: [rehypePresetMinify],
   },
 });
