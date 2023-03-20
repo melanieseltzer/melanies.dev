@@ -1,18 +1,32 @@
-import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+import {
+  ComputedFields,
+  defineDocumentType,
+  FieldDefs,
+  makeSource,
+} from 'contentlayer/source-files';
 import rehypePresetMinify from 'rehype-preset-minify';
 import remarkGfm from 'remark-gfm';
 
 import { siteMetadata } from './src/config/metadata';
+
+const sharedComputedFields: ComputedFields = {
+  slug: {
+    type: 'string',
+    resolve: doc => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
+  },
+};
+
+const sharedFields: FieldDefs = {
+  title: { type: 'string', required: true },
+  summary: { type: 'string', required: true },
+};
 
 export const Page = defineDocumentType(() => ({
   name: 'Page',
   filePathPattern: 'pages/**/*.mdx',
   contentType: 'mdx',
   computedFields: {
-    slug: {
-      type: 'string',
-      resolve: page => page._raw.sourceFileName.replace(/\.mdx$/, ''),
-    },
+    ...sharedComputedFields,
   },
 }));
 
@@ -21,18 +35,14 @@ export const BlogPost = defineDocumentType(() => ({
   filePathPattern: 'blog/**/*.mdx',
   contentType: 'mdx',
   fields: {
-    title: { type: 'string', required: true },
-    summary: { type: 'string', required: true },
+    ...sharedFields,
     date: { type: 'date', required: true },
     tags: { type: 'list', required: true, of: { type: 'string' } },
     lastmod: { type: 'date', required: true },
     draft: { type: 'boolean' },
   },
   computedFields: {
-    slug: {
-      type: 'string',
-      resolve: post => post._raw.sourceFileName.replace(/\.mdx$/, ''),
-    },
+    ...sharedComputedFields,
   },
 }));
 
