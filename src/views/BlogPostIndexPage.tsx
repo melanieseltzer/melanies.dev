@@ -5,18 +5,13 @@ import { Section } from '~/components/Section';
 import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 
+import type { BlogPostMetadata } from '~/types/blog';
+
 type Props = {
-  posts: {
-    slug: string;
-    title: string;
-    summary: string;
-    date: string;
-    tags: string[];
-  }[];
-  tags: string[];
+  posts: BlogPostMetadata[];
 };
 
-export function BlogPostIndexPage({ posts, tags }: Props) {
+export function BlogPostIndexPage({ posts }: Props) {
   return (
     <>
       <SEO
@@ -37,7 +32,7 @@ export function BlogPostIndexPage({ posts, tags }: Props) {
 
       <Spacer size="16" />
 
-      <ExploreByTopic tags={tags} />
+      <ExploreByTopic posts={posts} />
     </>
   );
 }

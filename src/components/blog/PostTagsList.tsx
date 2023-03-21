@@ -2,6 +2,8 @@ import clsx from 'clsx';
 
 import { Badge } from '~/components/Badge';
 
+import { kebabCase } from '~/utils/case';
+
 import { Paragraph } from '../Paragraph';
 
 type Props = {
@@ -19,8 +21,11 @@ export function PostTagsList({ tags, compact, className }: Props) {
     >
       {tags.map(tag => (
         <li key={tag}>
-          <Badge size={compact ? 'sm' : 'lg'} href={`/blog/tags/${tag}`}>
-            {tag}
+          <Badge
+            size={compact ? 'sm' : 'lg'}
+            href={`/blog/tags/${kebabCase(tag)}`}
+          >
+            {kebabCase(tag)}
           </Badge>
         </li>
       ))}

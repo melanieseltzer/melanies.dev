@@ -2,14 +2,11 @@ import { Heading } from '~/components/Heading';
 import { Link } from '~/components/Link';
 import { Paragraph } from '~/components/Paragraph';
 
+import type { BlogPostMetadata } from '~/types/blog';
+import { formatDate } from '~/utils/date';
+
 type Props = {
-  posts: {
-    slug: string;
-    title: string;
-    summary: string;
-    date: string;
-    tags: string[];
-  }[];
+  posts: BlogPostMetadata[];
 };
 
 export function CompactPostList({ posts }: Props) {
@@ -23,7 +20,7 @@ export function CompactPostList({ posts }: Props) {
         <li key={slug}>
           <article>
             <Link
-              href={slug}
+              href={`/blog/${slug}`}
               className="group flex flex-col py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
             >
               <Heading size="sm" as="h3" className="mb-0 group-hover:underline">
@@ -33,7 +30,7 @@ export function CompactPostList({ posts }: Props) {
               <dl>
                 <dt className="sr-only">Published on:</dt>
                 <dd className="whitespace-nowrap text-base leading-6 text-gray-500 dark:text-gray-400">
-                  <time dateTime={date}>December 27, 2022</time>
+                  <time dateTime={date}>{formatDate(date)}</time>
                 </dd>
               </dl>
             </Link>

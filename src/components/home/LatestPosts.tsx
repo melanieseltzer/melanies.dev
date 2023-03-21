@@ -3,14 +3,10 @@ import { ButtonLink } from '~/components/ButtonLink';
 import { Section } from '~/components/Section';
 import { Spacer } from '~/components/Spacer';
 
+import type { BlogPostMetadata } from '~/types/blog';
+
 type Props = {
-  posts: {
-    slug: string;
-    title: string;
-    summary: string;
-    date: string;
-    tags: string[];
-  }[];
+  posts: BlogPostMetadata[];
 };
 
 export function LatestPosts({ posts }: Props) {

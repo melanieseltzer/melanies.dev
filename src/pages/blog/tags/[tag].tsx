@@ -1,36 +1,29 @@
+import { ParsedUrlQuery } from 'querystring';
+
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
+
 import { PostList } from '~/components/blog/PostList';
 import { PageIntro } from '~/components/PageIntro';
 import { SEO } from '~/components/seo';
 
-const posts = [
-  {
-    slug: '/blog/asdf',
-    date: '2022-12-15T15:00:00.000Z',
-    title: 'Some blog post title',
-    summary:
-      'This is a blog post summary. We will be going over some sort of topic.',
-    tags: ['react', 'next-js'],
-  },
-  {
-    slug: '/blog/ghjk',
-    date: '2022-12-15T15:00:00.000Z',
-    title: 'JavaScript is really cool',
-    summary:
-      'I bet you did not know that JavaScript is the coolest. In this post, we will discuss it. This is an extra long description because I need to see what that looks like.',
-    tags: ['javascript'],
-  },
-];
+import {
+  findPostsWithTag,
+  getAllBlogPostTags,
+  getBlogPostMetadata,
+  sortByNewestFirst,
+} from '~/lib/blog';
+import type { BlogPostMetadata } from '~/types/blog';
 
-const tag = 'react';
-
-export default function Tag() {
+export default function TagPage({
+  tag,
+  posts,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   const count = posts.length;
 
   return (
     <>
       <SEO
-        // TODO: replace mocked tag name
-        title="React posts"
+        title={`${tag} posts`}
         description="Content focusing on React, JavaScript, Node.js, and more."
       />
 
@@ -38,10 +31,40 @@ export default function Tag() {
         compact
         reverse
         heading={tag}
-        subheading={`${count} posts tagged:`}
+        subheading={`${count} ${count === 1 ? 'post' : 'posts'} tagged:`}
       />
 
       <PostList posts={posts} />
     </>
   );
 }
+
+export const getStaticPaths: GetStaticPaths = () => {
+  const posts = getBlogPostMetadata();
+  const { tags } = getAllBlogPostTags(posts);
+
+  return {
+    paths: tags.map(tag => ({ params: { tag } })),
+    fallback: false,
+  };
+};
+
+interface Params extends ParsedUrlQuery {
+  tag: string;
+}
+
+type Props = {
+  posts: BlogPostMetadata[];
+  tag: string;
+};
+
+export const getStaticProps: GetStaticProps<Props, Params> = ({ params }) => {
+  const tag = params!.tag;
+  const blogMeta = getBlogPostMetadata();
+  const posts = sortByNewestFirst(blogMeta);
+  const postsWithTag = findPostsWithTag(posts, tag);
+
+  return {
+    props: { tag, posts: postsWithTag },
+  };
+};
