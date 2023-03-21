@@ -9,10 +9,9 @@ import type { BlogPostMetadata } from '~/types/content';
 
 type Props = {
   posts: BlogPostMetadata[];
-  tags: string[];
 };
 
-export function BlogPostIndexPage({ posts, tags }: Props) {
+export function BlogPostIndexPage({ posts }: Props) {
   return (
     <>
       <SEO
@@ -33,7 +32,7 @@ export function BlogPostIndexPage({ posts, tags }: Props) {
 
       <Spacer size="16" />
 
-      <ExploreByTopic tags={tags} />
+      <ExploreByTopic posts={posts} />
     </>
   );
 }

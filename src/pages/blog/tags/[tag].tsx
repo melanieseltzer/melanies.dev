@@ -6,7 +6,12 @@ import { PostList } from '~/components/blog/PostList';
 import { PageIntro } from '~/components/PageIntro';
 import { SEO } from '~/components/seo';
 
-import { getBlogPostMetadata, sortByNewestFirst } from '~/lib/content';
+import {
+  findPostsWithTag,
+  getAllBlogPostTags,
+  getBlogPostMetadata,
+  sortByNewestFirst,
+} from '~/lib/content';
 import type { BlogPostMetadata } from '~/types/content';
 
 export default function TagPage({
@@ -26,7 +31,7 @@ export default function TagPage({
         compact
         reverse
         heading={tag}
-        subheading={`${count} posts tagged:`}
+        subheading={`${count} ${count === 1 ? 'post' : 'posts'} tagged:`}
       />
 
       <PostList posts={posts} />
@@ -35,8 +40,8 @@ export default function TagPage({
 }
 
 export const getStaticPaths: GetStaticPaths = () => {
-  // TODO: hardcoded for now
-  const tags = ['react', 'next-js', 'javascript'];
+  const posts = getBlogPostMetadata();
+  const { tags } = getAllBlogPostTags(posts);
 
   return {
     paths: tags.map(tag => ({ params: { tag } })),
@@ -57,9 +62,9 @@ export const getStaticProps: GetStaticProps<Props, Params> = ({ params }) => {
   const tag = params!.tag;
   const blogMeta = getBlogPostMetadata();
   const posts = sortByNewestFirst(blogMeta);
-  // TODO: only return posts that have this tag
+  const postsWithTag = findPostsWithTag(posts, tag);
 
   return {
-    props: { tag, posts },
+    props: { tag, posts: postsWithTag },
   };
 };

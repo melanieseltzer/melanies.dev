@@ -4,37 +4,10 @@ import { getBlogPostMetadata, sortByNewestFirst } from '~/lib/content';
 import type { BlogPostMetadata } from '~/types/content';
 import { BlogPostIndexPage } from '~/views/BlogPostIndexPage';
 
-const allTags = [
-  'next-js',
-  'react',
-  'javascript',
-  'next-js',
-  'react',
-  'javascript',
-  'next-js',
-  'react',
-  'javascript',
-  'next-js',
-  'react',
-  'javascript',
-  'next-js',
-  'react',
-  'javascript',
-  'next-js',
-  'react',
-  'javascript',
-  'next-js',
-  'react',
-  'javascript',
-  'next-js',
-  'react',
-  'javascript',
-];
-
 export default function BlogPaginationPage({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  return <BlogPostIndexPage posts={posts} tags={allTags} />;
+  return <BlogPostIndexPage posts={posts} />;
 }
 
 export const getStaticPaths: GetStaticPaths = () => {
