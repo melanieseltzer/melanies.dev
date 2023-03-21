@@ -8,10 +8,6 @@ import type {
   Project,
 } from '~/types/content';
 
-export function formatBlogPostSlug(slug: string) {
-  return slug.replace(/\.(mdx|md)/, '');
-}
-
 function findBySlug<T extends DocumentTypes>(arr: T[], slug: string) {
   return arr.find(doc => doc.slug === slug) as T;
 }

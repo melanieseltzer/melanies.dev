@@ -1,3 +1,5 @@
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
+
 import { Card } from '~/components/Card';
 import { Heading } from '~/components/Heading';
 import { Link } from '~/components/Link';
@@ -10,47 +12,12 @@ import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 import { TechStack } from '~/components/TechStack';
 
-const projects = [
-  {
-    slug: 'some-test-project',
-    title: 'Some Test Project',
-    summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    techStack: ['React', 'JavaScript', 'Next.js', 'HTML'],
-    repoUrl: 'https://github.com',
-    demoUrl: 'https://test.com',
-    body: 'asdf',
-  },
-  {
-    slug: 'some-test-project',
-    title: 'Some Test Project',
-    summary:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo cursus turpis, vel consectetur orci tempus nec.',
-    techStack: ['React', 'CSS', 'React Query'],
-    repoUrl: 'https://github.com',
-    demoUrl: 'https://test.com',
-  },
-  {
-    slug: 'some-test-project',
-    title: 'Some Test Project',
-    summary:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo cursus turpis, vel consectetur orci tempus nec.',
-    techStack: ['React', 'TypeScript'],
-    repoUrl: 'https://github.com',
-    demoUrl: 'https://test.com',
-  },
-  {
-    slug: 'some-test-project',
-    title: 'Some Test Project',
-    summary:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo cursus turpis, vel consectetur orci tempus nec.',
-    techStack: ['React', 'Tailwind CSS'],
-    repoUrl: 'https://github.com',
-    demoUrl: 'https://test.com',
-    body: 'asdf',
-  },
-];
+import { getAllProjects } from '~/lib/content';
+import { Project } from '~/types/content';
 
-export default function ProjectsIndex() {
+export default function ProjectsIndex({
+  projects,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <SEO
@@ -66,47 +33,61 @@ export default function ProjectsIndex() {
       <Section id="oss" heading="OSS">
         <ul className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {projects.map(
-            ({ slug, title, techStack, summary, repoUrl, demoUrl, body }) => (
-              <li key={title}>
-                <Card
-                  as="article"
-                  className="h-full transition-all hover:border-gray-300"
-                >
-                  <Heading size="sm" as="h3" className="mb-2">
-                    {title}
-                  </Heading>
+            ({ slug, title, techStack, summary, repoUrl, demoUrl, body }) => {
+              const hasMoreContent = !!body.raw;
 
-                  <TechStack tech={techStack} />
+              return (
+                <li key={title}>
+                  <Card
+                    as="article"
+                    className="h-full transition-all hover:border-gray-300"
+                  >
+                    <Heading size="sm" as="h3" className="mb-2">
+                      {title}
+                    </Heading>
 
-                  <Spacer size="4" />
+                    <TechStack tech={techStack} />
 
-                  <Paragraph>{summary}</Paragraph>
+                    <Spacer size="4" />
 
-                  {body ? (
-                    <>
-                      <Link
-                        href={`/projects/${slug}`}
-                        className="font-medium text-primary-700 transition-colors hover:text-primary-800"
-                      >
-                        Read more{' '}
-                        <span className="sr-only">about the project</span>{' '}
-                        <span aria-hidden="true">&rarr;</span>
-                      </Link>
-                      <Spacer size="4" />
-                    </>
-                  ) : null}
+                    <Paragraph>{summary}</Paragraph>
 
-                  <div className="flex flex-wrap gap-2">
-                    <DemoButton href={demoUrl} />
+                    {hasMoreContent ? (
+                      <>
+                        <Link
+                          href={`/projects/${slug}`}
+                          className="font-medium text-primary-700 transition-colors hover:text-primary-800"
+                        >
+                          Read more{' '}
+                          <span className="sr-only">about the project</span>{' '}
+                          <span aria-hidden="true">&rarr;</span>
+                        </Link>
+                        <Spacer size="4" />
+                      </>
+                    ) : null}
 
-                    <SourceCodeButton href={repoUrl} />
-                  </div>
-                </Card>
-              </li>
-            )
+                    <div className="flex flex-wrap gap-2">
+                      {demoUrl && <DemoButton href={demoUrl} />}
+
+                      <SourceCodeButton href={repoUrl} />
+                    </div>
+                  </Card>
+                </li>
+              );
+            }
           )}
         </ul>
       </Section>
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps<{ projects: Project[] }> = () => {
+  const projects = getAllProjects();
+
+  return {
+    props: {
+      projects,
+    },
+  };
+};

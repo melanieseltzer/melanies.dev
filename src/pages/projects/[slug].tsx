@@ -1,72 +1,80 @@
-import { RxDividerVertical as Separator } from 'react-icons/rx';
+import { ParsedUrlQuery } from 'querystring';
 
+import { RxDividerVertical as Separator } from 'react-icons/rx';
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
+
+import { MDXComponent } from '~/components/MDXComponent';
 import { DemoButton } from '~/components/projects/DemoButton';
 import { SourceCodeButton } from '~/components/projects/SourceCodeButton';
 import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 import { TechStack } from '~/components/TechStack';
 
-export default function Project() {
+import { getAllProjects, getProject } from '~/lib/content';
+import { Project } from '~/types/content';
+
+export default function ProjectPage({
+  project,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  const { title, summary, demoUrl, repoUrl, techStack } = project;
+
   return (
     <>
-      <SEO
-        titleTemplate="%s"
-        // TODO: replace mocked content
-        title="This is an example project title"
-        description="This is an example project summary."
-      />
+      <SEO titleTemplate="%s" title={title} description={summary} />
 
       <Spacer size="16" />
 
-      <div className="prose prose-lg prose-slate mx-auto">
-        <article>
-          <header className="mb-12 border-b pb-8">
-            <h1>
-              This is an example project title that is really long and wraps
-            </h1>
+      <article className="prose prose-lg prose-slate mx-auto">
+        <header className="mb-12 border-b pb-8">
+          <h1>{title}</h1>
 
-            <p className="lead">
-              Until now, trying to style an article, document, or blog post with
-              Tailwind has been a tedious task that required a keen eye for
-              typography and a lot of complex custom CSS.
-            </p>
+          <p className="lead">{summary}</p>
 
-            <div className="not-prose flex flex-wrap items-center gap-4">
-              <div className="flex flex-wrap gap-2">
-                <DemoButton href="https://test.com" />
+          <div className="not-prose flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap gap-2">
+              {demoUrl && <DemoButton href={demoUrl} />}
 
-                <SourceCodeButton href="https://github.com/melanieseltzer" />
-              </div>
-
-              <Separator
-                aria-hidden="true"
-                size={15}
-                className="text-gray-400"
-              />
-              <TechStack tech={['React', 'TypeScript', 'Next.js', 'CSS']} />
+              <SourceCodeButton href={repoUrl} />
             </div>
-          </header>
 
-          {/* eslint-disable */}
-          <h2>Summary</h2>
-          <p>
-            Tailwind removes all of the default browser styling from paragraphs,
-            headings, lists and more. This ends up being really useful for
-            building application UIs because you spend less time undoing
-            user-agent styles, but when you <em>really are</em> just trying to
-            style some content that came from a rich-text editor in a CMS or a
-            markdown file, it can be surprising and unintuitive.
-          </p>
+            <Separator aria-hidden="true" size={15} className="text-gray-400" />
 
-          <h2>Tech stack</h2>
+            <TechStack tech={techStack} />
+          </div>
+        </header>
 
-          <ul>
-            <li>So here is the first item in this list.</li>
-            <li>In this example we're keeping the items short.</li>
-            <li>Later, we'll use longer, more complex list items.</li>
-          </ul>
-        </article>
-      </div>
+        <MDXComponent source={project} />
+      </article>
     </>
   );
 }
+
+export const getStaticPaths: GetStaticPaths = () => {
+  const projects = getAllProjects();
+
+  return {
+    paths: projects
+      .filter(project => !!project.body.raw)
+      .map(({ slug }) => ({ params: { slug } })),
+    fallback: false,
+  };
+};
+
+interface Params extends ParsedUrlQuery {
+  slug: string;
+}
+
+type Props = {
+  project: Project;
+};
+
+export const getStaticProps: GetStaticProps<Props, Params> = context => {
+  const slug = context.params!.slug;
+  const project = getProject(slug);
+
+  return {
+    props: {
+      project,
+    },
+  };
+};
