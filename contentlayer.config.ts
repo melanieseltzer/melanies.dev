@@ -1,39 +1,38 @@
-import {
-  ComputedFields,
-  defineDocumentType,
-  FieldDefs,
-  makeSource,
-} from 'contentlayer/source-files';
+import type { DocumentTypeDef } from 'contentlayer/source-files';
+import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 import rehypePresetMinify from 'rehype-preset-minify';
 import remarkGfm from 'remark-gfm';
 
 import { siteMetadata } from './src/config/metadata';
 
-const sharedComputedFields: ComputedFields = {
+type SchemaFieldDefs<T extends string> = {
+  fields?: DocumentTypeDef<T>['fields'];
+  computedFields?: DocumentTypeDef<T>['computedFields'];
+};
+
+// ==============================
+// Field defs (frontmatter schemas)
+// ==============================
+
+const sharedFields = {
+  title: { type: 'string', required: true },
+  summary: { type: 'string', required: true },
+} satisfies DocumentTypeDef['fields'];
+
+const sharedComputedFields = {
   slug: {
     type: 'string',
     resolve: doc => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
   },
-};
+} satisfies DocumentTypeDef['computedFields'];
 
-const sharedFields: FieldDefs = {
-  title: { type: 'string', required: true },
-  summary: { type: 'string', required: true },
-};
-
-export const Page = defineDocumentType(() => ({
-  name: 'Page',
-  filePathPattern: 'pages/**/*.mdx',
-  contentType: 'mdx',
+export const pageFieldDefs = {
   computedFields: {
     ...sharedComputedFields,
   },
-}));
+} satisfies SchemaFieldDefs<'Page'>;
 
-export const BlogPost = defineDocumentType(() => ({
-  name: 'BlogPost',
-  filePathPattern: 'blog/**/*.mdx',
-  contentType: 'mdx',
+export const blogPostFieldDefs = {
   fields: {
     ...sharedFields,
     date: { type: 'date', required: true },
@@ -44,12 +43,9 @@ export const BlogPost = defineDocumentType(() => ({
   computedFields: {
     ...sharedComputedFields,
   },
-}));
+} satisfies SchemaFieldDefs<'BlogPost'>;
 
-export const Project = defineDocumentType(() => ({
-  name: 'Project',
-  filePathPattern: 'projects/**/*.mdx',
-  contentType: 'mdx',
+export const projectFieldDefs = {
   fields: {
     ...sharedFields,
     techStack: {
@@ -63,6 +59,33 @@ export const Project = defineDocumentType(() => ({
   computedFields: {
     ...sharedComputedFields,
   },
+} satisfies SchemaFieldDefs<'Project'>;
+
+// ==============================
+// Define doc types
+// ==============================
+
+export const Page = defineDocumentType(() => ({
+  name: 'Page',
+  filePathPattern: 'pages/**/*.mdx',
+  contentType: 'mdx',
+  ...pageFieldDefs,
+}));
+
+// const toc: BlogPostTableOfContents = [];
+
+export const BlogPost = defineDocumentType(() => ({
+  name: 'BlogPost',
+  filePathPattern: 'blog/**/*.mdx',
+  contentType: 'mdx',
+  ...blogPostFieldDefs,
+}));
+
+export const Project = defineDocumentType(() => ({
+  name: 'Project',
+  filePathPattern: 'projects/**/*.mdx',
+  contentType: 'mdx',
+  ...projectFieldDefs,
 }));
 
 export default makeSource({

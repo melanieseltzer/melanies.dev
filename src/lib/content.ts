@@ -3,7 +3,7 @@ import { allBlogPosts, allPages, allProjects } from 'contentlayer/generated';
 import type {
   BlogPost,
   BlogPostMetadata,
-  ConfiguredPage,
+  ConfiguredMDXPage,
   DocumentTypes,
   Page,
   Project,
@@ -15,7 +15,7 @@ const findBySlug = <T extends DocumentTypes>(arr: T[], slug: string) =>
 
 // Pages
 
-export const getPage = (slug: ConfiguredPage): Page =>
+export const getPage = (slug: ConfiguredMDXPage): Page =>
   findBySlug<Page>(allPages, slug);
 
 // Blog Posts

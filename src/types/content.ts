@@ -8,6 +8,12 @@ import type {
   Project as CLProject,
 } from 'contentlayer/generated';
 
+import {
+  blogPostFieldDefs,
+  pageFieldDefs,
+  projectFieldDefs,
+} from '../../contentlayer.config';
+
 export type { DocumentTypes } from 'contentlayer/generated';
 
 // Fields added by contentlayer internally
@@ -17,23 +23,21 @@ export type InternalCLFields = '_id' | '_raw' | 'body' | 'type';
 
 export type Page = CLPage;
 
-export type ConfiguredPage = 'about';
+export type ConfiguredMDXPage = 'about';
+
+/** Frontmatter fields that are computed later on (not read from the `.mdx` file). */
+export type PageComputedField = keyof (typeof pageFieldDefs)['computedFields'];
 
 // Blog posts
 
 export type BlogPost = CLBlogPost;
 
-// Frontmatter that's defined manually inside the source `.mdx` files
-export type BlogPostSourceFields =
-  | 'title'
-  | 'summary'
-  | 'date'
-  | 'tags'
-  | 'lastmod'
-  | 'draft';
+/** Frontmatter fields that are read from the source `.mdx` file. */
+export type BlogPostSourceFields = keyof (typeof blogPostFieldDefs)['fields'];
 
-// Frontmatter that's computed later on
-export type BlogPostComputedFields = 'slug';
+/** Frontmatter fields that are computed later on (not read from the `.mdx` file). */
+export type BlogPostComputedFields =
+  keyof (typeof blogPostFieldDefs)['computedFields'];
 
 export type BlogPostMetadata = Pick<
   BlogPost,
@@ -43,3 +47,10 @@ export type BlogPostMetadata = Pick<
 // Projects
 
 export type Project = CLProject;
+
+/** Frontmatter fields that are read from the source `.mdx` file. */
+export type ProjectSourceFields = keyof (typeof projectFieldDefs)['fields'];
+
+/** Frontmatter fields that are computed later on (not read from the `.mdx` file). */
+export type ProjectComputedFields =
+  keyof (typeof projectFieldDefs)['computedFields'];
