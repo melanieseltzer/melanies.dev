@@ -86,8 +86,6 @@ export const getStaticProps: GetStaticProps<{ projects: Project[] }> = () => {
   const projects = getAllProjects();
 
   return {
-    props: {
-      projects,
-    },
+    props: { projects },
   };
 };

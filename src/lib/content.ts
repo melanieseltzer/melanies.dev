@@ -24,6 +24,13 @@ export const getBlogPost = (slug: string): BlogPost =>
 
 export const getBlogPosts = (): BlogPost[] => allBlogPosts;
 
+export const sortByNewestFirst = (posts: BlogPostMetadata[]) =>
+  posts.sort((a, b) => {
+    if (a.date > b.date) return -1;
+    if (a.date < b.date) return 1;
+    return 0;
+  });
+
 export function getBlogPostMetadata() {
   const posts = getBlogPosts();
 

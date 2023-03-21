@@ -73,8 +73,6 @@ export const getStaticProps: GetStaticProps<Props, Params> = context => {
   const project = getProject(slug);
 
   return {
-    props: {
-      project,
-    },
+    props: { project },
   };
 };

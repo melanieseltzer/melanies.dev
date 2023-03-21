@@ -6,7 +6,7 @@ import { PostList } from '~/components/blog/PostList';
 import { PageIntro } from '~/components/PageIntro';
 import { SEO } from '~/components/seo';
 
-import { getBlogPostMetadata } from '~/lib/content';
+import { getBlogPostMetadata, sortByNewestFirst } from '~/lib/content';
 import type { BlogPostMetadata } from '~/types/content';
 
 export default function TagPage({
@@ -55,13 +55,11 @@ type Props = {
 
 export const getStaticProps: GetStaticProps<Props, Params> = ({ params }) => {
   const tag = params!.tag;
-  const posts = getBlogPostMetadata();
+  const blogMeta = getBlogPostMetadata();
+  const posts = sortByNewestFirst(blogMeta);
   // TODO: only return posts that have this tag
 
   return {
-    props: {
-      tag,
-      posts,
-    },
+    props: { tag, posts },
   };
 };

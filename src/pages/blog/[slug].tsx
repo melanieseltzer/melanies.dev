@@ -83,8 +83,6 @@ export const getStaticProps: GetStaticProps<Props, Params> = context => {
   const post = getBlogPost(slug);
 
   return {
-    props: {
-      post,
-    },
+    props: { post },
   };
 };

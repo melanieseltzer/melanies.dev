@@ -64,8 +64,6 @@ export const getStaticProps: GetStaticProps<{ content: Page }> = () => {
   const content = getPage('about');
 
   return {
-    props: {
-      content,
-    },
+    props: { content },
   };
 };

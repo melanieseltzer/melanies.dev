@@ -4,7 +4,7 @@ import { HeroSection } from '~/components/home/HeroSection';
 import { LatestPosts } from '~/components/home/LatestPosts';
 import { SEO } from '~/components/seo';
 
-import { getBlogPostMetadata } from '~/lib/content';
+import { getBlogPostMetadata, sortByNewestFirst } from '~/lib/content';
 import type { BlogPostMetadata } from '~/types/content';
 
 export default function IndexPage({
@@ -24,7 +24,8 @@ export default function IndexPage({
 export const getStaticProps: GetStaticProps<{
   posts: BlogPostMetadata[];
 }> = () => {
-  const posts = getBlogPostMetadata();
+  const blogMeta = getBlogPostMetadata();
+  const posts = sortByNewestFirst(blogMeta);
 
   return {
     props: { posts },

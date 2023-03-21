@@ -1,6 +1,6 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 
-import { getBlogPostMetadata } from '~/lib/content';
+import { getBlogPostMetadata, sortByNewestFirst } from '~/lib/content';
 import type { BlogPostMetadata } from '~/types/content';
 import { BlogPostIndexPage } from '~/views/BlogPostIndexPage';
 
@@ -40,11 +40,10 @@ export default function BlogIndexPage({
 export const getStaticProps: GetStaticProps<{
   posts: BlogPostMetadata[];
 }> = () => {
-  const posts = getBlogPostMetadata();
+  const blogMeta = getBlogPostMetadata();
+  const posts = sortByNewestFirst(blogMeta);
 
   return {
-    props: {
-      posts,
-    },
+    props: { posts },
   };
 };
