@@ -9,7 +9,7 @@ import { SEO } from '~/components/seo';
 import { getAllBlogPosts } from '~/lib/content';
 import { BlogPost } from '~/types/content';
 
-export default function Tag({
+export default function TagPage({
   tag,
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {

@@ -31,7 +31,7 @@ const allTags = [
   'javascript',
 ];
 
-export default function BlogPage({
+export default function BlogPaginationPage({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return <BlogPostIndexPage posts={posts} tags={allTags} />;

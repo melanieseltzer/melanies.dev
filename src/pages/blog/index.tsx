@@ -31,7 +31,7 @@ const allTags = [
   'javascript',
 ];
 
-export default function BlogIndex({
+export default function BlogIndexPage({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return <BlogPostIndexPage posts={posts} tags={allTags} />;

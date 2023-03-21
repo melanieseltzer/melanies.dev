@@ -19,7 +19,7 @@ export const getStaticProps: GetStaticProps<{
   };
 };
 
-export default function Home({
+export default function IndexPage({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (

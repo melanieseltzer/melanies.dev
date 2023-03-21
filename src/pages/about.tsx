@@ -11,7 +11,7 @@ import { Page } from '~/types/content';
 
 import Avatar from '../../public/images/avatar.jpg';
 
-export default function About({
+export default function AboutPage({
   content,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (

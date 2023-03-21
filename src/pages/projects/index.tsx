@@ -15,7 +15,7 @@ import { TechStack } from '~/components/TechStack';
 import { getAllProjects } from '~/lib/content';
 import { Project } from '~/types/content';
 
-export default function ProjectsIndex({
+export default function ProjectsIndexPage({
   projects,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (

@@ -12,7 +12,7 @@ import { getAllBlogPosts, getBlogPost } from '~/lib/content';
 import type { BlogPost } from '~/types/content';
 import { formatDate } from '~/utils/date';
 
-export default function Blog({
+export default function BlogPage({
   post,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { title, summary, date, lastmod, tags, slug } = post;
