@@ -2,15 +2,15 @@ import { allBlogPosts, allPages, allProjects } from 'contentlayer/generated';
 
 import type {
   BlogPost,
+  BlogPostMetadata,
   ConfiguredPage,
   DocumentTypes,
   Page,
   Project,
 } from '~/types/content';
 
-function findBySlug<T extends DocumentTypes>(arr: T[], slug: string) {
-  return arr.find(doc => doc.slug === slug) as T;
-}
+const findBySlug = <T extends DocumentTypes>(arr: T[], slug: string) =>
+  arr.find(doc => doc.slug === slug) as T;
 
 // Pages
 
@@ -22,7 +22,30 @@ export const getPage = (slug: ConfiguredPage): Page =>
 export const getBlogPost = (slug: string): BlogPost =>
   findBySlug<BlogPost>(allBlogPosts, slug);
 
-export const getAllBlogPosts = (): BlogPost[] => allBlogPosts;
+export const getBlogPosts = (): BlogPost[] => allBlogPosts;
+
+export function getBlogPostMetadata() {
+  const posts = getBlogPosts();
+
+  const allFrontmatter: BlogPostMetadata[] = [];
+
+  for (const post of posts) {
+    const isDraft = !!post.draft;
+
+    if (isDraft) continue;
+
+    allFrontmatter.push({
+      title: post.title,
+      summary: post.summary,
+      tags: post.tags,
+      date: post.date,
+      lastmod: post.lastmod,
+      slug: post.slug,
+    });
+  }
+
+  return allFrontmatter;
+}
 
 // Projects
 

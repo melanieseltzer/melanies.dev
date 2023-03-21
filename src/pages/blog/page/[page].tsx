@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 
-import { getAllBlogPosts } from '~/lib/content';
-import { BlogPost } from '~/types/content';
+import { getBlogPostMetadata } from '~/lib/content';
+import type { BlogPostMetadata } from '~/types/content';
 import { BlogPostIndexPage } from '~/views/BlogPostIndexPage';
 
 const allTags = [
@@ -52,9 +52,9 @@ export const getStaticPaths: GetStaticPaths = () => {
 };
 
 export const getStaticProps: GetStaticProps<{
-  posts: BlogPost[];
+  posts: BlogPostMetadata[];
 }> = () => {
-  const posts = getAllBlogPosts();
+  const posts = getBlogPostMetadata();
 
   return {
     props: {

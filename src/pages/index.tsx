@@ -4,20 +4,8 @@ import { HeroSection } from '~/components/home/HeroSection';
 import { LatestPosts } from '~/components/home/LatestPosts';
 import { SEO } from '~/components/seo';
 
-import { getAllBlogPosts } from '~/lib/content';
-import { BlogPost } from '~/types/content';
-
-export const getStaticProps: GetStaticProps<{
-  posts: BlogPost[];
-}> = () => {
-  const posts = getAllBlogPosts();
-
-  return {
-    props: {
-      posts,
-    },
-  };
-};
+import { getBlogPostMetadata } from '~/lib/content';
+import type { BlogPostMetadata } from '~/types/content';
 
 export default function IndexPage({
   posts,
@@ -32,3 +20,13 @@ export default function IndexPage({
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps<{
+  posts: BlogPostMetadata[];
+}> = () => {
+  const posts = getBlogPostMetadata();
+
+  return {
+    props: { posts },
+  };
+};

@@ -6,8 +6,8 @@ import { PostList } from '~/components/blog/PostList';
 import { PageIntro } from '~/components/PageIntro';
 import { SEO } from '~/components/seo';
 
-import { getAllBlogPosts } from '~/lib/content';
-import { BlogPost } from '~/types/content';
+import { getBlogPostMetadata } from '~/lib/content';
+import type { BlogPostMetadata } from '~/types/content';
 
 export default function TagPage({
   tag,
@@ -49,13 +49,13 @@ interface Params extends ParsedUrlQuery {
 }
 
 type Props = {
-  posts: BlogPost[];
+  posts: BlogPostMetadata[];
   tag: string;
 };
 
 export const getStaticProps: GetStaticProps<Props, Params> = ({ params }) => {
   const tag = params!.tag;
-  const posts = getAllBlogPosts();
+  const posts = getBlogPostMetadata();
   // TODO: only return posts that have this tag
 
   return {

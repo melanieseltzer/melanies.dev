@@ -8,7 +8,7 @@ import { BlogSEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 
 import { siteMetadata } from '~/config/metadata';
-import { getAllBlogPosts, getBlogPost } from '~/lib/content';
+import { getBlogPost, getBlogPostMetadata } from '~/lib/content';
 import type { BlogPost } from '~/types/content';
 import { formatDate } from '~/utils/date';
 
@@ -62,7 +62,7 @@ export default function BlogPage({
 }
 
 export const getStaticPaths: GetStaticPaths = () => {
-  const posts = getAllBlogPosts();
+  const posts = getBlogPostMetadata();
 
   return {
     paths: posts.map(({ slug }) => ({ params: { slug } })),

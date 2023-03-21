@@ -7,7 +7,7 @@ import { SEO } from '~/components/seo';
 import { TechStack } from '~/components/TechStack';
 
 import { getPage } from '~/lib/content';
-import { Page } from '~/types/content';
+import type { Page } from '~/types/content';
 
 import Avatar from '../../public/images/avatar.jpg';
 

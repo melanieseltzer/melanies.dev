@@ -2,11 +2,11 @@ import { Heading } from '~/components/Heading';
 import { Link } from '~/components/Link';
 import { Paragraph } from '~/components/Paragraph';
 
-import { BlogPost } from '~/types/content';
+import type { BlogPostMetadata } from '~/types/content';
 import { formatDate } from '~/utils/date';
 
 type Props = {
-  posts: BlogPost[];
+  posts: BlogPostMetadata[];
 };
 
 export function CompactPostList({ posts }: Props) {

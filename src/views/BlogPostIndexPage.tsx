@@ -5,10 +5,10 @@ import { Section } from '~/components/Section';
 import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 
-import { BlogPost } from '~/types/content';
+import type { BlogPostMetadata } from '~/types/content';
 
 type Props = {
-  posts: BlogPost[];
+  posts: BlogPostMetadata[];
   tags: string[];
 };
 

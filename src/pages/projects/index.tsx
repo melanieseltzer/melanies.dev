@@ -13,7 +13,7 @@ import { Spacer } from '~/components/Spacer';
 import { TechStack } from '~/components/TechStack';
 
 import { getAllProjects } from '~/lib/content';
-import { Project } from '~/types/content';
+import type { Project } from '~/types/content';
 
 export default function ProjectsIndexPage({
   projects,

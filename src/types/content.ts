@@ -10,6 +10,9 @@ import type {
 
 export type { DocumentTypes } from 'contentlayer/generated';
 
+// Fields added by contentlayer internally
+export type InternalCLFields = '_id' | '_raw' | 'body' | 'type';
+
 // Pages
 
 export type Page = CLPage;
@@ -20,9 +23,21 @@ export type ConfiguredPage = 'about';
 
 export type BlogPost = CLBlogPost;
 
-export type BlogPostFrontmatter = Pick<
+// Frontmatter that's defined manually inside the source `.mdx` files
+export type BlogPostSourceFields =
+  | 'title'
+  | 'summary'
+  | 'date'
+  | 'tags'
+  | 'lastmod'
+  | 'draft';
+
+// Frontmatter that's computed later on
+export type BlogPostComputedFields = 'slug';
+
+export type BlogPostMetadata = Pick<
   BlogPost,
-  'title' | 'summary' | 'date' | 'tags' | 'lastmod' | 'draft'
+  BlogPostSourceFields | BlogPostComputedFields
 >;
 
 // Projects
