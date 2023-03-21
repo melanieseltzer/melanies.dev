@@ -3,7 +3,7 @@ import { ButtonLink } from '~/components/ButtonLink';
 import { Section } from '~/components/Section';
 import { Spacer } from '~/components/Spacer';
 
-import type { BlogPostMetadata } from '~/types/content';
+import type { BlogPostMetadata } from '~/types/blog';
 
 type Props = {
   posts: BlogPostMetadata[];

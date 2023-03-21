@@ -3,8 +3,8 @@ import { Card } from '~/components/Card';
 import { Heading } from '~/components/Heading';
 import { Spacer } from '~/components/Spacer';
 
-import { getAllBlogPostTags } from '~/lib/content';
-import { BlogPostMetadata } from '~/types/content';
+import { getAllBlogPostTags } from '~/lib/blog';
+import { BlogPostMetadata } from '~/types/blog';
 
 type Props = {
   posts: BlogPostMetadata[];

@@ -4,8 +4,8 @@ import { HeroSection } from '~/components/home/HeroSection';
 import { LatestPosts } from '~/components/home/LatestPosts';
 import { SEO } from '~/components/seo';
 
-import { getBlogPostMetadata, sortByNewestFirst } from '~/lib/content';
-import type { BlogPostMetadata } from '~/types/content';
+import { getBlogPostMetadata, sortByNewestFirst } from '~/lib/blog';
+import type { BlogPostMetadata } from '~/types/blog';
 
 export default function IndexPage({
   posts,

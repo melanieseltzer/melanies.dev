@@ -6,8 +6,8 @@ import { PageIntro } from '~/components/PageIntro';
 import { SEO } from '~/components/seo';
 import { TechStack } from '~/components/TechStack';
 
-import { getPage } from '~/lib/content';
-import type { Page } from '~/types/content';
+import { getPage } from '~/lib/page';
+import type { Page } from '~/types/page';
 
 import Avatar from '../../public/images/avatar.jpg';
 

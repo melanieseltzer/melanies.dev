@@ -5,7 +5,7 @@ import { Section } from '~/components/Section';
 import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 
-import type { BlogPostMetadata } from '~/types/content';
+import type { BlogPostMetadata } from '~/types/blog';
 
 type Props = {
   posts: BlogPostMetadata[];

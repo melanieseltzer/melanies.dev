@@ -8,8 +8,8 @@ import { BlogSEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 
 import { siteMetadata } from '~/config/metadata';
-import { getBlogPost, getBlogPostMetadata } from '~/lib/content';
-import type { BlogPost } from '~/types/content';
+import { getBlogPost, getBlogPostMetadata } from '~/lib/blog';
+import type { BlogPost } from '~/types/blog';
 import { formatDate } from '~/utils/date';
 
 export default function BlogPage({

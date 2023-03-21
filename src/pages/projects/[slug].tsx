@@ -10,8 +10,8 @@ import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 import { TechStack } from '~/components/TechStack';
 
-import { getAllProjects, getProject } from '~/lib/content';
-import type { Project } from '~/types/content';
+import { getAllProjects, getProject } from '~/lib/project';
+import type { Project } from '~/types/project';
 
 export default function ProjectPage({
   project,

@@ -1,7 +1,7 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 
-import { getBlogPostMetadata, sortByNewestFirst } from '~/lib/content';
-import type { BlogPostMetadata } from '~/types/content';
+import { getBlogPostMetadata, sortByNewestFirst } from '~/lib/blog';
+import type { BlogPostMetadata } from '~/types/blog';
 import { BlogPostIndexPage } from '~/views/BlogPostIndexPage';
 
 export default function BlogIndexPage({

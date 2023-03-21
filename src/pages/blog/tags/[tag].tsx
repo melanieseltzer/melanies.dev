@@ -11,8 +11,8 @@ import {
   getAllBlogPostTags,
   getBlogPostMetadata,
   sortByNewestFirst,
-} from '~/lib/content';
-import type { BlogPostMetadata } from '~/types/content';
+} from '~/lib/blog';
+import type { BlogPostMetadata } from '~/types/blog';
 
 export default function TagPage({
   tag,

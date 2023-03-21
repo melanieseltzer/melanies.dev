@@ -2,7 +2,7 @@ import { Heading } from '~/components/Heading';
 import { Link } from '~/components/Link';
 import { Paragraph } from '~/components/Paragraph';
 
-import type { BlogPostMetadata } from '~/types/content';
+import type { BlogPostMetadata } from '~/types/blog';
 import { formatDate } from '~/utils/date';
 
 type Props = {
