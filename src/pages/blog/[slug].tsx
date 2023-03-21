@@ -8,11 +8,7 @@ import { BlogSEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 
 import { siteMetadata } from '~/config/metadata';
-import {
-  formatBlogPostSlug,
-  getAllBlogPosts,
-  getBlogPost,
-} from '~/lib/content';
+import { getAllBlogPosts, getBlogPost } from '~/lib/content';
 import type { BlogPost } from '~/types/content';
 import { formatDate } from '~/utils/date';
 
@@ -69,25 +65,21 @@ export const getStaticPaths: GetStaticPaths = () => {
   const posts = getAllBlogPosts();
 
   return {
-    paths: posts.map(p => ({
-      params: {
-        slug: formatBlogPostSlug(p.slug).split('/'),
-      },
-    })),
+    paths: posts.map(({ slug }) => ({ params: { slug } })),
     fallback: false,
   };
 };
 
 interface Params extends ParsedUrlQuery {
-  slug: string[];
+  slug: string;
 }
 
 type Props = {
   post: BlogPost;
 };
 
-export const getStaticProps: GetStaticProps<Props, Params> = ({ params }) => {
-  const slug = params!.slug.join('/');
+export const getStaticProps: GetStaticProps<Props, Params> = context => {
+  const slug = context.params!.slug;
   const post = getBlogPost(slug);
 
   return {
