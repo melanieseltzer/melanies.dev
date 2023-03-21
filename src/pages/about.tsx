@@ -53,7 +53,7 @@ export default function AboutPage({
         </div>
 
         <div className="prose prose-lg prose-slate">
-          <MDXComponent source={content} />
+          <MDXComponent source={content.body.code} />
         </div>
       </div>
     </>

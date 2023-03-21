@@ -55,7 +55,7 @@ export default function BlogPage({
           <p className="lead">{summary}</p>
         </header>
 
-        <MDXComponent source={post} />
+        <MDXComponent source={post.body.code} />
       </article>
     </>
   );

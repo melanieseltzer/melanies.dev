@@ -43,7 +43,7 @@ export default function ProjectPage({
           </div>
         </header>
 
-        <MDXComponent source={project} />
+        <MDXComponent source={project.body.code} />
       </article>
     </>
   );

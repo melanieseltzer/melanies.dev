@@ -72,8 +72,6 @@ export const Page = defineDocumentType(() => ({
   ...pageFieldDefs,
 }));
 
-// const toc: BlogPostTableOfContents = [];
-
 export const BlogPost = defineDocumentType(() => ({
   name: 'BlogPost',
   filePathPattern: 'blog/**/*.mdx',
