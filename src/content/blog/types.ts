@@ -1,9 +1,6 @@
 import type { BlogPost as CLBlogPost } from 'contentlayer/generated';
 
-import type {
-  BlogPostComputedFields,
-  BlogPostSourceFields,
-} from '../config/document/BlogPost';
+import type { BlogPostComputedFields, BlogPostSourceFields } from './schema';
 
 export type BlogPost = CLBlogPost;
 

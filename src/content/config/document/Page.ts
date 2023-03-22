@@ -1,26 +1,6 @@
 import { defineDocumentType } from 'contentlayer/source-files';
 
-import { SchemaFieldDefs } from '../types';
-import { getSlugFromFileName } from '../utils';
-
-// ==============================
-// Schema
-// ==============================
-
-const pageSchema = {
-  computedFields: {
-    slug: {
-      type: 'string',
-      resolve: getSlugFromFileName,
-    },
-  },
-} satisfies SchemaFieldDefs<'Page'>;
-
-export type PageComputedFields = keyof (typeof pageSchema)['computedFields'];
-
-// ==============================
-// Define document
-// ==============================
+import { pageSchema } from '../../page/schema';
 
 export const Page = defineDocumentType(() => ({
   name: 'Page',

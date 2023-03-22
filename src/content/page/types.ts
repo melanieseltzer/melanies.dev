@@ -1,6 +1,6 @@
 import type { Page as CLPage } from 'contentlayer/generated';
 
-import { PageComputedFields } from '../config/document/Page';
+import { PageComputedFields } from './schema';
 
 export type ConfiguredMDXPages = 'about';
 
