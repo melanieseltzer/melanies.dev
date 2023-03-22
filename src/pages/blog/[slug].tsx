@@ -26,7 +26,7 @@ export default function BlogPage({
         canonicalUrl={`${siteMetadata.siteUrl}/blog/${slug}`}
         article={{
           publishedTime: date,
-          modifiedTime: lastmod,
+          modifiedTime: lastmod || date,
           tags,
         }}
       />
