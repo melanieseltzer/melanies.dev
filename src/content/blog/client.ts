@@ -1,14 +1,13 @@
 import { allBlogPosts } from 'contentlayer/generated';
 
-import { findBySlug } from '~/lib/content';
 import { kebabCase } from '~/utils/case';
 
 import type { BlogPost, BlogPostMetadata } from './types';
 
-export const getBlogPost = (slug: string): BlogPost =>
-  findBySlug<BlogPost>(allBlogPosts, slug);
-
 export const getBlogPosts = (): BlogPost[] => allBlogPosts;
+
+export const getBlogPost = (slug: string) =>
+  getBlogPosts().find(post => post.slug === slug);
 
 export const sortByNewestFirst = (posts: BlogPostMetadata[]) =>
   posts.sort((a, b) => {

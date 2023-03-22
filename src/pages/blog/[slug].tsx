@@ -83,6 +83,12 @@ export const getStaticProps: GetStaticProps<Props, Params> = context => {
   const slug = context.params!.slug;
   const post = getBlogPost(slug);
 
+  if (!post) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: { post },
   };
