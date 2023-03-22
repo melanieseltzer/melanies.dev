@@ -6,10 +6,11 @@ import { MDXComponent } from '~/components/MDXComponent';
 import { BlogSEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 
-import { siteMetadata } from '~/config/metadata';
 import { getBlogPost, getBlogPostMetadata } from '~/content/blog/client';
 import { PostTagsList } from '~/content/blog/components/PostTagsList';
 import type { BlogPost } from '~/content/blog/types';
+
+import { siteMetadata } from '~/config/metadata';
 import { formatDate } from '~/utils/date';
 
 export default function BlogPage({
