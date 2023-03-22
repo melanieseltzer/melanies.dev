@@ -1,11 +1,11 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 
 import { HeroSection } from '~/components/home/HeroSection';
-import { LatestPosts } from '~/components/home/LatestPosts';
 import { SEO } from '~/components/seo';
 
-import { getBlogPostMetadata, sortByNewestFirst } from '~/lib/blog';
-import type { BlogPostMetadata } from '~/types/blog';
+import { getBlogPostMetadata, sortByNewestFirst } from '~/content/blog/client';
+import { LatestPosts } from '~/content/blog/components/LatestPosts';
+import type { BlogPostMetadata } from '~/content/blog/types';
 
 export default function IndexPage({
   posts,

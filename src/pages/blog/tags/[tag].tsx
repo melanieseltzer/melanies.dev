@@ -2,7 +2,6 @@ import { ParsedUrlQuery } from 'querystring';
 
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 
-import { PostList } from '~/components/blog/PostList';
 import { PageIntro } from '~/components/PageIntro';
 import { SEO } from '~/components/seo';
 
@@ -11,8 +10,9 @@ import {
   getAllBlogPostTags,
   getBlogPostMetadata,
   sortByNewestFirst,
-} from '~/lib/blog';
-import type { BlogPostMetadata } from '~/types/blog';
+} from '~/content/blog/client';
+import { PostList } from '~/content/blog/components/PostList';
+import type { BlogPostMetadata } from '~/content/blog/types';
 
 export default function TagPage({
   tag,

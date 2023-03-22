@@ -1,11 +1,11 @@
-import { ExploreByTopic } from '~/components/blog/ExploreByTopic';
-import { PostList } from '~/components/blog/PostList';
 import { PageIntro } from '~/components/PageIntro';
 import { Section } from '~/components/Section';
 import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 
-import type { BlogPostMetadata } from '~/types/blog';
+import { ExploreByTopic } from '~/content/blog/components/ExploreByTopic';
+import { PostList } from '~/content/blog/components/PostList';
+import type { BlogPostMetadata } from '~/content/blog/types';
 
 type Props = {
   posts: BlogPostMetadata[];

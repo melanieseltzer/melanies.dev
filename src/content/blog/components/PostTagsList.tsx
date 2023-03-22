@@ -1,10 +1,9 @@
 import clsx from 'clsx';
 
 import { Badge } from '~/components/Badge';
+import { Paragraph } from '~/components/Paragraph';
 
 import { kebabCase } from '~/utils/case';
-
-import { Paragraph } from '../Paragraph';
 
 type Props = {
   tags: string[];

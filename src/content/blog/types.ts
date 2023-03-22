@@ -3,7 +3,7 @@ import type { BlogPost as CLBlogPost } from 'contentlayer/generated';
 import type {
   BlogPostComputedFields,
   BlogPostSourceFields,
-} from '~/content/config/document/BlogPost';
+} from '../config/document/BlogPost';
 
 export type BlogPost = CLBlogPost;
 

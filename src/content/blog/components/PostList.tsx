@@ -1,10 +1,12 @@
-import { PostTagsList } from '~/components/blog/PostTagsList';
 import { Heading } from '~/components/Heading';
 import { Link } from '~/components/Link';
 import { Paragraph } from '~/components/Paragraph';
 
-import type { BlogPostMetadata } from '~/types/blog';
 import { formatDate } from '~/utils/date';
+
+import type { BlogPostMetadata } from '../types';
+
+import { PostTagsList } from './PostTagsList';
 
 type Props = {
   posts: BlogPostMetadata[];
