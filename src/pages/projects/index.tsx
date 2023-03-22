@@ -5,15 +5,15 @@ import { Heading } from '~/components/Heading';
 import { Link } from '~/components/Link';
 import { PageIntro } from '~/components/PageIntro';
 import { Paragraph } from '~/components/Paragraph';
-import { DemoButton } from '~/components/projects/DemoButton';
-import { SourceCodeButton } from '~/components/projects/SourceCodeButton';
 import { Section } from '~/components/Section';
 import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 import { TechStack } from '~/components/TechStack';
 
-import { getAllProjects } from '~/lib/project';
-import type { Project } from '~/types/project';
+import { getAllProjects } from '~/content/project/client';
+import { DemoButton } from '~/content/project/components/DemoButton';
+import { SourceCodeButton } from '~/content/project/components/SourceCodeButton';
+import type { Project } from '~/content/project/types';
 
 export default function ProjectsIndexPage({
   projects,

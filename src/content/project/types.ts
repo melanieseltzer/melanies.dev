@@ -3,7 +3,7 @@ import type { Project as CLProject } from 'contentlayer/generated';
 import type {
   ProjectComputedFields,
   ProjectSourceFields,
-} from '~/content/config/document/Project';
+} from '../config/document/Project';
 
 export type Project = CLProject;
 
