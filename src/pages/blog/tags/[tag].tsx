@@ -9,10 +9,10 @@ import {
   findPostsWithTag,
   getAllBlogPostTags,
   getBlogPostMetadata,
-  sortByNewestFirst,
 } from '~/content/blog/client';
 import { PostList } from '~/content/blog/components/PostList';
 import type { BlogPostMetadata } from '~/content/blog/types';
+import { sortByNewestFirst } from '~/content/blog/utils';
 
 export default function TagPage({
   tag,
