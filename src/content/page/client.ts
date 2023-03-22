@@ -1,8 +1,8 @@
 import { allPages } from 'contentlayer/generated';
 
-import type { ConfiguredMDXPages, Page } from '~/types/page';
+import { findBySlug } from '~/lib/content';
 
-import { findBySlug } from './content';
+import type { ConfiguredMDXPages, Page } from './types';
 
 export const getPage = (slug: ConfiguredMDXPages): Page =>
   findBySlug<Page>(allPages, slug);
