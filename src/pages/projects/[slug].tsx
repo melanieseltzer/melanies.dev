@@ -4,14 +4,14 @@ import { RxDividerVertical as Separator } from 'react-icons/rx';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 
 import { MDXComponent } from '~/components/MDXComponent';
-import { DemoButton } from '~/components/projects/DemoButton';
-import { SourceCodeButton } from '~/components/projects/SourceCodeButton';
 import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 import { TechStack } from '~/components/TechStack';
 
-import { getAllProjects, getProject } from '~/lib/project';
-import type { Project } from '~/types/project';
+import { getAllProjects, getProject } from '~/content/project/client';
+import { DemoButton } from '~/content/project/components/DemoButton';
+import { SourceCodeButton } from '~/content/project/components/SourceCodeButton';
+import type { Project } from '~/content/project/types';
 
 export default function ProjectPage({
   project,
@@ -43,7 +43,7 @@ export default function ProjectPage({
           </div>
         </header>
 
-        <MDXComponent source={project} />
+        <MDXComponent source={project.body.code} />
       </article>
     </>
   );

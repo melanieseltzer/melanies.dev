@@ -1,10 +1,11 @@
-import { PostTagsList } from '~/components/blog/PostTagsList';
 import { Card } from '~/components/Card';
 import { Heading } from '~/components/Heading';
 import { Spacer } from '~/components/Spacer';
 
-import { getAllBlogPostTags } from '~/lib/blog';
-import { BlogPostMetadata } from '~/types/blog';
+import { getAllBlogPostTags } from '../client';
+import type { BlogPostMetadata } from '../types';
+
+import { PostTagsList } from './PostTagsList';
 
 type Props = {
   posts: BlogPostMetadata[];

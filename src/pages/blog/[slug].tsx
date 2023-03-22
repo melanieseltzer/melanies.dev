@@ -2,14 +2,15 @@ import { ParsedUrlQuery } from 'querystring';
 
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 
-import { PostTagsList } from '~/components/blog/PostTagsList';
 import { MDXComponent } from '~/components/MDXComponent';
 import { BlogSEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 
+import { getBlogPost, getBlogPostMetadata } from '~/content/blog/client';
+import { PostTagsList } from '~/content/blog/components/PostTagsList';
+import type { BlogPost } from '~/content/blog/types';
+
 import { siteMetadata } from '~/config/metadata';
-import { getBlogPost, getBlogPostMetadata } from '~/lib/blog';
-import type { BlogPost } from '~/types/blog';
 import { formatDate } from '~/utils/date';
 
 export default function BlogPage({
@@ -55,7 +56,7 @@ export default function BlogPage({
           <p className="lead">{summary}</p>
         </header>
 
-        <MDXComponent source={post} />
+        <MDXComponent source={post.body.code} />
       </article>
     </>
   );

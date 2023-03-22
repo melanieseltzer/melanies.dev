@@ -2,8 +2,9 @@ import { Heading } from '~/components/Heading';
 import { Link } from '~/components/Link';
 import { Paragraph } from '~/components/Paragraph';
 
-import type { BlogPostMetadata } from '~/types/blog';
 import { formatDate } from '~/utils/date';
+
+import type { BlogPostMetadata } from '../types';
 
 type Props = {
   posts: BlogPostMetadata[];

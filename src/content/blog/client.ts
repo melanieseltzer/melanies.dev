@@ -1,9 +1,9 @@
 import { allBlogPosts } from 'contentlayer/generated';
 
-import type { BlogPost, BlogPostMetadata } from '~/types/blog';
+import { findBySlug } from '~/lib/content';
 import { kebabCase } from '~/utils/case';
 
-import { findBySlug } from './content';
+import type { BlogPost, BlogPostMetadata } from './types';
 
 export const getBlogPost = (slug: string): BlogPost =>
   findBySlug<BlogPost>(allBlogPosts, slug);
