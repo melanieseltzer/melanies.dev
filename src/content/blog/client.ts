@@ -59,9 +59,18 @@ export const getBlogPost = (slug: string): BlogPost | undefined => {
 export const getPostPreviews = (): BlogPostMetadata[] =>
   allBlogPosts.filter(isNotDraft).map(extractMetadata);
 
-export const getLatestPosts = (): BlogPostMetadata[] => {
+export const getLatestPosts = (
+  options: { limit?: number } = {}
+): BlogPostMetadata[] => {
+  const { limit } = options;
+
   const posts = allBlogPosts.filter(isNotDraft);
   const latestPosts = sortPostsByNew(posts);
+
+  if (limit) {
+    return latestPosts.slice(0, limit).map(extractMetadata);
+  }
+
   return latestPosts.map(extractMetadata);
 };
 

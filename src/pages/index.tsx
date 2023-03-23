@@ -5,6 +5,7 @@ import { SEO } from '~/components/seo';
 
 import { getLatestPosts } from '~/content/blog/client';
 import { LatestPosts } from '~/content/blog/components/LatestPosts';
+import { MAX_POSTS_DISPLAY } from '~/content/blog/constants';
 import type { BlogPostMetadata } from '~/content/blog/types';
 
 export default function IndexPage({
@@ -24,7 +25,7 @@ export default function IndexPage({
 export const getStaticProps: GetStaticProps<{
   posts: BlogPostMetadata[];
 }> = () => {
-  const posts = getLatestPosts();
+  const posts = getLatestPosts({ limit: MAX_POSTS_DISPLAY });
 
   return {
     props: { posts },
