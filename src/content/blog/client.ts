@@ -75,29 +75,13 @@ export const getLatestPosts = (
 };
 
 export const getAllBlogPostTags = (posts: BlogPostMetadata[]) => {
-  const filteredPosts = posts.filter(isNotDraft);
+  let tags: string[] = [];
 
-  const tags = new Set<string>();
-  const count: Record<string, number> = {};
-
-  for (const post of filteredPosts) {
-    for (const tag of post.tags) {
-      const formattedTag = kebabCase(tag);
-
-      tags.add(formattedTag);
-
-      if (formattedTag in count) {
-        count[formattedTag] += 1;
-      } else {
-        count[formattedTag] = 1;
-      }
-    }
+  for (const post of posts.filter(isNotDraft)) {
+    tags = [...tags, ...post.tags.map(kebabCase)];
   }
 
-  return {
-    tags: Array.from(tags),
-    count,
-  };
+  return Array.from(new Set<string>(tags)); // ensure no duplicates
 };
 
 export const findPostsWithTag = (

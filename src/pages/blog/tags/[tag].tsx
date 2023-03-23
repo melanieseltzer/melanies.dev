@@ -41,7 +41,7 @@ export default function TagPage({
 
 export const getStaticPaths: GetStaticPaths = () => {
   const posts = getPostPreviews();
-  const { tags } = getAllBlogPostTags(posts);
+  const tags = getAllBlogPostTags(posts);
 
   return {
     paths: tags.map(tag => ({ params: { tag } })),

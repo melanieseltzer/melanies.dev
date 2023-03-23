@@ -13,7 +13,7 @@ type Props = {
 };
 
 export function BlogPostListPage({ posts }: Props) {
-  const { tags } = getAllBlogPostTags(posts);
+  const tags = getAllBlogPostTags(posts);
 
   return (
     <>
