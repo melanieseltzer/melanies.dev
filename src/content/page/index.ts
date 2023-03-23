@@ -1,2 +1,2 @@
-export { getPage } from './client';
+export { getPageContent } from './client';
 export type { Page } from './types';

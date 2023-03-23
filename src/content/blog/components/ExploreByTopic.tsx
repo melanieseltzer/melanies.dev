@@ -2,18 +2,13 @@ import { Card } from '~/components/Card';
 import { Heading } from '~/components/Heading';
 import { Spacer } from '~/components/Spacer';
 
-import { getAllBlogPostTags } from '../client';
-import type { BlogPostMetadata } from '../types';
-
 import { PostTagsList } from './PostTagsList';
 
 type Props = {
-  posts: BlogPostMetadata[];
+  tags: string[];
 };
 
-export function ExploreByTopic({ posts }: Props) {
-  const { tags } = getAllBlogPostTags(posts);
-
+export function ExploreByTopic({ tags }: Props) {
   return (
     <>
       <Card as="section" aria-labelledby="explore-by-topic">

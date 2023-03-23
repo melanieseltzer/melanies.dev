@@ -1,10 +1,21 @@
 import { allProjects } from 'contentlayer/generated';
 
-import { findBySlug } from '~/lib/content';
+import type { CLProject, Project } from './types';
 
-import type { Project } from './types';
+// ==============================
+// Internal helpers
+// ==============================
 
-export const getProject = (slug: string): Project =>
-  findBySlug<Project>(allProjects, slug);
+const serialize = (project: CLProject): Project => ({
+  ...project,
+  demoUrl: project.demoUrl || null,
+});
 
-export const getAllProjects = (): Project[] => allProjects;
+// ==============================
+// Client selectors
+// ==============================
+
+export const getAllProjects = (): Project[] => allProjects.map(serialize);
+
+export const getProject = (slug: string) =>
+  getAllProjects().find(project => project.slug === slug);

@@ -1,8 +1,7 @@
 export {
   findPostsWithTag,
   getBlogPost,
-  getBlogPostMetadata,
   getBlogPosts,
-  sortByNewestFirst,
+  getPostPreviews,
 } from './client';
 export type { BlogPost, BlogPostMetadata } from './types';

@@ -6,7 +6,7 @@ import { MDXComponent } from '~/components/MDXComponent';
 import { BlogSEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 
-import { getBlogPost, getBlogPostMetadata } from '~/content/blog/client';
+import { getBlogPost, getBlogPosts } from '~/content/blog/client';
 import { PostTagsList } from '~/content/blog/components/PostTagsList';
 import type { BlogPost } from '~/content/blog/types';
 
@@ -26,7 +26,7 @@ export default function BlogPage({
         canonicalUrl={`${siteMetadata.siteUrl}/blog/${slug}`}
         article={{
           publishedTime: date,
-          modifiedTime: lastmod,
+          modifiedTime: lastmod || date,
           tags,
         }}
       />
@@ -63,7 +63,7 @@ export default function BlogPage({
 }
 
 export const getStaticPaths: GetStaticPaths = () => {
-  const posts = getBlogPostMetadata();
+  const posts = getBlogPosts();
 
   return {
     paths: posts.map(({ slug }) => ({ params: { slug } })),
@@ -82,6 +82,12 @@ type Props = {
 export const getStaticProps: GetStaticProps<Props, Params> = context => {
   const slug = context.params!.slug;
   const post = getBlogPost(slug);
+
+  if (!post) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: { post },

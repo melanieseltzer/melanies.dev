@@ -7,7 +7,7 @@ export const blogSchema = {
     summary: { type: 'string', required: true },
     date: { type: 'date', required: true },
     tags: { type: 'list', required: true, of: { type: 'string' } },
-    lastmod: { type: 'date', required: true },
+    lastmod: { type: 'date' },
     draft: { type: 'boolean' },
   },
   computedFields: {

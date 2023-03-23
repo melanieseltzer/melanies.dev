@@ -1,54 +1,77 @@
+import { pick } from 'contentlayer/client';
 import { allBlogPosts } from 'contentlayer/generated';
 
-import { findBySlug } from '~/lib/content';
 import { kebabCase } from '~/utils/case';
 
-import type { BlogPost, BlogPostMetadata } from './types';
+import type {
+  BlogPost,
+  BlogPostMetadata,
+  CLBlogPost,
+  CLBlogPostMetadata,
+} from './types';
+import { sortPostsByNew } from './utils';
 
-export const getBlogPost = (slug: string): BlogPost =>
-  findBySlug<BlogPost>(allBlogPosts, slug);
+// ==============================
+// Internal helpers
+// ==============================
 
-export const getBlogPosts = (): BlogPost[] => allBlogPosts;
+type Serialized<T> = T extends CLBlogPost ? BlogPost : BlogPostMetadata;
 
-export const sortByNewestFirst = (posts: BlogPostMetadata[]) =>
-  posts.sort((a, b) => {
-    if (a.date > b.date) return -1;
-    if (a.date < b.date) return 1;
-    return 0;
-  });
+const serialize = <T extends CLBlogPost | CLBlogPostMetadata>(
+  post: T
+): Serialized<T> =>
+  ({
+    ...post,
+    draft: post.draft || null,
+    lastmod: post.lastmod || null,
+  } as Serialized<T>);
 
-export function getBlogPostMetadata() {
-  const posts = getBlogPosts();
+const extractMetadata = (post: CLBlogPost): BlogPostMetadata => {
+  const metadata = pick(post, [
+    'title',
+    'summary',
+    'date',
+    'tags',
+    'lastmod',
+    'draft',
+    'slug',
+  ]);
 
-  const allFrontmatter: BlogPostMetadata[] = [];
+  return serialize(metadata);
+};
 
-  for (const post of posts) {
-    const isDraft = !!post.draft;
+const isNotDraft = (
+  post: CLBlogPost | BlogPost | CLBlogPostMetadata | BlogPostMetadata
+) => !!post.draft === false;
 
-    if (isDraft) continue;
+// ==============================
+// Client selectors
+// ==============================
 
-    allFrontmatter.push({
-      title: post.title,
-      summary: post.summary,
-      tags: post.tags,
-      date: post.date,
-      lastmod: post.lastmod,
-      slug: post.slug,
-    });
-  }
+export const getBlogPosts = () => allBlogPosts;
 
-  return allFrontmatter;
-}
+export const getBlogPost = (slug: string): BlogPost | undefined => {
+  const post = allBlogPosts.find(post => post.slug === slug);
+  if (!post) return;
+  return serialize(post);
+};
+
+export const getPostPreviews = (): BlogPostMetadata[] =>
+  allBlogPosts.filter(isNotDraft).map(extractMetadata);
+
+export const getLatestPosts = (): BlogPostMetadata[] => {
+  const posts = allBlogPosts.filter(isNotDraft);
+  const latestPosts = sortPostsByNew(posts);
+  return latestPosts.map(extractMetadata);
+};
 
 export const getAllBlogPostTags = (posts: BlogPostMetadata[]) => {
+  const filteredPosts = posts.filter(isNotDraft);
+
   const tags = new Set<string>();
   const count: Record<string, number> = {};
 
-  for (const post of posts) {
-    const isDraft = !!post.draft;
-
-    if (isDraft) continue;
-
+  for (const post of filteredPosts) {
     for (const tag of post.tags) {
       const formattedTag = kebabCase(tag);
 

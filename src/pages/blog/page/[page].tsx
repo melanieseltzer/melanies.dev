@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 
-import { getBlogPostMetadata, sortByNewestFirst } from '~/content/blog/client';
+import { getLatestPosts } from '~/content/blog/client';
 import { BlogPostIndexPage } from '~/content/blog/components/BlogPostIndexPage';
 import type { BlogPostMetadata } from '~/content/blog/types';
 
@@ -27,8 +27,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 export const getStaticProps: GetStaticProps<{
   posts: BlogPostMetadata[];
 }> = () => {
-  const blogMeta = getBlogPostMetadata();
-  const posts = sortByNewestFirst(blogMeta);
+  const posts = getLatestPosts();
 
   return {
     props: { posts },
