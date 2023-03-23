@@ -6,7 +6,7 @@ import { MDXComponent } from '~/components/MDXComponent';
 import { BlogSEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 
-import { getBlogPost, getBlogPostMetadata } from '~/content/blog/client';
+import { getBlogPost, getBlogPosts } from '~/content/blog/client';
 import { PostTagsList } from '~/content/blog/components/PostTagsList';
 import type { BlogPost } from '~/content/blog/types';
 
@@ -63,7 +63,7 @@ export default function BlogPage({
 }
 
 export const getStaticPaths: GetStaticPaths = () => {
-  const posts = getBlogPostMetadata();
+  const posts = getBlogPosts();
 
   return {
     paths: posts.map(({ slug }) => ({ params: { slug } })),

@@ -1,36 +1,62 @@
+import { pick } from 'contentlayer/client';
 import { allBlogPosts } from 'contentlayer/generated';
 
 import { kebabCase } from '~/utils/case';
 
-import type { BlogPost, BlogPostMetadata } from './types';
+import type {
+  BlogPost,
+  BlogPostMetadata,
+  CLBlogPost,
+  CLBlogPostMetadata,
+} from './types';
 
-export const getBlogPosts = (): BlogPost[] => allBlogPosts;
+// ==============================
+// Internal helpers
+// ==============================
 
-export const getBlogPost = (slug: string) =>
-  getBlogPosts().find(post => post.slug === slug);
+type Serialized<T> = T extends CLBlogPost ? BlogPost : BlogPostMetadata;
 
-export function getBlogPostMetadata() {
-  const posts = getBlogPosts();
+const serialize = <T extends CLBlogPost | CLBlogPostMetadata>(
+  post: T
+): Serialized<T> =>
+  ({
+    ...post,
+    draft: post.draft || false,
+    lastmod: post.lastmod || '',
+  } as Serialized<T>);
 
-  const allFrontmatter: BlogPostMetadata[] = [];
+const extractMetadata = (post: CLBlogPost): BlogPostMetadata => {
+  const metadata = pick(post, [
+    'title',
+    'summary',
+    'date',
+    'tags',
+    'lastmod',
+    'draft',
+    'slug',
+  ]);
 
-  for (const post of posts) {
-    const isDraft = !!post.draft;
+  return serialize(metadata);
+};
 
-    if (isDraft) continue;
+const isNotDraft = (
+  post: CLBlogPost | BlogPost | CLBlogPostMetadata | BlogPostMetadata
+) => !!post.draft === false;
 
-    allFrontmatter.push({
-      title: post.title,
-      summary: post.summary,
-      tags: post.tags,
-      date: post.date,
-      lastmod: post.lastmod,
-      slug: post.slug,
-    });
-  }
+// ==============================
+// Client selectors
+// ==============================
 
-  return allFrontmatter;
-}
+export const getBlogPosts = () => allBlogPosts;
+
+export const getBlogPost = (slug: string): BlogPost | undefined => {
+  const post = allBlogPosts.find(post => post.slug === slug);
+  if (!post) return;
+  return serialize(post);
+};
+
+export const getPostPreviews = (): BlogPostMetadata[] =>
+  allBlogPosts.filter(isNotDraft).map(extractMetadata);
 
 export const getAllBlogPostTags = (posts: BlogPostMetadata[]) => {
   const tags = new Set<string>();

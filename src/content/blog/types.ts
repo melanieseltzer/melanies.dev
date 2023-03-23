@@ -2,9 +2,17 @@ import type { BlogPost as CLBlogPost } from 'contentlayer/generated';
 
 import type { BlogPostComputedFields, BlogPostSourceFields } from './schema';
 
-export type BlogPost = CLBlogPost;
+export type { CLBlogPost };
 
-export type BlogPostMetadata = Pick<
-  BlogPost,
+export type CLBlogPostMetadata = Pick<
+  CLBlogPost,
   BlogPostSourceFields | BlogPostComputedFields
 >;
+
+// ==============================
+// Serialized types
+// ==============================
+
+export type BlogPost = Required<CLBlogPost>;
+
+export type BlogPostMetadata = Required<CLBlogPostMetadata>;

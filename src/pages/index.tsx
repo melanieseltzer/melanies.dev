@@ -3,7 +3,7 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { HeroSection } from '~/components/home/HeroSection';
 import { SEO } from '~/components/seo';
 
-import { getBlogPostMetadata } from '~/content/blog/client';
+import { getPostPreviews } from '~/content/blog/client';
 import { LatestPosts } from '~/content/blog/components/LatestPosts';
 import type { BlogPostMetadata } from '~/content/blog/types';
 import { sortByNewestFirst } from '~/content/blog/utils';
@@ -25,10 +25,10 @@ export default function IndexPage({
 export const getStaticProps: GetStaticProps<{
   posts: BlogPostMetadata[];
 }> = () => {
-  const blogMeta = getBlogPostMetadata();
-  const posts = sortByNewestFirst(blogMeta);
+  const posts = getPostPreviews();
+  const sorted = sortByNewestFirst(posts);
 
   return {
-    props: { posts },
+    props: { posts: sorted },
   };
 };
