@@ -4,7 +4,7 @@ import { Spacer } from '~/components/Spacer';
 
 import type { BlogPostMetadata } from '../types';
 
-import { CompactPostList } from './CompactPostList';
+import { PostListCompact } from './PostListCompact';
 
 type Props = {
   posts: BlogPostMetadata[];
@@ -19,7 +19,7 @@ export function LatestPosts({ posts }: Props) {
     >
       <Spacer size="4" />
 
-      <CompactPostList posts={posts} />
+      <PostListCompact posts={posts} />
 
       <Spacer size="8" />
 

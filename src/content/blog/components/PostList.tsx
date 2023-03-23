@@ -6,7 +6,7 @@ import { formatDate } from '~/utils/date';
 
 import type { BlogPostMetadata } from '../types';
 
-import { PostTagsList } from './PostTagsList';
+import { TagsList } from './TagsList';
 
 type Props = {
   posts: BlogPostMetadata[];
@@ -46,7 +46,7 @@ export function PostList({ posts }: Props) {
 
               <dt className="sr-only">Related tags:</dt>
               <dd>
-                <PostTagsList className="md:justify-end" compact tags={tags} />
+                <TagsList className="md:justify-end" compact tags={tags} />
               </dd>
             </dl>
           </article>

@@ -10,7 +10,7 @@ type Props = {
   posts: BlogPostMetadata[];
 };
 
-export function CompactPostList({ posts }: Props) {
+export function PostListCompact({ posts }: Props) {
   if (!posts.length) {
     return <Paragraph>No posts.</Paragraph>;
   }

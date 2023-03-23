@@ -7,7 +7,7 @@ import { BlogSEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 
 import { getBlogPost, getBlogPosts } from '~/content/blog/client';
-import { PostTagsList } from '~/content/blog/components/PostTagsList';
+import { TagsList } from '~/content/blog/components/TagsList';
 import type { BlogPost } from '~/content/blog/types';
 
 import { siteMetadata } from '~/config/metadata';
@@ -49,7 +49,7 @@ export default function BlogPage({
           <dl className="not-prose -mt-4">
             <dt className="sr-only">Related tags:</dt>
             <dd>
-              <PostTagsList tags={tags} />
+              <TagsList tags={tags} />
             </dd>
           </dl>
 

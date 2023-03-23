@@ -11,7 +11,7 @@ type Props = {
   className?: string;
 };
 
-export function PostTagsList({ tags, compact, className }: Props) {
+export function TagsList({ tags, compact, className }: Props) {
   if (!tags.length) return <Paragraph>No tags found.</Paragraph>;
 
   return (

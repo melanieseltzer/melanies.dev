@@ -2,7 +2,7 @@ import { Card } from '~/components/Card';
 import { Heading } from '~/components/Heading';
 import { Spacer } from '~/components/Spacer';
 
-import { PostTagsList } from './PostTagsList';
+import { TagsList } from './TagsList';
 
 type Props = {
   tags: string[];
@@ -18,7 +18,7 @@ export function ExploreByTopic({ tags }: Props) {
 
         <Spacer size="4" />
 
-        <PostTagsList tags={tags} />
+        <TagsList tags={tags} />
       </Card>
     </>
   );

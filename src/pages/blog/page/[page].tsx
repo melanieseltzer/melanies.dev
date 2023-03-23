@@ -1,13 +1,13 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 
 import { getLatestPosts } from '~/content/blog/client';
-import { BlogPostIndexPage } from '~/content/blog/components/BlogPostIndexPage';
+import { BlogPostListPage } from '~/content/blog/components/BlogPostListPage';
 import type { BlogPostMetadata } from '~/content/blog/types';
 
 export default function BlogPaginationPage({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  return <BlogPostIndexPage posts={posts} />;
+  return <BlogPostListPage posts={posts} />;
 }
 
 export const getStaticPaths: GetStaticPaths = () => {

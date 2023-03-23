@@ -12,7 +12,7 @@ type Props = {
   posts: BlogPostMetadata[];
 };
 
-export function BlogPostIndexPage({ posts }: Props) {
+export function BlogPostListPage({ posts }: Props) {
   const { tags } = getAllBlogPostTags(posts);
 
   return (
