@@ -9,6 +9,7 @@ import type {
   CLBlogPost,
   CLBlogPostMetadata,
 } from './types';
+import { sortPostsByNew } from './utils';
 
 // ==============================
 // Internal helpers
@@ -57,6 +58,12 @@ export const getBlogPost = (slug: string): BlogPost | undefined => {
 
 export const getPostPreviews = (): BlogPostMetadata[] =>
   allBlogPosts.filter(isNotDraft).map(extractMetadata);
+
+export const getLatestPosts = (): BlogPostMetadata[] => {
+  const posts = allBlogPosts.filter(isNotDraft);
+  const latestPosts = sortPostsByNew(posts);
+  return latestPosts.map(extractMetadata);
+};
 
 export const getAllBlogPostTags = (posts: BlogPostMetadata[]) => {
   const filteredPosts = posts.filter(isNotDraft);

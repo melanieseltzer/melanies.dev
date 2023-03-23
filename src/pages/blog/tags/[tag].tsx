@@ -8,11 +8,11 @@ import { SEO } from '~/components/seo';
 import {
   findPostsWithTag,
   getAllBlogPostTags,
+  getLatestPosts,
   getPostPreviews,
 } from '~/content/blog/client';
 import { PostList } from '~/content/blog/components/PostList';
 import type { BlogPostMetadata } from '~/content/blog/types';
-import { sortByNewestFirst } from '~/content/blog/utils';
 
 export default function TagPage({
   tag,
@@ -60,11 +60,13 @@ type Props = {
 
 export const getStaticProps: GetStaticProps<Props, Params> = ({ params }) => {
   const tag = params!.tag;
-  const blogMeta = getPostPreviews();
-  const posts = sortByNewestFirst(blogMeta);
+  const posts = getLatestPosts();
   const postsWithTag = findPostsWithTag(posts, tag);
 
   return {
-    props: { tag, posts: postsWithTag },
+    props: {
+      tag,
+      posts: postsWithTag,
+    },
   };
 };

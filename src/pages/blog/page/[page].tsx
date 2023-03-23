@@ -1,9 +1,8 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 
-import { getPostPreviews } from '~/content/blog/client';
+import { getLatestPosts } from '~/content/blog/client';
 import { BlogPostIndexPage } from '~/content/blog/components/BlogPostIndexPage';
 import type { BlogPostMetadata } from '~/content/blog/types';
-import { sortByNewestFirst } from '~/content/blog/utils';
 
 export default function BlogPaginationPage({
   posts,
@@ -28,10 +27,9 @@ export const getStaticPaths: GetStaticPaths = () => {
 export const getStaticProps: GetStaticProps<{
   posts: BlogPostMetadata[];
 }> = () => {
-  const posts = getPostPreviews();
-  const sorted = sortByNewestFirst(posts);
+  const posts = getLatestPosts();
 
   return {
-    props: { posts: sorted },
+    props: { posts },
   };
 };
