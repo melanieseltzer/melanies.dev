@@ -59,14 +59,12 @@ export const getPostPreviews = (): BlogPostMetadata[] =>
   allBlogPosts.filter(isNotDraft).map(extractMetadata);
 
 export const getAllBlogPostTags = (posts: BlogPostMetadata[]) => {
+  const filteredPosts = posts.filter(isNotDraft);
+
   const tags = new Set<string>();
   const count: Record<string, number> = {};
 
-  for (const post of posts) {
-    const isDraft = !!post.draft;
-
-    if (isDraft) continue;
-
+  for (const post of filteredPosts) {
     for (const tag of post.tags) {
       const formattedTag = kebabCase(tag);
 

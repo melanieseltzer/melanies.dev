@@ -3,6 +3,7 @@ import { Section } from '~/components/Section';
 import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 
+import { getAllBlogPostTags } from '~/content/blog/client';
 import { ExploreByTopic } from '~/content/blog/components/ExploreByTopic';
 import { PostList } from '~/content/blog/components/PostList';
 import type { BlogPostMetadata } from '~/content/blog/types';
@@ -12,6 +13,8 @@ type Props = {
 };
 
 export function BlogPostIndexPage({ posts }: Props) {
+  const { tags } = getAllBlogPostTags(posts);
+
   return (
     <>
       <SEO
@@ -32,7 +35,7 @@ export function BlogPostIndexPage({ posts }: Props) {
 
       <Spacer size="16" />
 
-      <ExploreByTopic posts={posts} />
+      <ExploreByTopic tags={tags} />
     </>
   );
 }
