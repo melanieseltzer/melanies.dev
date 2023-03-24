@@ -1,13 +1,12 @@
 import { pick } from 'contentlayer/client';
 import { allBlogPosts } from 'contentlayer/generated';
 
-import { kebabCase } from '~/utils/case';
-
 import type {
   BlogPost,
   BlogPostMetadata,
   CLBlogPost,
   CLBlogPostMetadata,
+  Tag,
 } from './types';
 import { sortPostsByNew } from './utils';
 
@@ -48,23 +47,26 @@ const isNotDraft = (
 // Client selectors
 // ==============================
 
-export const getBlogPosts = () => allBlogPosts;
+export const getBlogPosts = () =>
+  // Hacky assertion to get around typing issue with `tags` under the hood :/
+  // ref: https://github.com/contentlayerdev/contentlayer/issues/398
+  allBlogPosts as unknown as CLBlogPost[];
 
 export const getBlogPost = (slug: string): BlogPost | undefined => {
-  const post = allBlogPosts.find(post => post.slug === slug);
+  const post = getBlogPosts().find(post => post.slug === slug);
   if (!post) return;
   return serialize(post);
 };
 
 export const getPostPreviews = (): BlogPostMetadata[] =>
-  allBlogPosts.filter(isNotDraft).map(extractMetadata);
+  getBlogPosts().filter(isNotDraft).map(extractMetadata);
 
 export const getLatestPosts = (
   options: { limit?: number } = {}
 ): BlogPostMetadata[] => {
   const { limit } = options;
 
-  const posts = allBlogPosts.filter(isNotDraft);
+  const posts = getBlogPosts().filter(isNotDraft);
   const latestPosts = sortPostsByNew(posts);
 
   if (limit) {
@@ -74,18 +76,27 @@ export const getLatestPosts = (
   return latestPosts.map(extractMetadata);
 };
 
-export const getAllBlogPostTags = (posts: BlogPostMetadata[]) => {
-  let tags: string[] = [];
+export const getAllBlogTags = (posts: BlogPostMetadata[]) => {
+  const uniqueTags: Record<string, Tag> = {};
 
-  for (const post of posts.filter(isNotDraft)) {
-    tags = [...tags, ...post.tags.map(kebabCase)];
+  for (const { tags } of posts.filter(isNotDraft)) {
+    for (const tag of tags) {
+      if (!(tag.slug in uniqueTags)) {
+        uniqueTags[tag.slug] = tag;
+      }
+    }
   }
 
-  return Array.from(new Set<string>(tags)); // ensure no duplicates
+  return Object.values(uniqueTags);
 };
 
-export const findPostsWithTag = (
+export const getTaggedPosts = (
   posts: BlogPostMetadata[],
   tag: string
 ): BlogPostMetadata[] =>
-  posts.filter(post => post.tags.map(tag => kebabCase(tag)).includes(tag));
+  posts.filter(post => post.tags.map(tag => tag.slug).includes(tag));
+
+export const getTag = (posts: BlogPostMetadata[], slug: string) => {
+  const tags = getAllBlogTags(posts);
+  return tags.find(tag => tag.slug === slug);
+};

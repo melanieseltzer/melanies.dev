@@ -1,5 +1,7 @@
 import { ArticleJsonLd } from 'next-seo';
 
+import { Tag } from '~/content/blog/types';
+
 import { authorMetadata, siteMetadata } from '~/config/metadata';
 
 import { SEO } from './SEO';
@@ -11,7 +13,7 @@ type BlogSEOProps = {
   article: {
     publishedTime: string;
     modifiedTime: string;
-    tags: string[];
+    tags: Tag[];
   };
 };
 
@@ -35,7 +37,7 @@ export function BlogSEO({
           article: {
             publishedTime,
             modifiedTime,
-            tags,
+            tags: tags.map(tag => tag.displayName),
           },
         }}
       />
