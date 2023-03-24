@@ -1,7 +1,2 @@
-export {
-  findPostsWithTag,
-  getBlogPost,
-  getBlogPosts,
-  getPostPreviews,
-} from './client';
+export * from './client';
 export type { BlogPost, BlogPostMetadata } from './types';

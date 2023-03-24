@@ -2,10 +2,12 @@ import { Card } from '~/components/Card';
 import { Heading } from '~/components/Heading';
 import { Spacer } from '~/components/Spacer';
 
+import { Tag } from '../types';
+
 import { TagsList } from './TagsList';
 
 type Props = {
-  tags: string[];
+  tags: Tag[];
 };
 
 export function ExploreByTopic({ tags }: Props) {

@@ -3,10 +3,10 @@ import clsx from 'clsx';
 import { Badge } from '~/components/Badge';
 import { Paragraph } from '~/components/Paragraph';
 
-import { kebabCase } from '~/utils/case';
+import { Tag } from '../types';
 
 type Props = {
-  tags: string[];
+  tags: Tag[];
   compact?: boolean;
   className?: string;
 };
@@ -18,13 +18,10 @@ export function TagsList({ tags, compact, className }: Props) {
     <ul
       className={clsx('flex flex-wrap', compact ? 'gap-2' : 'gap-3', className)}
     >
-      {tags.map(tag => (
-        <li key={tag}>
-          <Badge
-            size={compact ? 'sm' : 'lg'}
-            href={`/blog/tags/${kebabCase(tag)}`}
-          >
-            {kebabCase(tag)}
+      {tags.map(({ slug, displayName }) => (
+        <li key={slug}>
+          <Badge size={compact ? 'sm' : 'lg'} href={`/blog/tags/${slug}`}>
+            {displayName}
           </Badge>
         </li>
       ))}

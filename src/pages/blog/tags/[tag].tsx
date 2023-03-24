@@ -6,13 +6,14 @@ import { PageIntro } from '~/components/PageIntro';
 import { SEO } from '~/components/seo';
 
 import {
-  findPostsWithTag,
-  getAllBlogPostTags,
+  getAllBlogTags,
   getLatestPosts,
   getPostPreviews,
+  getTag,
+  getTaggedPosts,
 } from '~/content/blog/client';
 import { PostList } from '~/content/blog/components/PostList';
-import type { BlogPostMetadata } from '~/content/blog/types';
+import type { BlogPostMetadata, Tag } from '~/content/blog/types';
 
 export default function TagPage({
   tag,
@@ -23,14 +24,14 @@ export default function TagPage({
   return (
     <>
       <SEO
-        title={`${tag} posts`}
+        title={`${tag.displayName} posts`}
         description="Content focusing on React, JavaScript, Node.js, and more."
       />
 
       <PageIntro
         compact
         reverse
-        heading={tag}
+        heading={tag.displayName}
         subheading={`${count} ${count === 1 ? 'post' : 'posts'} tagged:`}
       />
 
@@ -41,10 +42,10 @@ export default function TagPage({
 
 export const getStaticPaths: GetStaticPaths = () => {
   const posts = getPostPreviews();
-  const tags = getAllBlogPostTags(posts);
+  const tags = getAllBlogTags(posts);
 
   return {
-    paths: tags.map(tag => ({ params: { tag } })),
+    paths: tags.map(tag => ({ params: { tag: tag.slug } })),
     fallback: false,
   };
 };
@@ -55,18 +56,19 @@ interface Params extends ParsedUrlQuery {
 
 type Props = {
   posts: BlogPostMetadata[];
-  tag: string;
+  tag: Tag;
 };
 
 export const getStaticProps: GetStaticProps<Props, Params> = ({ params }) => {
   const tag = params!.tag;
   const posts = getLatestPosts();
-  const postsWithTag = findPostsWithTag(posts, tag);
 
   return {
     props: {
-      tag,
-      posts: postsWithTag,
+      // The assertion is okay here, because it's going to 404 on unknown tags
+      // due to the `fallback: false` in the getStaticPaths.
+      tag: getTag(posts, tag) as Tag,
+      posts: getTaggedPosts(posts, tag),
     },
   };
 };

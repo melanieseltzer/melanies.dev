@@ -1,10 +1,20 @@
-import type { BlogPost as CLBlogPost } from 'contentlayer/generated';
+import type { BlogPost as BlogPostOrig } from 'contentlayer/generated';
 
 import { KeysUndefinedToNull } from '~/types/utils';
 
 import type { BlogPostComputedFields, BlogPostSourceFields } from './schema';
 
-export type { CLBlogPost };
+export type Tag = {
+  displayName: string;
+  slug: string;
+};
+
+export type CLBlogPost = Omit<BlogPostOrig, 'tags'> & {
+  // `tags` has a conflicting type due to defining it in both `fields` and `computedFields`
+  // in the schema, so we've omitted it here and forced it to the type we need.
+  // ref: https://github.com/contentlayerdev/contentlayer/issues/398
+  tags: Tag[];
+};
 
 export type CLBlogPostMetadata = Pick<
   CLBlogPost,

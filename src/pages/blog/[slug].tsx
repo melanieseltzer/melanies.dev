@@ -27,7 +27,7 @@ export default function BlogPage({
         article={{
           publishedTime: date,
           modifiedTime: lastmod || date,
-          tags,
+          tags: tags.map(tag => tag.displayName),
         }}
       />
 
