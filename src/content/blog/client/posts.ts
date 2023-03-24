@@ -6,9 +6,8 @@ import type {
   BlogPostMetadata,
   CLBlogPost,
   CLBlogPostMetadata,
-  Tag,
-} from './types';
-import { sortPostsByNew } from './utils';
+} from '../types';
+import { isNotDraft, sortPostsByNew } from '../utils';
 
 // ==============================
 // Internal helpers
@@ -38,10 +37,6 @@ const extractMetadata = (post: CLBlogPost): BlogPostMetadata => {
 
   return serialize(metadata);
 };
-
-const isNotDraft = (
-  post: CLBlogPost | BlogPost | CLBlogPostMetadata | BlogPostMetadata
-) => !!post.draft === false;
 
 // ==============================
 // Client selectors
@@ -74,29 +69,4 @@ export const getLatestPosts = (
   }
 
   return latestPosts.map(extractMetadata);
-};
-
-export const getAllBlogTags = (posts: BlogPostMetadata[]) => {
-  const uniqueTags: Record<string, Tag> = {};
-
-  for (const { tags } of posts.filter(isNotDraft)) {
-    for (const tag of tags) {
-      if (!(tag.slug in uniqueTags)) {
-        uniqueTags[tag.slug] = tag;
-      }
-    }
-  }
-
-  return Object.values(uniqueTags);
-};
-
-export const getTaggedPosts = (
-  posts: BlogPostMetadata[],
-  tag: string
-): BlogPostMetadata[] =>
-  posts.filter(post => post.tags.map(tag => tag.slug).includes(tag));
-
-export const getTag = (posts: BlogPostMetadata[], slug: string) => {
-  const tags = getAllBlogTags(posts);
-  return tags.find(tag => tag.slug === slug);
 };

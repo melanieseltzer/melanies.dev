@@ -3,7 +3,7 @@ import { Section } from '~/components/Section';
 import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 
-import { getAllBlogTags } from '~/content/blog/client';
+import { getAllBlogTags } from '~/content/blog/client/tags';
 import { ExploreByTopic } from '~/content/blog/components/ExploreByTopic';
 import { PostList } from '~/content/blog/components/PostList';
 import type { BlogPostMetadata } from '~/content/blog/types';
