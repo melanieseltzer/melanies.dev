@@ -11,9 +11,10 @@
     "lint:fix": "yarn lint --fix",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
-    "prepare": "husky install",
     "typecheck": "tsc --noEmit",
-    "postinstall": "contentlayer build"
+    "generate-sitemap": "next-sitemap",
+    "postinstall": "husky install && contentlayer build",
+    "postbuild": "yarn generate-sitemap"
   },
   "dependencies": {
     "@fontsource/inter": "^4.5.15",
@@ -24,6 +25,7 @@
     "next": "^13.2.4",
     "next-contentlayer": "^0.3.0",
     "next-seo": "^5.15.0",
+    "next-sitemap": "^4.0.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
