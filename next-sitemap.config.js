@@ -11,7 +11,6 @@ module.exports = {
   transform: async (config, path) => ({
     loc: path,
     priority: getPriority(path),
-    lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
   }),
 };
 
