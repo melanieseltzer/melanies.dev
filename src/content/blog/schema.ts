@@ -22,11 +22,10 @@ export const blogSchema = {
     // This ultimately changes the type of the field from `string[]` (in the frontmatter)
     // to `Tag[]` which will be consumed everywhere.
     tags: {
-      type: 'json',
+      type: 'list',
       resolve: doc =>
-        // For some reason, the value of `tags` here is a PlainArr, so we have to
-        // map over the `_array` property instead.
-        // I don't really care to figure out the typing for that :/
+        // For some reason, the actual value of `tags` here is a PlainArr.
+        // I don't really care to figure out the typing for that, hence the ignores :/
         // ref: https://github.com/contentlayerdev/contentlayer/issues/150
 
         /* eslint-disable*/
