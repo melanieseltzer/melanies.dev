@@ -55,6 +55,10 @@ const securityHeaders = [
 const nextConfig = {
   reactStrictMode: true,
 
+  eslint: {
+    dirs: ['src', 'scripts'],
+  },
+
   async headers() {
     return [
       {
