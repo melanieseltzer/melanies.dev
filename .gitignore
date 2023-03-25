@@ -18,6 +18,7 @@
 # generated automatically on each build
 public/robots.txt
 public/sitemap*.xml
+public/feed.xml
 
 # misc
 .DS_Store

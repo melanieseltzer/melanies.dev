@@ -22,5 +22,7 @@ export const siteMetadata = {
   theme: 'system',
   images: {
     socialBanner: SITE_URL + '/images/og-default.jpg',
+    favicon: SITE_URL + '/favicon.ico',
+    logo: SITE_URL + '/images/logo.png',
   },
 };
