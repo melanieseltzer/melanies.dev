@@ -1,4 +1,4 @@
-const EXCLUDE = ['/blog/page/*', '/blog/tags/*'];
+const EXCLUDE = ['/blog/tags/*'];
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
