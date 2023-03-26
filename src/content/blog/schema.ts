@@ -1,6 +1,6 @@
 import { kebabCase } from '../../utils/case';
 import { SchemaFieldDefs } from '../config/types';
-import { getSlugFromFileName } from '../config/utils';
+import { getLastModifiedFromGit, getSlugFromFileName } from '../config/utils';
 
 export const blogSchema = {
   fields: {
@@ -8,13 +8,17 @@ export const blogSchema = {
     summary: { type: 'string', required: true },
     date: { type: 'date', required: true },
     tags: { type: 'list', required: true, of: { type: 'string' } },
-    lastmod: { type: 'date' },
     draft: { type: 'boolean' },
   },
   computedFields: {
     slug: {
       type: 'string',
       resolve: getSlugFromFileName,
+    },
+
+    lastModified: {
+      type: 'string',
+      resolve: doc => getLastModifiedFromGit(doc) || doc.date,
     },
 
     // This takes all the tags defined in the frontmatter (list of strings) and automatically
