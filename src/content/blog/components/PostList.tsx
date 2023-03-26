@@ -38,7 +38,7 @@ export function PostList({ posts }: Props) {
             <dl>
               <dt className="sr-only">Related tags</dt>
               <dd>
-                <TagsList className="" compact tags={tags} />
+                <TagsList compact tags={tags} />
               </dd>
             </dl>
           </article>
