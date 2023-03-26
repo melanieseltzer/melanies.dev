@@ -18,6 +18,8 @@ export default function BlogPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { title, summary, date, lastModified, tags, slug } = post;
 
+  const shouldShowUpdated = formatDate(date) !== formatDate(lastModified);
+
   return (
     <>
       <BlogSEO
@@ -39,7 +41,7 @@ export default function BlogPage({
 
           <div className="absolute top-0 text-base leading-6">
             <dl>
-              <dt className="sr-only">Published on:</dt>
+              <dt className="sr-only">Published on</dt>
               <dd className="text-gray-500 dark:text-gray-400">
                 <time dateTime={date}>{formatDate(date)}</time>
               </dd>
@@ -57,6 +59,18 @@ export default function BlogPage({
         </header>
 
         <MDXComponent source={post.body.code} />
+
+        {shouldShowUpdated && (
+          <>
+            <hr />
+            <dl>
+              <dt className="text-base">Last Updated</dt>
+              <dd className="text-lg text-gray-900 dark:text-gray-400">
+                <time dateTime={lastModified}>{formatDate(lastModified)}</time>
+              </dd>
+            </dl>
+          </>
+        )}
       </article>
     </>
   );
