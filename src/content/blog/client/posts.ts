@@ -21,7 +21,6 @@ const serialize = <T extends CLBlogPost | CLBlogPostMetadata>(
   ({
     ...post,
     draft: post.draft || null,
-    lastmod: post.lastmod || null,
   } as Serialized<T>);
 
 const extractMetadata = (post: CLBlogPost): BlogPostMetadata => {
@@ -30,7 +29,7 @@ const extractMetadata = (post: CLBlogPost): BlogPostMetadata => {
     'summary',
     'date',
     'tags',
-    'lastmod',
+    'lastModified',
     'draft',
     'slug',
   ]);

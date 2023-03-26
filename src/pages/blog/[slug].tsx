@@ -16,7 +16,7 @@ import { formatDate } from '~/utils/date';
 export default function BlogPage({
   post,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { title, summary, date, lastmod, tags, slug } = post;
+  const { title, summary, date, lastModified, tags, slug } = post;
 
   return (
     <>
@@ -26,7 +26,7 @@ export default function BlogPage({
         canonicalUrl={`${siteMetadata.siteUrl}/blog/${slug}`}
         article={{
           publishedTime: date,
-          modifiedTime: lastmod || date,
+          modifiedTime: lastModified,
           tags: tags.map(tag => tag.displayName),
         }}
       />
