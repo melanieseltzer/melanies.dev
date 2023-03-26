@@ -18,7 +18,7 @@ export const blogSchema = {
 
     lastModified: {
       type: 'string',
-      resolve: getLastModifiedFromGit,
+      resolve: doc => getLastModifiedFromGit(doc) || doc.date,
     },
 
     // This takes all the tags defined in the frontmatter (list of strings) and automatically
