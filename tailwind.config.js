@@ -22,6 +22,20 @@ module.exports = {
       typography: theme => ({
         DEFAULT: {
           css: {
+            'h1, h2, h3, h4, h5, h6': {
+              scrollMarginTop: '112px',
+              a: {
+                opacity: 0,
+                marginLeft: 8,
+                fontWeight: 300,
+                textDecoration: 'none',
+              },
+              '&:hover': {
+                a: {
+                  opacity: 1,
+                },
+              },
+            },
             'p, li': {
               color: theme('colors.gray.500'),
             },
