@@ -7,6 +7,7 @@ import { BlogSEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 
 import { getBlogPost, getBlogPosts } from '~/content/blog/client';
+import { PublishedAndReadTime } from '~/content/blog/components/PublishedAndReadTime';
 import { TagsList } from '~/content/blog/components/TagsList';
 import type { BlogPost } from '~/content/blog/types';
 
@@ -16,7 +17,7 @@ import { formatDate } from '~/utils/date';
 export default function BlogPage({
   post,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { title, summary, date, lastModified, tags, slug } = post;
+  const { title, summary, date, lastModified, tags, slug, readingTime } = post;
 
   const shouldShowUpdated = formatDate(date) !== formatDate(lastModified);
 
@@ -39,17 +40,14 @@ export default function BlogPage({
         <header className="mb-12 border-b">
           <h1>{title}</h1>
 
-          <div className="absolute top-0 text-base leading-6">
-            <dl>
-              <dt className="sr-only">Published on</dt>
-              <dd className="text-gray-500 dark:text-gray-400">
-                <time dateTime={date}>{formatDate(date)}</time>
-              </dd>
-            </dl>
-          </div>
+          <PublishedAndReadTime
+            className="absolute top-0"
+            date={date}
+            readingTime={readingTime}
+          />
 
           <dl className="not-prose -mt-4">
-            <dt className="sr-only">Related tags:</dt>
+            <dt className="sr-only">Related tags</dt>
             <dd>
               <TagsList tags={tags} />
             </dd>
