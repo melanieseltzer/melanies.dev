@@ -32,6 +32,7 @@ const extractMetadata = (post: CLBlogPost): BlogPostMetadata => {
     'lastModified',
     'draft',
     'slug',
+    'readingTime',
   ]);
 
   return serialize(metadata);

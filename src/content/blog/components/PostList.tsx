@@ -2,10 +2,9 @@ import { Heading } from '~/components/Heading';
 import { Link } from '~/components/Link';
 import { Paragraph } from '~/components/Paragraph';
 
-import { formatDate } from '~/utils/date';
-
 import type { BlogPostMetadata } from '../types';
 
+import { PublishedAndReadTime } from './PublishedAndReadTime';
 import { TagsList } from './TagsList';
 
 type Props = {
@@ -19,34 +18,27 @@ export function PostList({ posts }: Props) {
 
   return (
     <ul>
-      {posts.map(({ slug, title, summary, date, tags }) => (
+      {posts.map(({ slug, title, summary, date, tags, readingTime }) => (
         <li key={slug}>
-          <article className="flex flex-col justify-between gap-4 border-t py-6 md:flex-row">
-            <div>
-              <Heading size="sm" as="h3" className="mb-2">
+          <article className="border-t py-6">
+            <Heading size="sm" as="h3" className="mb-1">
+              <Link href={`/blog/${slug}`} className="hover:underline">
                 {title}
-              </Heading>
-
-              <Paragraph>{summary}</Paragraph>
-
-              <Link
-                href={`/blog/${slug}`}
-                className="font-medium text-primary-700 transition-colors hover:text-primary-800"
-              >
-                Read more <span className="sr-only">, {title}</span>
-                <span aria-hidden="true">&rarr;</span>
               </Link>
-            </div>
+            </Heading>
 
-            <dl className="mt-4 flex flex-col gap-2 md:mt-0 md:items-end">
-              <dt className="sr-only">Published on:</dt>
-              <dd className="whitespace-nowrap text-base leading-6 text-gray-500 dark:text-gray-400">
-                <time dateTime={date}>{formatDate(date)}</time>
-              </dd>
+            <PublishedAndReadTime
+              className="mb-4"
+              date={date}
+              readingTime={readingTime}
+            />
 
-              <dt className="sr-only">Related tags:</dt>
+            <Paragraph>{summary}</Paragraph>
+
+            <dl>
+              <dt className="sr-only">Related tags</dt>
               <dd>
-                <TagsList className="md:justify-end" compact tags={tags} />
+                <TagsList compact tags={tags} />
               </dd>
             </dl>
           </article>
