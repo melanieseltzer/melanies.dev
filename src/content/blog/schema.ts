@@ -1,3 +1,5 @@
+import readingTime from 'reading-time';
+
 import { kebabCase } from '../../utils/case';
 import { SchemaFieldDefs } from '../config/types';
 import { getLastModifiedFromGit, getSlugFromFileName } from '../config/utils';
@@ -11,16 +13,18 @@ export const blogSchema = {
     draft: { type: 'boolean' },
   },
   computedFields: {
+    readingTime: {
+      type: 'string',
+      resolve: doc => readingTime(doc.body.raw).text,
+    },
     slug: {
       type: 'string',
       resolve: getSlugFromFileName,
     },
-
     lastModified: {
       type: 'string',
       resolve: doc => getLastModifiedFromGit(doc) || doc.date,
     },
-
     // This takes all the tags defined in the frontmatter (list of strings) and automatically
     // derives slugs for them (saving us having to do it each time we consume them).
     // This ultimately changes the type of the field from `string[]` (in the frontmatter)
