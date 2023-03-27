@@ -19,7 +19,6 @@ export const siteMetadata = {
     'Developer blog and home on the web of Melanie Seltzer, a senior software engineer specializing in front-end development.',
   locale: 'en-US',
   timezone: 'America/Los_Angeles',
-  theme: 'system',
   images: {
     socialBanner: SITE_URL + '/images/og-default.jpg',
     favicon: SITE_URL + '/favicon.ico',
