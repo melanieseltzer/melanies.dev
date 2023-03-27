@@ -6,6 +6,7 @@ import { DefaultSEO } from '~/components/seo';
 
 import '@fontsource/inter/variable-full.css';
 import '~/styles/globals.css';
+import '@code-hike/mdx/dist/index.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

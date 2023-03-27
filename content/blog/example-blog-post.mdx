@@ -20,6 +20,23 @@ The `@tailwindcss/typography` plugin is our attempt to give you what you _actual
 
 It adds a new `prose` class that you can slap on any block of vanilla HTML content and turn it into a beautiful, well-formatted document:
 
+<CH.Code>
+```js app.js mark=2
+function lorem(ipsum, dolor = 1) {
+  const sit = ipsum == null ? 0 : ipsum.sit;
+  dolor = sit - amet(dolor);
+  return sit ? consectetur(ipsum) : [];
+}
+```
+```js app2.js focus=2
+function lorem(ipsum, dolor = 1) {
+  const sit = ipsum == null ? 0 : ipsum.sit;
+  dolor = sit - amet(dolor);
+  return sit ? consectetur(ipsum) : [];
+}
+```
+</CH.Code>
+
 ```html
 <article className="prose">
   <h1>Garlic bread with cheese: What the science tells us</h1>
