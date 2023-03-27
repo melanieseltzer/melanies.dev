@@ -18,6 +18,7 @@
     "postbuild": "yarn generate-sitemap && yarn generate-rss"
   },
   "dependencies": {
+    "@code-hike/mdx": "^0.8.1",
     "@fontsource/inter": "^4.5.15",
     "@headlessui/react": "^1.7.12",
     "clsx": "^1.2.1",

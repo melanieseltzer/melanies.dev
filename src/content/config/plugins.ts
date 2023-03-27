@@ -1,3 +1,6 @@
+import { createRequire } from 'module';
+
+import { remarkCodeHike } from '@code-hike/mdx';
 import { s } from 'hastscript';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePresetMinify from 'rehype-preset-minify';
@@ -5,7 +8,20 @@ import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import type { Pluggable } from 'unified';
 
-export const remarkPlugins: Pluggable[] = [remarkGfm];
+const require = createRequire(import.meta.url);
+const theme = require('shiki/themes/dracula.json') as unknown;
+
+export const remarkPlugins: Pluggable[] = [
+  remarkGfm,
+  [
+    remarkCodeHike,
+    {
+      theme,
+      lineNumbers: true,
+      showCopyButton: true,
+    },
+  ],
+];
 
 export const rehypePlugins: Pluggable[] = [
   rehypeSlug,
