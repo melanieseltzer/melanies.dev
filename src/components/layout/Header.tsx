@@ -3,6 +3,7 @@ import { clsx } from 'clsx';
 import { Link } from '~/components/Link';
 import { DesktopNav } from '~/components/navigation/DesktopNav';
 import { MobileNav } from '~/components/navigation/MobileNav';
+import { ThemeSwitch } from '~/components/ThemeSwitch';
 
 import { useScrollPosition } from '~/hooks/useScrollPosition';
 
@@ -24,9 +25,13 @@ export function Header() {
           <Logo />
         </Link>
 
-        <DesktopNav />
+        <div className="flex items-center gap-4 sm:gap-6">
+          <DesktopNav />
 
-        <MobileNav />
+          <ThemeSwitch />
+
+          <MobileNav />
+        </div>
       </MaxWidthContainer>
     </header>
   );
