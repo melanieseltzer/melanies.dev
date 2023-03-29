@@ -31,7 +31,7 @@ export const rehypePlugins: Pluggable[] = [
       behavior: 'append',
       properties: {
         class:
-          'autolink ml-2 font-light text-gray-400 no-underline opacity-0 transition-opacity hover:text-gray-500 dark:hover:text-gray-300',
+          'autolink ml-2 font-light text-gray-400 dark:text-gray-400 no-underline opacity-0 transition-opacity hover:text-gray-500 dark:hover:text-gray-300',
         ariaLabel: 'Anchor',
       },
       content: [

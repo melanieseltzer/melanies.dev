@@ -13,13 +13,34 @@ import clsx from 'clsx';
 import { Badge } from '~/components/Badge';
 
 const techIconMap: Record<string, { icon: IconType; accentColor: string }> = {
-  React: { icon: ReactIcon, accentColor: 'hover:text-[#61DAFB]' },
-  TypeScript: { icon: TSIcon, accentColor: 'hover:text-[#3178c6]' },
-  JavaScript: { icon: JSIcon, accentColor: 'hover:text-[#f1e05a]' },
-  CSS: { icon: CSSIcon, accentColor: 'hover:text-[#563d7c]' },
-  'Tailwind CSS': { icon: TailwindIcon, accentColor: 'hover:text-[#06B6D4]' },
-  'Next.js': { icon: NextJSIcon, accentColor: 'hover:text-[#000]' },
-  VSCode: { icon: VSCodeIcon, accentColor: 'hover:text-[#007ACC]' },
+  React: {
+    icon: ReactIcon,
+    accentColor: 'hover:text-[#61DAFB] dark:hover:text-[#61DAFB]',
+  },
+  TypeScript: {
+    icon: TSIcon,
+    accentColor: 'hover:text-[#3178c6] dark:hover:text-[#3178c6]',
+  },
+  JavaScript: {
+    icon: JSIcon,
+    accentColor: 'hover:text-[#f1e05a] dark:hover:text-[#f1e05a]',
+  },
+  CSS: {
+    icon: CSSIcon,
+    accentColor: 'hover:text-[#563d7c] dark:hover:text-[#563d7c]',
+  },
+  'Tailwind CSS': {
+    icon: TailwindIcon,
+    accentColor: 'hover:text-[#06B6D4] dark:hover:text-[#06B6D4]',
+  },
+  'Next.js': {
+    icon: NextJSIcon,
+    accentColor: 'hover:text-[#000] dark:hover:text-[#fff]',
+  },
+  VSCode: {
+    icon: VSCodeIcon,
+    accentColor: 'hover:text-[#007ACC] dark:hover:text-[#007ACC]',
+  },
 };
 
 type Props = {
@@ -40,7 +61,7 @@ export function TechStack({
       <span
         className={clsx(
           showLabel
-            ? 'font-sm mb-1 inline-block text-gray-600 dark:text-white'
+            ? 'font-sm mb-1 inline-block text-gray-600 dark:text-gray-400'
             : 'sr-only'
         )}
       >
@@ -62,7 +83,7 @@ export function TechStack({
                 <Icon
                   aria-hidden="true"
                   size={size === 'sm' ? 20 : 24}
-                  className={`text-gray-500 transition-colors dark:text-white ${accentColor}`}
+                  className={`text-gray-500 transition-colors duration-300 dark:text-gray-400 ${accentColor}`}
                 />
                 <span className="sr-only">{name}</span>
               </li>

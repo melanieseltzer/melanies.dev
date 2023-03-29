@@ -3,6 +3,7 @@ import { ParsedUrlQuery } from 'querystring';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 
 import { MDXComponent } from '~/components/MDXComponent';
+import { Prose } from '~/components/Prose';
 import { BlogSEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 
@@ -36,8 +37,8 @@ export default function BlogPage({
 
       <Spacer size="16" />
 
-      <article className="prose prose-lg prose-slate relative mx-auto pt-10">
-        <header className="mb-12 border-b">
+      <Prose as="article" className="relative mx-auto pt-10">
+        <header className="mb-12 border-b dark:border-gray-700">
           <h1>{title}</h1>
 
           <PublishedAndReadTime
@@ -69,7 +70,7 @@ export default function BlogPage({
             </dl>
           </>
         )}
-      </article>
+      </Prose>
     </>
   );
 }

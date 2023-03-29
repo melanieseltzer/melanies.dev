@@ -56,7 +56,7 @@ export default function ProjectsIndexPage({
                       <>
                         <Link
                           href={`/projects/${slug}`}
-                          className="font-medium text-primary-700 transition-colors hover:text-primary-800"
+                          className="font-medium text-primary-700 transition-colors hover:text-primary-800 dark:text-primary-500 dark:hover:text-primary-600"
                         >
                           Read more{' '}
                           <span className="sr-only">about the project</span>{' '}

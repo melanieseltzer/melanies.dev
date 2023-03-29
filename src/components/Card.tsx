@@ -13,7 +13,7 @@ export function Card({
   ...props
 }: CardProps) {
   const classes = twMerge(
-    'block rounded-md border p-4 sm:p-8 border-gray-200 dark:border-gray-700',
+    'block rounded border p-4 sm:p-8 border-gray-200 dark:border-gray-800',
     className
   );
 

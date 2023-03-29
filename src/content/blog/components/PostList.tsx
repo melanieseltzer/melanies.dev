@@ -20,7 +20,7 @@ export function PostList({ posts }: Props) {
     <ul>
       {posts.map(({ slug, title, summary, date, tags, readingTime }) => (
         <li key={slug}>
-          <article className="border-t py-6">
+          <article className="border-t py-6 dark:border-gray-800">
             <Heading size="sm" as="h3" className="mb-1">
               <Link href={`/blog/${slug}`} className="hover:underline">
                 {title}

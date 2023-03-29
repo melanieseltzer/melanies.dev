@@ -10,7 +10,7 @@ export function DesktopNav() {
           <li key={route.title}>
             <Link
               href={route.href}
-              className="rounded-md px-3 py-2 text-base font-medium text-gray-600 transition-colors duration-300 hover:bg-neutral-100 hover:text-gray-900"
+              className="rounded px-3 py-2 text-base font-medium text-gray-600 transition-colors hover:bg-neutral-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white"
             >
               {route.title}
             </Link>

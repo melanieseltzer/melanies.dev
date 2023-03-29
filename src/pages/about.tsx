@@ -3,6 +3,7 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { Image } from '~/components/Image';
 import { MDXComponent } from '~/components/MDXComponent';
 import { PageIntro } from '~/components/PageIntro';
+import { Prose } from '~/components/Prose';
 import { SEO } from '~/components/seo';
 import { TechStack } from '~/components/TechStack';
 
@@ -52,9 +53,9 @@ export default function AboutPage({
           </div>
         </div>
 
-        <div className="no-autolink-headings prose prose-lg prose-slate">
+        <Prose className="no-autolink-headings">
           <MDXComponent source={content.body.code} />
-        </div>
+        </Prose>
       </div>
     </>
   );

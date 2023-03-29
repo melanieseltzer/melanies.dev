@@ -23,6 +23,9 @@ module.exports = {
       typography: theme => ({
         DEFAULT: {
           css: {
+            strong: {
+              color: 'inherit',
+            },
             'h1, h2, h3, h4, h5, h6': {
               // so heading links aren't obscured by the sticky page header
               scrollMarginTop: '112px',
@@ -41,9 +44,6 @@ module.exports = {
               '&:hover': {
                 color: theme('colors.primary.800'),
               },
-            },
-            pre: {
-              backgroundColor: theme('colors.gray.800'),
             },
             blockquote: {
               fontWeight: 400,
@@ -71,7 +71,32 @@ module.exports = {
             'code::after': {
               content: 'none',
             },
-            strong: { color: theme('colors.gray.600') },
+          },
+        },
+        dark: {
+          css: {
+            'p, li': {
+              color: theme('colors.gray.400'),
+            },
+            a: {
+              color: theme('colors.primary.500'),
+              '&:hover': {
+                color: theme('colors.primary.600'),
+              },
+            },
+            blockquote: {
+              padding: '1.25rem',
+              color: theme('colors.white'),
+              backgroundColor: theme('colors.gray.800'),
+              borderLeftColor: theme('colors.secondary.700'),
+              code: {
+                backgroundColor: theme('colors.secondary.700'),
+              },
+            },
+            code: {
+              color: theme('colors.white'),
+              backgroundColor: theme('colors.gray.800'),
+            },
           },
         },
       }),

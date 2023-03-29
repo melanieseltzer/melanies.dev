@@ -4,6 +4,7 @@ import { RxDividerVertical as Separator } from 'react-icons/rx';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 
 import { MDXComponent } from '~/components/MDXComponent';
+import { Prose } from '~/components/Prose';
 import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 import { TechStack } from '~/components/TechStack';
@@ -24,8 +25,8 @@ export default function ProjectPage({
 
       <Spacer size="16" />
 
-      <article className="prose prose-lg prose-slate mx-auto">
-        <header className="mb-12 border-b pb-8">
+      <Prose as="article" className="mx-auto">
+        <header className="mb-12 border-b pb-8 dark:border-gray-700">
           <h1>{title}</h1>
 
           <p className="lead">{summary}</p>
@@ -44,7 +45,7 @@ export default function ProjectPage({
         </header>
 
         <MDXComponent source={project.body.code} />
-      </article>
+      </Prose>
     </>
   );
 }

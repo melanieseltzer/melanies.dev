@@ -5,7 +5,7 @@ export function TerminalWindow() {
     <div
       role="img"
       aria-label="Illustration of my terminal window which uses Sindre Sorhus' Pure prompt theme"
-      className="h-72 w-full max-w-md rounded-lg border bg-gray-900 p-4 font-mono text-xl font-semibold shadow-2xl shadow-secondary-500/50 dark:bg-gray-800"
+      className="h-72 w-full max-w-md rounded-lg border bg-gray-900 p-4 font-mono text-xl font-semibold shadow-2xl shadow-secondary-500/50 dark:border-gray-700 dark:bg-gray-800"
     >
       <div className="flex gap-2 pb-4">
         <WindowButton color="red" />
