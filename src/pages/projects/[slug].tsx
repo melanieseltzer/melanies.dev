@@ -29,8 +29,6 @@ export default function ProjectPage({
         <header className="mb-12 border-b pb-8 dark:border-gray-700">
           <h1>{title}</h1>
 
-          <p className="lead">{summary}</p>
-
           <div className="not-prose flex flex-wrap items-center gap-4">
             <div className="flex flex-wrap gap-2">
               {demoUrl && <DemoButton href={demoUrl} />}
@@ -42,6 +40,8 @@ export default function ProjectPage({
 
             <TechStack tech={techStack} />
           </div>
+
+          <p className="lead">{summary}</p>
         </header>
 
         <MDXComponent source={project.body.code} />
