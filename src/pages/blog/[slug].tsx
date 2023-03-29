@@ -37,7 +37,7 @@ export default function BlogPage({
 
       <Spacer size="16" />
 
-      <Prose as="article" className="relative mx-auto pt-10">
+      <Prose autoLinkHeadings as="article" className="relative mx-auto pt-10">
         <header className="mb-12 border-b dark:border-gray-700">
           <h1>{title}</h1>
 

@@ -25,7 +25,7 @@ export default function ProjectPage({
 
       <Spacer size="16" />
 
-      <Prose as="article" className="mx-auto">
+      <Prose autoLinkHeadings as="article" className="mx-auto">
         <header className="mb-12 border-b pb-8 dark:border-gray-700">
           <h1>{title}</h1>
 

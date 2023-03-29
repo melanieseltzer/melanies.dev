@@ -53,7 +53,7 @@ export default function AboutPage({
           </div>
         </div>
 
-        <Prose className="no-autolink-headings">
+        <Prose>
           <MDXComponent source={content.body.code} />
         </Prose>
       </div>
