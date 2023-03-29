@@ -1,6 +1,7 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 
 import { Card } from '~/components/Card';
+import { GradientText } from '~/components/GradientText';
 import { Heading } from '~/components/Heading';
 import { Link } from '~/components/Link';
 import { PageIntro } from '~/components/PageIntro';
@@ -58,9 +59,13 @@ export default function ProjectsIndexPage({
                           href={`/projects/${slug}`}
                           className="font-medium text-primary-700 transition-colors hover:text-primary-800 dark:text-primary-500 dark:hover:text-primary-600"
                         >
-                          Read more{' '}
-                          <span className="sr-only">about the project</span>{' '}
-                          <span aria-hidden="true">&rarr;</span>
+                          <GradientText>
+                            Read more
+                            <span className="sr-only">
+                              about the project
+                            </span>{' '}
+                            <span aria-hidden="true">&rarr;</span>{' '}
+                          </GradientText>
                         </Link>
                         <Spacer size="4" />
                       </>

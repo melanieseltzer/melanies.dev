@@ -16,7 +16,7 @@ const sizes = {
 export function Badge({ children, href, size = 'lg' }: Props) {
   const classes = clsx(
     'rounded bg-primary-50 text-primary-700 dark:bg-primary-700 dark:text-white',
-    href && 'hover:bg-primary-100',
+    href && 'hover:bg-primary-100 dark:hover:bg-primary-800',
     sizes[size]
   );
 

@@ -39,6 +39,7 @@ export default function AboutPage({
             />
 
             <TechStack
+              className="flex-col gap-1"
               size="lg"
               label="Current fave tech/tools:"
               showLabel
