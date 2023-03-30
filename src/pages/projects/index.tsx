@@ -41,17 +41,17 @@ export default function ProjectsIndexPage({
                 <li key={title}>
                   <Card
                     as="article"
-                    className="h-full transition-all hover:border-gray-300"
+                    className="h-full transition-all hover:border-gray-300 dark:hover:border-gray-700"
                   >
                     <Heading size="sm" as="h3" className="mb-2">
                       {title}
                     </Heading>
 
+                    <Paragraph>{summary}</Paragraph>
+
                     <TechStack tech={techStack} />
 
                     <Spacer size="4" />
-
-                    <Paragraph>{summary}</Paragraph>
 
                     {hasMoreContent ? (
                       <>

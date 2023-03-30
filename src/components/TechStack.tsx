@@ -16,31 +16,31 @@ import { clsxm } from '~/utils/clsxm';
 const techIconMap: Record<string, { icon: IconType; color: string }> = {
   React: {
     icon: ReactIcon,
-    color: 'text-[#0B7EA3] dark:text-[#61DAFB]',
+    color: 'hover:text-[#0B7EA3] hover:dark:text-[#61DAFB]',
   },
   TypeScript: {
     icon: TSIcon,
-    color: 'text-[#3178c6] dark:text-[#3178c6]',
+    color: 'hover:text-[#3178c6] hover:dark:text-[#3178c6]',
   },
   JavaScript: {
     icon: JSIcon,
-    color: 'text-[#f1e05a] dark:text-[#f1e05a]',
+    color: 'hover:text-[#f1e05a] hover:dark:text-[#f1e05a]',
   },
   CSS: {
     icon: CSSIcon,
-    color: 'text-[#563d7c] dark:text-[#563d7c]',
+    color: 'hover:text-[#2566F1] hover:dark:text-[#2566F1]',
   },
   'Tailwind CSS': {
     icon: TailwindIcon,
-    color: 'text-[#06B6D4] dark:text-[#06B6D4]',
+    color: 'hover:text-[#06B6D4] hover:dark:text-[#06B6D4]',
   },
   'Next.js': {
     icon: NextJSIcon,
-    color: 'text-[#000] dark:text-[#fff]',
+    color: 'hover:text-[#000] hover:dark:text-white',
   },
   VSCode: {
     icon: VSCodeIcon,
-    color: 'text-[#007ACC] dark:text-[#007ACC]',
+    color: 'hover:text-[#007ACC] hover:dark:text-[#007ACC]',
   },
 };
 
@@ -86,7 +86,7 @@ export function TechStack({
                 <Icon
                   aria-hidden="true"
                   size={size === 'sm' ? 20 : 24}
-                  className={`transition-colors duration-300 ${color}`}
+                  className={`text-gray-500 transition-colors dark:text-gray-300 ${color}`}
                 />
                 <span className="sr-only">{name}</span>
               </li>

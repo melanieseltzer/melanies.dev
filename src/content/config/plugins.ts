@@ -9,7 +9,7 @@ import remarkGfm from 'remark-gfm';
 import type { Pluggable } from 'unified';
 
 const require = createRequire(import.meta.url);
-const theme = require('shiki/themes/dracula.json') as unknown;
+const theme = require('shiki/themes/github-dark.json') as unknown;
 
 export const remarkPlugins: Pluggable[] = [
   remarkGfm,
