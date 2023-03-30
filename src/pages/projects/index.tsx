@@ -1,3 +1,4 @@
+import { RxDividerVertical as Separator } from 'react-icons/rx';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 
 import { Card } from '~/components/Card';
@@ -41,7 +42,7 @@ export default function ProjectsIndexPage({
                 <li key={title}>
                   <Card
                     as="article"
-                    className="h-full transition-all hover:border-gray-300 dark:hover:border-gray-700"
+                    className="h-full hover:border-gray-300 hover:transition-colors hover:duration-300 dark:hover:border-gray-700"
                   >
                     <Heading size="sm" as="h3" className="mb-2">
                       {title}
@@ -49,27 +50,34 @@ export default function ProjectsIndexPage({
 
                     <Paragraph>{summary}</Paragraph>
 
-                    <TechStack tech={techStack} />
+                    <div className="flex flex-wrap items-center gap-2">
+                      <TechStack tech={techStack} />
 
-                    <Spacer size="4" />
+                      {hasMoreContent ? (
+                        <>
+                          <Separator
+                            aria-hidden="true"
+                            size={15}
+                            className="text-gray-400"
+                          />
 
-                    {hasMoreContent ? (
-                      <>
-                        <Link
-                          href={`/projects/${slug}`}
-                          className="font-medium text-primary-700 transition-colors hover:text-primary-800 dark:text-primary-500 dark:hover:text-primary-600"
-                        >
-                          <GradientText>
-                            Read more
-                            <span className="sr-only">
-                              about the project
-                            </span>{' '}
-                            <span aria-hidden="true">&rarr;</span>{' '}
-                          </GradientText>
-                        </Link>
-                        <Spacer size="4" />
-                      </>
-                    ) : null}
+                          <Link
+                            href={`/projects/${slug}`}
+                            className="font-medium"
+                          >
+                            <GradientText>
+                              Read more
+                              <span className="sr-only">
+                                about the project
+                              </span>{' '}
+                              <span aria-hidden="true">&rarr;</span>{' '}
+                            </GradientText>
+                          </Link>
+                        </>
+                      ) : null}
+                    </div>
+
+                    <Spacer size="6" />
 
                     <div className="flex flex-wrap gap-2">
                       {demoUrl && <DemoButton href={demoUrl} />}

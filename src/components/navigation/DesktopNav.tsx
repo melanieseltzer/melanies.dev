@@ -7,8 +7,7 @@ import { clsxm } from '~/utils/clsxm';
 import { routes } from './routes';
 
 export function DesktopNav() {
-  const router = useRouter();
-  const currentRoute = router.pathname;
+  const { pathname: currentRoute } = useRouter();
 
   return (
     <nav className="hidden sm:block">
@@ -21,9 +20,9 @@ export function DesktopNav() {
               <Link
                 href={route.href}
                 className={clsxm(
-                  'rounded px-3 py-2 text-lg font-medium text-gray-600 transition-colors hover:bg-neutral-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white',
+                  'rounded px-3 py-2 text-base font-semibold text-gray-600 hover:bg-neutral-100 hover:text-gray-900 hover:transition-colors hover:duration-300 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white',
                   active &&
-                    'text-primary-700 hover:text-primary-700 dark:text-white dark:hover:text-white'
+                    'text-primary-700 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-500'
                 )}
               >
                 {route.title}

@@ -86,7 +86,7 @@ export function TechStack({
                 <Icon
                   aria-hidden="true"
                   size={size === 'sm' ? 20 : 24}
-                  className={`text-gray-500 transition-colors dark:text-gray-300 ${color}`}
+                  className={`text-gray-500 hover:transition-colors hover:duration-300 dark:text-gray-300 ${color}`}
                 />
                 <span className="sr-only">{name}</span>
               </li>
