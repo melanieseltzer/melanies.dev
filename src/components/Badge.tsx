@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsxm } from '~/utils/clsxm';
 
 import { Link } from './Link';
 
@@ -14,9 +14,10 @@ const sizes = {
 };
 
 export function Badge({ children, href, size = 'lg' }: Props) {
-  const classes = clsx(
-    'rounded bg-primary-50 text-primary-700',
-    href && 'hover:bg-primary-100',
+  const classes = clsxm(
+    'font-semibold rounded-md bg-primary-50 text-primary-700 hover:transition-colors hover:duration-300 dark:bg-gray-800 dark:text-primary-400 border border-primary-50 dark:border-primary-700',
+    href &&
+      'hover:bg-primary-100 hover:border-primary-100 dark:hover:border-primary-600',
     sizes[size]
   );
 

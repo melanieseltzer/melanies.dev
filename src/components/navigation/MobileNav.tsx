@@ -15,17 +15,16 @@ export function MobileNav() {
 
   return (
     <div className="flex items-center sm:hidden">
-      <button aria-label="Open Menu" onClick={() => setIsOpen(true)}>
+      <button
+        aria-label="Open Menu"
+        className="rounded p-2 text-gray-600 hover:bg-neutral-100 hover:text-gray-900 hover:transition-colors hover:duration-300 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white"
+        onClick={() => setIsOpen(true)}
+      >
         <OpenIcon size={26} />
       </button>
 
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
-        <div
-          className="fixed inset-0 z-30 bg-black/20 backdrop-blur-sm"
-          aria-hidden="true"
-        />
-
-        <Dialog.Panel className="fixed top-0 right-0 z-50 flex h-full w-full flex-col overflow-y-scroll bg-white p-6 text-gray-900 dark:bg-gray-900 dark:text-white">
+        <Dialog.Panel className="fixed top-0 right-0 z-50 flex h-full w-full flex-col overflow-y-scroll bg-white p-6 text-gray-900 dark:bg-gray-900 dark:text-gray-300">
           <button
             className="ml-auto"
             aria-label="Close Menu"

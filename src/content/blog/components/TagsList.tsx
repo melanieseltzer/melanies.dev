@@ -1,7 +1,7 @@
-import clsx from 'clsx';
-
 import { Badge } from '~/components/Badge';
 import { Paragraph } from '~/components/Paragraph';
+
+import { clsxm } from '~/utils/clsxm';
 
 import { Tag } from '../types';
 
@@ -16,7 +16,11 @@ export function TagsList({ tags, compact, className }: Props) {
 
   return (
     <ul
-      className={clsx('flex flex-wrap', compact ? 'gap-2' : 'gap-3', className)}
+      className={clsxm(
+        'flex flex-wrap',
+        compact ? 'gap-2' : 'gap-3',
+        className
+      )}
     >
       {tags.map(({ slug, displayName }) => (
         <li key={slug}>

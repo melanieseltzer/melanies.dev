@@ -1,6 +1,7 @@
 import { Heading } from '~/components/Heading';
 import { Link } from '~/components/Link';
 import { Paragraph } from '~/components/Paragraph';
+import { Spacer } from '~/components/Spacer';
 
 import type { BlogPostMetadata } from '../types';
 
@@ -20,7 +21,7 @@ export function PostList({ posts }: Props) {
     <ul>
       {posts.map(({ slug, title, summary, date, tags, readingTime }) => (
         <li key={slug}>
-          <article className="border-t py-6">
+          <article className="border-t py-6 dark:border-gray-800">
             <Heading size="sm" as="h3" className="mb-1">
               <Link href={`/blog/${slug}`} className="hover:underline">
                 {title}
@@ -28,12 +29,10 @@ export function PostList({ posts }: Props) {
             </Heading>
 
             <PublishedAndReadTime
-              className="mb-4"
+              className="mb-2"
               date={date}
               readingTime={readingTime}
             />
-
-            <Paragraph>{summary}</Paragraph>
 
             <dl>
               <dt className="sr-only">Related tags</dt>
@@ -41,6 +40,10 @@ export function PostList({ posts }: Props) {
                 <TagsList compact tags={tags} />
               </dd>
             </dl>
+
+            <Spacer size="4" />
+
+            <Paragraph>{summary}</Paragraph>
           </article>
         </li>
       ))}

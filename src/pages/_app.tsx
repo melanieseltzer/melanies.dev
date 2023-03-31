@@ -1,5 +1,6 @@
 import { Provider as ReactWrapBalancerProvider } from 'react-wrap-balancer';
 import type { AppProps } from 'next/app';
+import { ThemeProvider } from 'next-themes';
 
 import { PageLayout } from '~/components/layout/PageLayout';
 import { DefaultSEO } from '~/components/seo';
@@ -14,9 +15,11 @@ export default function App({ Component, pageProps }: AppProps) {
       <DefaultSEO />
 
       <ReactWrapBalancerProvider>
-        <PageLayout>
-          <Component {...pageProps} />
-        </PageLayout>
+        <ThemeProvider attribute="class">
+          <PageLayout>
+            <Component {...pageProps} />
+          </PageLayout>
+        </ThemeProvider>
       </ReactWrapBalancerProvider>
     </>
   );

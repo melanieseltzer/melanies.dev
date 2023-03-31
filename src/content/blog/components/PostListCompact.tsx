@@ -16,7 +16,7 @@ export function PostListCompact({ posts }: Props) {
   }
 
   return (
-    <ul className="divide-y">
+    <ul className="divide-y dark:divide-gray-800">
       {posts.map(({ slug, title, date }) => (
         <li key={slug}>
           <article>

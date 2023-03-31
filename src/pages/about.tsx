@@ -3,6 +3,7 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { Image } from '~/components/Image';
 import { MDXComponent } from '~/components/MDXComponent';
 import { PageIntro } from '~/components/PageIntro';
+import { Prose } from '~/components/Prose';
 import { SEO } from '~/components/seo';
 import { TechStack } from '~/components/TechStack';
 
@@ -38,6 +39,7 @@ export default function AboutPage({
             />
 
             <TechStack
+              className="flex-col gap-1"
               size="lg"
               label="Current fave tech/tools:"
               showLabel
@@ -52,9 +54,9 @@ export default function AboutPage({
           </div>
         </div>
 
-        <div className="no-autolink-headings prose prose-lg prose-slate">
+        <Prose>
           <MDXComponent source={content.body.code} />
-        </div>
+        </Prose>
       </div>
     </>
   );
