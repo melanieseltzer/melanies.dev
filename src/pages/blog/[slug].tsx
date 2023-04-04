@@ -62,9 +62,11 @@ export default function BlogPage({
         {shouldShowUpdated && (
           <>
             <hr />
-            <dl>
-              <dt className="text-base">Last Updated</dt>
-              <dd className="text-lg text-gray-900 dark:text-gray-400">
+            <dl className="font-semibold">
+              <dt className="text-sm uppercase text-gray-500 dark:text-gray-400">
+                Last Updated
+              </dt>
+              <dd className="text-xl text-gray-900 dark:text-gray-300">
                 <time dateTime={lastModified}>{formatDate(lastModified)}</time>
               </dd>
             </dl>
