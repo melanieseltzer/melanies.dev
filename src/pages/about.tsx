@@ -25,7 +25,7 @@ export default function AboutPage({
 
       <PageIntro
         heading="Hey there 👋 I'm Melanie"
-        subheading="Software Engineer, perpetual tinkerer and relentlessly curious."
+        subheading="Software Engineer, perpetual tinkerer, and relentlessly curious."
       />
 
       <div className="flex flex-wrap justify-between gap-8">
