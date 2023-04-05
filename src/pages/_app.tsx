@@ -3,8 +3,10 @@ import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'next-themes';
 
 import { PageLayout } from '~/components/layout/PageLayout';
+import { RouteProgressBar } from '~/components/navigation/RouteProgressBar';
 import { DefaultSEO } from '~/components/seo';
 
+import '~/styles/nprogress.css';
 import '@fontsource/inter/variable-full.css';
 import '~/styles/globals.css';
 import '@code-hike/mdx/dist/index.css';
@@ -13,6 +15,8 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <DefaultSEO />
+
+      <RouteProgressBar />
 
       <ReactWrapBalancerProvider>
         <ThemeProvider attribute="class">
