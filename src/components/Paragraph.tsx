@@ -9,7 +9,7 @@ type Props = {
 
 const styles = {
   default: 'text-gray-500 dark:text-gray-400',
-  lead: 'text-lg font-light text-gray-500 dark:text-gray-400 md:text-xl',
+  lead: 'text-lg font-medium text-gray-500 dark:text-gray-400 md:text-xl',
 };
 
 export function Paragraph({ className = '', lead = false, ...props }: Props) {
