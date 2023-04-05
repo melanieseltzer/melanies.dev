@@ -1,3 +1,6 @@
+/* Taken from https://github.com/rstacruz/nprogress/blob/master/nprogress.css */
+/* Trimmed down for our use case */
+
 #nprogress {
   pointer-events: none;
 }
