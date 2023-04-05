@@ -1,9 +1,9 @@
 import { Provider as ReactWrapBalancerProvider } from 'react-wrap-balancer';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'next-themes';
-import ProgressBar from 'nextjs-progressbar';
 
 import { PageLayout } from '~/components/layout/PageLayout';
+import { RouteProgressBar } from '~/components/navigation/RouteProgressBar';
 import { DefaultSEO } from '~/components/seo';
 
 import '~/styles/nprogress.css';
@@ -16,12 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <DefaultSEO />
 
-      <ProgressBar
-        options={{ showSpinner: false }}
-        // Necessary to minify the CSS :/
-        // ref: https://github.com/apal21/nextjs-progressbar/pull/85
-        transformCSS={() => <></>}
-      />
+      <RouteProgressBar />
 
       <ReactWrapBalancerProvider>
         <ThemeProvider attribute="class">
