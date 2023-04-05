@@ -18,13 +18,13 @@ export default function AboutPage({
   return (
     <>
       <SEO
-        title="About"
+        title="About Melanie Seltzer"
         description="Software engineer and perpetual tinkerer specializing in front-end JavaScript development."
       />
 
       <PageIntro
-        heading="About Melanie Seltzer"
-        subheading="Software engineer and perpetual tinkerer specializing in front-end JavaScript development."
+        heading="Hey there 👋 I'm Melanie"
+        subheading="I'm a software engineer and perpetual tinkerer specializing in front-end JavaScript development."
       />
 
       <div className="flex flex-wrap justify-between gap-8">
