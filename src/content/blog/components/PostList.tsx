@@ -28,18 +28,16 @@ export function PostList({ posts }: Props) {
               </Link>
             </Heading>
 
-            <PublishedAndReadTime
-              className="mb-2"
-              date={date}
-              readingTime={readingTime}
-            />
+            <div className="flex flex-wrap items-center gap-4">
+              <PublishedAndReadTime date={date} readingTime={readingTime} />
 
-            <dl>
-              <dt className="sr-only">Related tags</dt>
-              <dd>
-                <TagsList compact tags={tags} />
-              </dd>
-            </dl>
+              <dl>
+                <dt className="sr-only">Related tags</dt>
+                <dd>
+                  <TagsList compact tags={tags} />
+                </dd>
+              </dl>
+            </div>
 
             <Spacer size="4" />
 
