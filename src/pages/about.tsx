@@ -5,6 +5,7 @@ import { MDXComponent } from '~/components/MDXComponent';
 import { PageIntro } from '~/components/PageIntro';
 import { Prose } from '~/components/Prose';
 import { SEO } from '~/components/seo';
+import SocialLinks from '~/components/SocialLinks';
 import { TechStack } from '~/components/TechStack';
 
 import { getPageContent } from '~/content/page/client';
@@ -18,13 +19,13 @@ export default function AboutPage({
   return (
     <>
       <SEO
-        title="About"
-        description="Software engineer and perpetual tinkerer specializing in front-end JavaScript development."
+        title="About Melanie Seltzer"
+        description="Software Engineer and perpetual tinkerer specializing in front-end JavaScript development."
       />
 
       <PageIntro
-        heading="About Melanie Seltzer"
-        subheading="Software engineer and perpetual tinkerer specializing in front-end JavaScript development."
+        heading="Hey there 👋 I'm Melanie"
+        subheading="Software Engineer, perpetual tinkerer, and relentlessly curious."
       />
 
       <div className="flex flex-wrap justify-between gap-8">
@@ -38,24 +39,12 @@ export default function AboutPage({
               width={192}
             />
 
-            <TechStack
-              className="flex-col gap-1"
-              size="lg"
-              label="Current fave tech/tools:"
-              showLabel
-              tech={[
-                'React',
-                'TypeScript',
-                'Next.js',
-                'Tailwind CSS',
-                'VSCode',
-              ]}
-            />
+            <SocialLinks />
           </div>
         </div>
 
         <Prose>
-          <MDXComponent source={content.body.code} />
+          <MDXComponent source={content.body.code} components={{ TechStack }} />
         </Prose>
       </div>
     </>

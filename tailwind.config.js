@@ -40,9 +40,10 @@ module.exports = {
               color: theme('colors.gray.500'),
             },
             a: {
-              color: theme('colors.primary.700'),
+              fontWeight: 500,
+              textDecoration: 'none',
               '&:hover': {
-                color: theme('colors.primary.800'),
+                textDecoration: 'underline',
               },
             },
             blockquote: {
@@ -77,12 +78,6 @@ module.exports = {
           css: {
             'p, li': {
               color: theme('colors.gray.400'),
-            },
-            a: {
-              color: theme('colors.primary.500'),
-              '&:hover': {
-                color: theme('colors.primary.600'),
-              },
             },
             blockquote: {
               padding: '1.25rem',
