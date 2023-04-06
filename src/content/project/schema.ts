@@ -11,6 +11,12 @@ export const projectSchema = {
       type: 'string',
       required: true,
     },
+    repoLang: {
+      description:
+        'The main language of the project, e.g. "javascript", "typescript", "css", "html".',
+      type: 'string',
+      required: true,
+    },
     techStack: {
       type: 'list',
       of: { type: 'string' },

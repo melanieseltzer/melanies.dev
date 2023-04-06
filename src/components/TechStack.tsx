@@ -1,16 +1,6 @@
-import { IconType } from 'react-icons';
-import {
-  SiCss3 as CSSIcon,
-  SiJavascript as JSIcon,
-  SiNextdotjs as NextJSIcon,
-  SiReact as ReactIcon,
-  SiTailwindcss as TailwindIcon,
-  SiTypescript as TSIcon,
-  SiVisualstudiocode as VSCodeIcon,
-} from 'react-icons/si';
-
 import { Badge } from '~/components/Badge';
 
+import { techMap } from '~/constants';
 import { clsxm } from '~/utils/clsxm';
 
 type Props = {
@@ -29,7 +19,7 @@ export function TechStack({
   showLabel = false,
 }: Props) {
   return (
-    <div className={clsxm(showLabel && 'flex items-center gap-2', className)}>
+    <div className={clsxm(showLabel && 'flex items-center gap-4', className)}>
       <span
         className={clsxm(
           showLabel
@@ -40,17 +30,17 @@ export function TechStack({
         {label}
       </span>
 
-      <ul className="flex flex-wrap items-center gap-2">
+      <ul className="flex flex-wrap items-center gap-3">
         {list.map(techName => {
-          if (techName in techIconMap) {
-            const { icon: Icon, color } = techIconMap[techName];
+          if (techName in techMap) {
+            const { icon: Icon, hover } = techMap[techName];
 
             return (
               <li key={techName} className="flex items-center">
                 <Icon
                   aria-hidden="true"
                   size={size === 'sm' ? 20 : 24}
-                  className={`text-gray-700 hover:transition-colors hover:duration-300 dark:text-gray-300 ${color}`}
+                  className={`text-gray-700 hover:transition-colors hover:duration-300 dark:text-gray-300 ${hover}`}
                 />
                 <span className="sr-only">{techName}</span>
               </li>
@@ -67,34 +57,3 @@ export function TechStack({
     </div>
   );
 }
-
-const techIconMap: Record<string, { icon: IconType; color: string }> = {
-  React: {
-    icon: ReactIcon,
-    color: 'hover:text-[#0B7EA3] hover:dark:text-[#61DAFB]',
-  },
-  TypeScript: {
-    icon: TSIcon,
-    color: 'hover:text-[#3178c6] hover:dark:text-[#3178c6]',
-  },
-  JavaScript: {
-    icon: JSIcon,
-    color: 'hover:text-[#f1e05a] hover:dark:text-[#f1e05a]',
-  },
-  CSS: {
-    icon: CSSIcon,
-    color: 'hover:text-[#2566F1] hover:dark:text-[#2566F1]',
-  },
-  'Tailwind CSS': {
-    icon: TailwindIcon,
-    color: 'hover:text-[#06B6D4] hover:dark:text-[#06B6D4]',
-  },
-  'Next.js': {
-    icon: NextJSIcon,
-    color: 'hover:text-[#000] hover:dark:text-white',
-  },
-  VSCode: {
-    icon: VSCodeIcon,
-    color: 'hover:text-[#007ACC] hover:dark:text-[#007ACC]',
-  },
-};
