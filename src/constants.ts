@@ -16,6 +16,9 @@ type TechInfo = {
   hover: string;
 };
 
+// Language colors from https://github.com/ozh/github-colors/blob/master/colors.json
+// Would be nice to fetch it automatically, but I need full control for Tailwind classes
+// and dark mode variations.
 export const techMap: Record<string, TechInfo> = {
   react: {
     icon: ReactIcon,
