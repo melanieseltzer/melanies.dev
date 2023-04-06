@@ -1,52 +1,11 @@
-import { IconType } from 'react-icons';
-import {
-  SiCss3 as CSSIcon,
-  SiJavascript as JSIcon,
-  SiNextdotjs as NextJSIcon,
-  SiReact as ReactIcon,
-  SiTailwindcss as TailwindIcon,
-  SiTypescript as TSIcon,
-  SiVisualstudiocode as VSCodeIcon,
-} from 'react-icons/si';
-
 import { Badge } from '~/components/Badge';
 
+import { techMap } from '~/constants';
 import { clsxm } from '~/utils/clsxm';
-
-const techIconMap: Record<string, { icon: IconType; color: string }> = {
-  React: {
-    icon: ReactIcon,
-    color: 'hover:text-[#0B7EA3] hover:dark:text-[#61DAFB]',
-  },
-  TypeScript: {
-    icon: TSIcon,
-    color: 'hover:text-[#3178c6] hover:dark:text-[#3178c6]',
-  },
-  JavaScript: {
-    icon: JSIcon,
-    color: 'hover:text-[#f1e05a] hover:dark:text-[#f1e05a]',
-  },
-  CSS: {
-    icon: CSSIcon,
-    color: 'hover:text-[#2566F1] hover:dark:text-[#2566F1]',
-  },
-  'Tailwind CSS': {
-    icon: TailwindIcon,
-    color: 'hover:text-[#06B6D4] hover:dark:text-[#06B6D4]',
-  },
-  'Next.js': {
-    icon: NextJSIcon,
-    color: 'hover:text-[#000] hover:dark:text-white',
-  },
-  VSCode: {
-    icon: VSCodeIcon,
-    color: 'hover:text-[#007ACC] hover:dark:text-[#007ACC]',
-  },
-};
 
 type Props = {
   className?: string;
-  tech: string[];
+  list: string[];
   size?: 'sm' | 'lg';
   label?: string;
   showLabel?: boolean;
@@ -54,7 +13,7 @@ type Props = {
 
 export function TechStack({
   className = '',
-  tech,
+  list,
   size = 'sm',
   label = 'Built with:',
   showLabel = false,
@@ -71,31 +30,26 @@ export function TechStack({
         {label}
       </span>
 
-      <ul
-        className={clsxm(
-          'flex flex-wrap items-center',
-          size === 'sm' ? 'gap-2' : 'gap-3'
-        )}
-      >
-        {tech.map(name => {
-          if (name in techIconMap) {
-            const { icon: Icon, color } = techIconMap[name];
+      <ul className="flex flex-wrap items-center gap-3">
+        {list.map(techName => {
+          if (techName in techMap) {
+            const { icon: Icon, hover } = techMap[techName];
 
             return (
-              <li key={name}>
+              <li key={techName} className="flex items-center">
                 <Icon
                   aria-hidden="true"
                   size={size === 'sm' ? 20 : 24}
-                  className={`text-gray-700 hover:transition-colors hover:duration-300 dark:text-gray-300 ${color}`}
+                  className={`text-gray-700 hover:transition-colors hover:duration-300 dark:text-gray-300 ${hover}`}
                 />
-                <span className="sr-only">{name}</span>
+                <span className="sr-only">{techName}</span>
               </li>
             );
           }
 
           return (
-            <li key={name}>
-              <Badge size="sm">{name}</Badge>
+            <li key={techName} className="flex items-center">
+              <Badge size="sm">{techName}</Badge>
             </li>
           );
         })}

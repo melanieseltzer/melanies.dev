@@ -1,104 +1,58 @@
-import { RxDividerVertical as Separator } from 'react-icons/rx';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 
-import { Card } from '~/components/Card';
-import { GradientText } from '~/components/GradientText';
-import { Heading } from '~/components/Heading';
-import { Link } from '~/components/Link';
 import { PageIntro } from '~/components/PageIntro';
-import { Paragraph } from '~/components/Paragraph';
 import { Section } from '~/components/Section';
 import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
-import { TechStack } from '~/components/TechStack';
 
-import { getAllProjects } from '~/content/project/client';
-import { DemoButton } from '~/content/project/components/DemoButton';
-import { SourceCodeButton } from '~/content/project/components/SourceCodeButton';
+import {
+  getAllProjects,
+  getProjectsByCategory,
+} from '~/content/project/client';
+import { ProjectsList } from '~/content/project/components/ProjectsList';
 import type { Project } from '~/content/project/types';
 
 export default function ProjectsIndexPage({
-  projects,
+  ossProjects,
+  sideProjects,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <SEO
         title="Projects"
-        description="A showcase of my open-source side projects and everything I am tinkering on."
+        description="A small showcase of my open-source work and side projects that I am tinkering on."
       />
 
       <PageIntro
         heading="Projects"
-        subheading="A showcase of my open-source side projects and everything I am tinkering on."
+        subheading="A small showcase of my open-source work and side projects that I am tinkering on."
       />
 
+      {/* Since there's only two categories it is simpler to just hardcode it like this,
+        rather than doing some convoluted mapping of categories. */}
       <Section id="oss" heading="OSS">
-        <ul className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          {projects.map(
-            ({ slug, title, techStack, summary, repoUrl, demoUrl, body }) => {
-              const hasMoreContent = !!body.raw;
+        <ProjectsList projects={ossProjects} />
+      </Section>
 
-              return (
-                <li key={title}>
-                  <Card
-                    as="article"
-                    className="h-full hover:border-gray-300 hover:transition-colors hover:duration-300 dark:hover:border-gray-700"
-                  >
-                    <Heading size="sm" as="h3" className="mb-2">
-                      {title}
-                    </Heading>
+      <Spacer size="16" />
 
-                    <Paragraph>{summary}</Paragraph>
-
-                    <div className="flex flex-wrap items-center gap-2">
-                      <TechStack tech={techStack} />
-
-                      {hasMoreContent ? (
-                        <>
-                          <Separator
-                            aria-hidden="true"
-                            size={15}
-                            className="text-gray-400"
-                          />
-
-                          <Link
-                            href={`/projects/${slug}`}
-                            className="font-medium"
-                          >
-                            <GradientText>
-                              Read more
-                              <span className="sr-only">
-                                about the project
-                              </span>{' '}
-                              <span aria-hidden="true">&rarr;</span>{' '}
-                            </GradientText>
-                          </Link>
-                        </>
-                      ) : null}
-                    </div>
-
-                    <Spacer size="6" />
-
-                    <div className="flex flex-wrap gap-2">
-                      {demoUrl && <DemoButton href={demoUrl} />}
-
-                      <SourceCodeButton href={repoUrl} />
-                    </div>
-                  </Card>
-                </li>
-              );
-            }
-          )}
-        </ul>
+      <Section id="sideprojects" heading="Side Projects">
+        <ProjectsList projects={sideProjects} />
       </Section>
     </>
   );
 }
 
-export const getStaticProps: GetStaticProps<{ projects: Project[] }> = () => {
+export const getStaticProps: GetStaticProps<{
+  ossProjects: Project[];
+  sideProjects: Project[];
+}> = () => {
   const projects = getAllProjects();
 
   return {
-    props: { projects },
+    props: {
+      ossProjects: getProjectsByCategory(projects, 'oss'),
+      sideProjects: getProjectsByCategory(projects, 'sideproject'),
+    },
   };
 };

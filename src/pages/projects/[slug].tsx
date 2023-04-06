@@ -17,7 +17,7 @@ import type { Project } from '~/content/project/types';
 export default function ProjectPage({
   project,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { title, summary, demoUrl, repoUrl, techStack } = project;
+  const { title, summary, demoUrl, repoUrl, tech } = project;
 
   return (
     <>
@@ -40,7 +40,7 @@ export default function ProjectPage({
 
             <Separator aria-hidden="true" size={15} className="text-gray-400" />
 
-            <TechStack tech={techStack} size="lg" showLabel />
+            <TechStack list={tech} size="lg" showLabel />
           </div>
         </header>
 
