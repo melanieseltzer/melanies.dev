@@ -1,0 +1,16 @@
+---
+title: react-use-caret-position
+summary: Custom React hook to keep track of the caret position in an input.
+category: oss
+repoUrl: https://github.com/melanieseltzer/react-use-caret-position
+demoUrl: https://react-use-caret-position.netlify.app
+techStack:
+  - React
+  - TypeScript
+---
+
+## Motivation
+
+If there is some side effect/async code in an input's `onChange` event handler (e.g. dispatching a Redux action without doing anything else, format text in some way like uppercase, etc), the caret will annoyingly be booted to the end of the input after each keystroke.
+
+`react-use-caret-position` fixes this undesirable behavior by keeping track of the caret position and setting it on render.
