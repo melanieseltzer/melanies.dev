@@ -49,10 +49,10 @@ export const getStaticProps: GetStaticProps<{
 }> = () => {
   const projects = getAllProjects();
 
-  const ossProjects = getProjectsByCategory(projects, 'oss');
-  const sideProjects = getProjectsByCategory(projects, 'sideproject');
-
   return {
-    props: { ossProjects, sideProjects },
+    props: {
+      ossProjects: getProjectsByCategory(projects, 'oss'),
+      sideProjects: getProjectsByCategory(projects, 'sideproject'),
+    },
   };
 };
