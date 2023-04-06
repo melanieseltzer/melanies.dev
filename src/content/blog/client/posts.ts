@@ -20,6 +20,7 @@ const serialize = <T extends CLBlogPost | CLBlogPostMetadata>(
 ): Serialized<T> =>
   ({
     ...post,
+    showLastModified: post.showLastModified ?? true,
     draft: post.draft || null,
   } as Serialized<T>);
 

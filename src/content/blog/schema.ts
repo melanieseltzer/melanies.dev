@@ -11,6 +11,11 @@ export const blogSchema = {
     date: { type: 'date', required: true },
     tags: { type: 'list', required: true, of: { type: 'string' } },
     draft: { type: 'boolean' },
+    showLastModified: {
+      description:
+        'Control whether to show "Last Updated" in the blog post UI.',
+      type: 'boolean',
+    },
   },
   computedFields: {
     readingTime: {
