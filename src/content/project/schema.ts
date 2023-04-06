@@ -6,18 +6,18 @@ export const projectSchema = {
     title: { type: 'string', required: true },
     summary: { type: 'string', required: true },
     category: {
-      description:
-        'Project category - either "oss" (open source) or "sideproject".',
+      description: 'Either "oss" (open source) or "sideproject".',
       type: 'string',
       required: true,
     },
     repoLang: {
       description:
-        'The main language of the project, e.g. "javascript", "typescript", "css", "html".',
+        'The overall main language of the project, e.g. "javascript", "typescript", "css", "html".',
       type: 'string',
       required: true,
     },
-    techStack: {
+    tech: {
+      description: 'List of tech that the project was built with.',
       type: 'list',
       of: { type: 'string' },
       required: true,
