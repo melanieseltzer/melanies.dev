@@ -2,11 +2,11 @@ import fs from 'fs';
 
 import { Feed } from 'feed';
 
+import { authorMetadata, siteMetadata } from '~/config/metadata';
+
 export default async function generateRSS() {
+  // have to import esm this way
   const { allBlogPosts } = await import('../.contentlayer/generated/index.mjs');
-  const { authorMetadata, siteMetadata } = await import(
-    '../src/config/metadata'
-  );
 
   const author = {
     name: authorMetadata.name,

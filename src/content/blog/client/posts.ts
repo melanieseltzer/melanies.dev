@@ -7,7 +7,7 @@ import type {
   CLBlogPost,
   CLBlogPostMetadata,
 } from '../types';
-import { isNotDraft, sortPostsByNew } from '../utils';
+import { sortPostsByNew } from '../utils';
 
 // ==============================
 // Internal helpers
@@ -21,7 +21,6 @@ const serialize = <T extends CLBlogPost | CLBlogPostMetadata>(
   ({
     ...post,
     showLastModified: post.showLastModified ?? true,
-    draft: post.draft || null,
   } as Serialized<T>);
 
 const extractMetadata = (post: CLBlogPost): BlogPostMetadata => {
@@ -31,7 +30,7 @@ const extractMetadata = (post: CLBlogPost): BlogPostMetadata => {
     'date',
     'tags',
     'lastModified',
-    'draft',
+    'showLastModified',
     'slug',
     'readingTime',
   ]);
@@ -55,14 +54,14 @@ export const getBlogPost = (slug: string): BlogPost | undefined => {
 };
 
 export const getPostPreviews = (): BlogPostMetadata[] =>
-  getBlogPosts().filter(isNotDraft).map(extractMetadata);
+  getBlogPosts().map(extractMetadata);
 
 export const getLatestPosts = (
   options: { limit?: number } = {}
 ): BlogPostMetadata[] => {
   const { limit } = options;
 
-  const posts = getBlogPosts().filter(isNotDraft);
+  const posts = getBlogPosts();
   const latestPosts = sortPostsByNew(posts);
 
   if (limit) {
