@@ -9,8 +9,8 @@ type Props = React.HTMLAttributes<HTMLHeadingElement> & {
 };
 
 const styles = {
-  lg: 'text-3xl font-extrabold md:text-4xl lg:text-5xl lg:leading-[3.5rem]',
-  md: 'text-2xl font-bold md:text-3xl lg:text-4xl',
+  lg: 'text-4xl font-extrabold md:text-5xl lg:leading-[3.5rem]',
+  md: 'text-2xl font-bold md:text-3xl',
   sm: 'text-xl font-bold',
 };
 
