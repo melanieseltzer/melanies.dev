@@ -18,3 +18,5 @@ export type CLProjectMetadata = Pick<
 export type Project = KeysUndefinedToNull<CLProject>;
 
 export type ProjectMetadata = KeysUndefinedToNull<CLProjectMetadata>;
+
+export type ProjectCategory = 'oss' | 'sideproject';

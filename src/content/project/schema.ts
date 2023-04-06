@@ -5,6 +5,12 @@ export const projectSchema = {
   fields: {
     title: { type: 'string', required: true },
     summary: { type: 'string', required: true },
+    category: {
+      description:
+        'Project category - either "oss" (open source) or "sideproject".',
+      type: 'string',
+      required: true,
+    },
     techStack: {
       type: 'list',
       of: { type: 'string' },
