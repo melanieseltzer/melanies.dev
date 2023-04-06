@@ -31,39 +31,37 @@ export function ProjectsList({ projects }: Props) {
               className="h-full hover:border-gray-300 hover:transition-colors hover:duration-300 dark:hover:border-gray-700"
             >
               <Heading size="sm" as="h3" className="mb-2">
-                {title}
+                {hasMoreContent ? (
+                  <Link href={`/projects/${slug}`} className="hover:underline">
+                    <GradientText>
+                      {title} <span aria-hidden="true">&rarr;</span>{' '}
+                    </GradientText>
+                  </Link>
+                ) : (
+                  title
+                )}
               </Heading>
 
-              <Paragraph>{summary}</Paragraph>
+              <Paragraph className="whitespace-break-spaces">
+                {summary}
+              </Paragraph>
 
-              <div className="flex flex-wrap items-center gap-2">
-                <TechStack showLabel list={techStack} />
+              <Spacer size="4" />
 
-                {hasMoreContent ? (
-                  <>
-                    <Separator
-                      aria-hidden="true"
-                      size={15}
-                      className="text-gray-400"
-                    />
+              <div className="flex flex-wrap items-center gap-3">
+                <TechStack list={techStack} />
 
-                    <Link href={`/projects/${slug}`} className="font-medium">
-                      <GradientText>
-                        Read more
-                        <span className="sr-only">about the project</span>{' '}
-                        <span aria-hidden="true">&rarr;</span>{' '}
-                      </GradientText>
-                    </Link>
-                  </>
-                ) : null}
-              </div>
+                <Separator
+                  aria-hidden="true"
+                  size={15}
+                  className="text-gray-400"
+                />
 
-              <Spacer size="6" />
+                <div className="flex flex-wrap gap-2">
+                  {demoUrl && <DemoButton href={demoUrl} />}
 
-              <div className="flex flex-wrap gap-2">
-                {demoUrl && <DemoButton href={demoUrl} />}
-
-                <SourceCodeButton href={repoUrl} />
+                  <SourceCodeButton href={repoUrl} />
+                </div>
               </div>
             </Card>
           </li>
