@@ -40,7 +40,7 @@ export default function ProjectPage({
 
             <Separator aria-hidden="true" size={15} className="text-gray-400" />
 
-            <TechStack tech={techStack} size="lg" showLabel />
+            <TechStack list={techStack} size="lg" showLabel />
           </div>
         </header>
 

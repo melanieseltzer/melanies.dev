@@ -13,6 +13,61 @@ import { Badge } from '~/components/Badge';
 
 import { clsxm } from '~/utils/clsxm';
 
+type Props = {
+  className?: string;
+  list: string[];
+  size?: 'sm' | 'lg';
+  label?: string;
+  showLabel?: boolean;
+};
+
+export function TechStack({
+  className = '',
+  list,
+  size = 'sm',
+  label = 'Built with:',
+  showLabel = false,
+}: Props) {
+  return (
+    <div className={clsxm(showLabel && 'flex items-center gap-2', className)}>
+      <span
+        className={clsxm(
+          showLabel
+            ? 'font-sm inline-block text-gray-500 dark:text-gray-400'
+            : 'sr-only'
+        )}
+      >
+        {label}
+      </span>
+
+      <ul className="flex flex-wrap items-center gap-2">
+        {list.map(techName => {
+          if (techName in techIconMap) {
+            const { icon: Icon, color } = techIconMap[techName];
+
+            return (
+              <li key={techName} className="flex items-center">
+                <Icon
+                  aria-hidden="true"
+                  size={size === 'sm' ? 20 : 24}
+                  className={`text-gray-700 hover:transition-colors hover:duration-300 dark:text-gray-300 ${color}`}
+                />
+                <span className="sr-only">{techName}</span>
+              </li>
+            );
+          }
+
+          return (
+            <li key={techName} className="flex items-center">
+              <Badge size="sm">{techName}</Badge>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+}
+
 const techIconMap: Record<string, { icon: IconType; color: string }> = {
   React: {
     icon: ReactIcon,
@@ -43,63 +98,3 @@ const techIconMap: Record<string, { icon: IconType; color: string }> = {
     color: 'hover:text-[#007ACC] hover:dark:text-[#007ACC]',
   },
 };
-
-type Props = {
-  className?: string;
-  tech: string[];
-  size?: 'sm' | 'lg';
-  label?: string;
-  showLabel?: boolean;
-};
-
-export function TechStack({
-  className = '',
-  tech,
-  size = 'sm',
-  label = 'Built with:',
-  showLabel = false,
-}: Props) {
-  return (
-    <div className={clsxm(showLabel && 'flex items-center gap-4', className)}>
-      <span
-        className={clsxm(
-          showLabel
-            ? 'font-sm inline-block text-gray-500 dark:text-gray-400'
-            : 'sr-only'
-        )}
-      >
-        {label}
-      </span>
-
-      <ul
-        className={clsxm(
-          'flex flex-wrap items-center',
-          size === 'sm' ? 'gap-2' : 'gap-3'
-        )}
-      >
-        {tech.map(name => {
-          if (name in techIconMap) {
-            const { icon: Icon, color } = techIconMap[name];
-
-            return (
-              <li key={name}>
-                <Icon
-                  aria-hidden="true"
-                  size={size === 'sm' ? 20 : 24}
-                  className={`text-gray-700 hover:transition-colors hover:duration-300 dark:text-gray-300 ${color}`}
-                />
-                <span className="sr-only">{name}</span>
-              </li>
-            );
-          }
-
-          return (
-            <li key={name}>
-              <Badge size="sm">{name}</Badge>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-  );
-}

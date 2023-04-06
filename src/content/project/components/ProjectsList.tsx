@@ -37,7 +37,7 @@ export function ProjectsList({ projects }: Props) {
               <Paragraph>{summary}</Paragraph>
 
               <div className="flex flex-wrap items-center gap-2">
-                <TechStack tech={techStack} />
+                <TechStack list={techStack} />
 
                 {hasMoreContent ? (
                   <>
