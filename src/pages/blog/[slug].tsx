@@ -42,7 +42,7 @@ export default function BlogPage({
         }}
       />
 
-      <Spacer size="16" />
+      <Spacer size="8" />
 
       <Prose autoLinkHeadings as="article" className="relative mx-auto pt-10">
         <header className="mb-12 border-b dark:border-gray-700">

@@ -23,7 +23,7 @@ export default function ProjectPage({
     <>
       <SEO titleTemplate="%s" title={title} description={summary} />
 
-      <Spacer size="16" />
+      <Spacer size="8" />
 
       <Prose autoLinkHeadings as="article" className="mx-auto">
         <header className="mb-12 border-b pb-8 dark:border-gray-700">
