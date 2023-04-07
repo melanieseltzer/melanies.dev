@@ -1,3 +1,4 @@
+import { Card } from '~/components/Card';
 import { Heading } from '~/components/Heading';
 import { Link } from '~/components/Link';
 import { Paragraph } from '~/components/Paragraph';
@@ -21,14 +22,14 @@ export function PostList({ posts }: Props) {
     <ul>
       {posts.map(({ slug, title, summary, date, tags, readingTime }) => (
         <li key={slug}>
-          <article className="border-t py-6 dark:border-gray-800">
+          <Card as="article" className="h-full">
             <Heading size="sm" as="h3" className="mb-1">
               <Link href={`/blog/${slug}`} className="hover:underline">
                 {title}
               </Link>
             </Heading>
 
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center gap-3">
               <PublishedAndReadTime date={date} readingTime={readingTime} />
 
               <dl>
@@ -42,7 +43,7 @@ export function PostList({ posts }: Props) {
             <Spacer size="4" />
 
             <Paragraph>{summary}</Paragraph>
-          </article>
+          </Card>
         </li>
       ))}
     </ul>
