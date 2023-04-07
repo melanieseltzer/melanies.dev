@@ -26,12 +26,10 @@ export default function ProjectPage({
       <Spacer size="8" />
 
       <Prose autoLinkHeadings as="article" className="mx-auto">
-        <header className="mb-12 border-b pb-8 dark:border-gray-700">
-          <h1 className="mb-4">{title}</h1>
+        <header className="mb-12 border-b dark:border-gray-700">
+          <h1>{title}</h1>
 
-          <p className="lead">{summary}</p>
-
-          <div className="not-prose mt-4 flex flex-wrap items-center gap-4">
+          <div className="not-prose -mt-4 flex flex-wrap items-center gap-4">
             <div className="flex flex-wrap gap-2">
               {demoUrl && <DemoButton href={demoUrl} />}
 
@@ -42,6 +40,8 @@ export default function ProjectPage({
 
             <TechStack list={tech} size="lg" showLabel />
           </div>
+
+          <p className="lead">{summary}</p>
         </header>
 
         <MDXComponent source={project.body.code} />
