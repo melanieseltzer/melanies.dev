@@ -14,7 +14,7 @@ export function Prose({
   autoLinkHeadings = false,
 }: Props) {
   const classes = clsxm(
-    'prose prose-lg dark:prose-invert dark:prose-dark',
+    'prose prose-base sm:prose-lg dark:prose-invert dark:prose-dark',
     className,
     !autoLinkHeadings && 'no-autolink-headings'
   );
