@@ -23,7 +23,7 @@ export function PageIntro({ heading, subheading, reverse = false }: Props) {
       ) : (
         <>
           <Heading text={heading} />
-          <Subheading />
+          <Subheading text={subheading} />
         </>
       )}
 
