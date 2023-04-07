@@ -17,13 +17,17 @@ export function TagsList({ tags, compact, className }: Props) {
   return (
     <ul
       className={clsxm(
-        'flex flex-wrap',
-        compact ? 'gap-2' : 'gap-3',
-        className
+        '-mt-3 flex flex-wrap',
+        className,
+
+        // Hacky negative margin to provide larger gap to wrapped flex children
+        // works in conjunction with the margin on the `li` below.
+        // https://stackoverflow.com/a/44523788
+        compact ? '-mt-2 gap-2' : '-mt-3 gap-3'
       )}
     >
       {tags.map(({ slug, displayName }) => (
-        <li key={slug}>
+        <li key={slug} className={clsxm(compact ? 'mt-2' : 'mt-3')}>
           <Badge size={compact ? 'sm' : 'lg'} href={`/blog/tags/${slug}`}>
             {displayName}
           </Badge>

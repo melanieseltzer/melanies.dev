@@ -26,13 +26,15 @@ export default function BlogIndexPage({
         subheading="Thoughts, mental models, and notes on all things dev ✍️"
       />
 
+      <Spacer size="4" />
+
+      <ExploreByTopic tags={tags} />
+
+      <Spacer size="20" />
+
       <Section id="all-posts" heading="All Posts">
         <PostList posts={posts} />
       </Section>
-
-      <Spacer size="16" />
-
-      <ExploreByTopic tags={tags} />
     </>
   );
 }
