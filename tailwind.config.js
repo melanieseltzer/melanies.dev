@@ -27,7 +27,6 @@ module.exports = {
               color: 'inherit',
             },
             'h1, h2, h3, h4, h5, h6': {
-              wordWrap: 'break-word',
               // so heading links aren't obscured by the sticky page header
               scrollMarginTop: '112px',
               // show the heading auto links
