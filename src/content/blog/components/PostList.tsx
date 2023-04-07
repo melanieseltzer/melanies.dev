@@ -19,7 +19,7 @@ export function PostList({ posts }: Props) {
   }
 
   return (
-    <ul>
+    <ul className="grid grid-cols-1 gap-8 md:grid-cols-2">
       {posts.map(({ slug, title, summary, date, tags, readingTime }) => (
         <li key={slug}>
           <Card as="article" className="h-full">

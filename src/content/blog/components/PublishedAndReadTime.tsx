@@ -2,6 +2,8 @@ import { HiOutlineClock as ReadingTimeIcon } from 'react-icons/hi';
 import { RxDividerVertical as Separator } from 'react-icons/rx';
 import { twMerge } from 'tailwind-merge';
 
+import { GradientText } from '~/components/GradientText';
+
 import { formatDate } from '~/utils/date';
 
 import { BlogPostMetadata } from '../types';
@@ -35,7 +37,7 @@ export function PublishedAndReadTime({ date, readingTime, className }: Props) {
           className="text-gray-400"
           size={15}
         />
-        <span>{readingTime}</span>
+        <GradientText>{readingTime}</GradientText>
       </div>
     </div>
   );
