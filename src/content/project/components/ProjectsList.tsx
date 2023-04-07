@@ -24,10 +24,7 @@ export function ProjectsList({ projects }: Props) {
 
         return (
           <li key={title}>
-            <Card
-              as="article"
-              className="flex h-full flex-col justify-between hover:border-gray-300 hover:transition-colors hover:duration-300 dark:hover:border-gray-700"
-            >
+            <Card as="article" className="flex h-full flex-col justify-between">
               <div>
                 <Heading size="sm" as="h3" className="mb-2">
                   {hasProjectArticle ? (

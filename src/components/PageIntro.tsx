@@ -1,6 +1,6 @@
 import Balancer from 'react-wrap-balancer';
 
-import { Heading } from '~/components/Heading';
+import { Heading as BaseHeading } from '~/components/Heading';
 import { Paragraph } from '~/components/Paragraph';
 import { Spacer } from '~/components/Spacer';
 
@@ -8,50 +8,42 @@ type Props = {
   heading: string;
   subheading?: string;
   reverse?: boolean;
-  compact?: boolean;
 };
 
-export function PageIntro({
-  heading,
-  subheading,
-  reverse = false,
-  compact = false,
-}: Props) {
-  let tags = (
-    <>
-      <Heading>
-        <Balancer>{heading}</Balancer>
-      </Heading>
-      {subheading ? (
-        <Paragraph lead>
-          <Balancer>{subheading}</Balancer>
-        </Paragraph>
-      ) : null}
-    </>
-  );
-
-  if (reverse) {
-    tags = (
-      <>
-        {subheading ? (
-          <Paragraph lead>
-            <Balancer>{subheading}</Balancer>
-          </Paragraph>
-        ) : null}
-        <Heading>
-          <Balancer>{heading}</Balancer>
-        </Heading>
-      </>
-    );
-  }
-
+export function PageIntro({ heading, subheading, reverse = false }: Props) {
   return (
     <>
-      <Spacer size={compact ? '8' : '16'} />
+      <Spacer size="8" />
 
-      {tags}
+      {reverse ? (
+        <>
+          <Subheading text={subheading} />
+          <Heading text={heading} />
+        </>
+      ) : (
+        <>
+          <Heading text={heading} />
+          <Subheading text={subheading} />
+        </>
+      )}
 
-      <Spacer size={compact ? '8' : '16'} />
+      <Spacer size="8" />
     </>
   );
+}
+
+function Heading({ text }: { text: string }) {
+  return (
+    <BaseHeading>
+      <Balancer>{text}</Balancer>
+    </BaseHeading>
+  );
+}
+
+function Subheading({ text }: { text?: string }) {
+  return text ? (
+    <Paragraph lead>
+      <Balancer>{text}</Balancer>
+    </Paragraph>
+  ) : null;
 }

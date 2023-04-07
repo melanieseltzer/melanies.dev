@@ -18,9 +18,16 @@ import { formatDate } from '~/utils/date';
 export default function BlogPage({
   post,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { title, summary, date, lastModified, tags, slug, readingTime } = post;
-
-  const shouldShowUpdated = formatDate(date) !== formatDate(lastModified);
+  const {
+    title,
+    summary,
+    date,
+    lastModified,
+    showLastModified,
+    tags,
+    slug,
+    readingTime,
+  } = post;
 
   return (
     <>
@@ -35,7 +42,7 @@ export default function BlogPage({
         }}
       />
 
-      <Spacer size="16" />
+      <Spacer size="8" />
 
       <Prose autoLinkHeadings as="article" className="relative mx-auto pt-10">
         <header className="mb-12 border-b dark:border-gray-700">
@@ -59,7 +66,7 @@ export default function BlogPage({
 
         <MDXComponent source={post.body.code} />
 
-        {shouldShowUpdated && (
+        {showLastModified && formatDate(date) !== formatDate(lastModified) && (
           <>
             <hr />
             <dl className="font-semibold">

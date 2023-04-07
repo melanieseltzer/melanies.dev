@@ -22,7 +22,7 @@ export function PostListCompact({ posts }: Props) {
           <article>
             <Link
               href={`/blog/${slug}`}
-              className="group flex flex-col py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
+              className="group flex flex-col py-3 hover:scale-[1.01] hover:transition-transform sm:flex-row sm:items-center sm:justify-between sm:gap-4"
             >
               <Heading size="sm" as="h3" className="mb-0 group-hover:underline">
                 {title}

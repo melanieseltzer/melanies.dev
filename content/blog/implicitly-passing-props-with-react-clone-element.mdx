@@ -1,0 +1,145 @@
+---
+title: Implicitly passing props with React cloneElement
+date: 2019-02-19
+tags:
+  - React
+summary: Leverage the React.cloneElement API to pass certain props implicitly.
+showLastModified: false
+---
+
+> This article was originally posted on Medium back in 2019, and I've ported it here for historical purposes. [Read on medium.com](https://medium.com/@melanieseltzer/implicitly-passing-props-with-react-cloneelement-cb9c3261e760).
+
+While working on a fun [side project](https://this-or-that.netlify.com/) recently, I ran into an interesting situation where I needed to pass a prop down to multiple children that would help determine the styling of those children. There was a slight caveat — I did not want to do this explicitly, but rather implicitly in a specific context.
+
+Let's explore this!
+
+> **Note:** there are a couple of references to [styled-components](https://www.styled-components.com/) throughout this article, and it's assumed you have a basic understanding of the library.
+
+The component that we're going to dissect is FloatingLabel, which is essentially a stylistic wrapper that renders an input and a label in a “floating” style.
+
+If you're not familiar with what this is — the input and label are styled in such a way that if the input is focused, the label shrinks into the top left corner to make room for any text (such as placeholder text or text typed by the user). The effect is pretty nice — you can have labels (something you should be using anyway for accessibility) but they don't have to clutter the UI, and can sit inside their respective inputs.
+
+I went back and forth on structuring the `FloatingLabel` component, and initially was leaning towards a more traditional API with standard passing of props. The component was more generalized and was simply called Input, which rendered what it needed (an input and a label, wrapped in a div).
+
+```js
+<Input
+  name="blah"
+  id="blah"
+  labelName="Cool Label"
+  value={blah}
+  onChange={this.handleChange}
+  placeholder="Lol"
+/>
+```
+
+However, after reading [this awesome post](https://www.sid.st/post/just-use-children/) that advocates for using children as props, I decided to restructure my API to be more explicit.
+
+In the above code we are passing some props to Input and it's unclear what's going on. For example, what does Input even render? At first glance you might think it only renders an HTML input, however it's also rendering a label using the `labelName` prop. And when looking at props, questions arise such as... is the `id` prop for the input or the label? Is the `placeholder` prop for the label text, or the input placeholder?
+
+So after playing around with multiple configurations, I ended up refactoring my component API to resemble this:
+
+```js
+<FloatingLabel>
+  <Input
+    id="blah"
+    name="blah"
+    value={firstInput}
+    onChange={this.handleChange}
+    placeholder="Hi"
+  />
+  <Label htmlFor="blah">Float On</Label>
+</FloatingLabel>
+```
+
+`FloatingLabel` is a stylistic wrapper of sorts (rendering a div that is positioned relative, something that is necessary for the effect) which wraps an input and a label using this.props.children. Notice how everything is now very explicit - you know exactly which HTML elements are used and which props are for which components.
+
+The interesting problem I ran into next was how to style Input and Label to “float” in this particular context only, since we want to be able to reuse them without having to always float.
+
+Technically, we could pass a prop signaling for it to float, something like:
+
+```js mark=8[5:16],10[25:36]
+<FloatingLabel>
+  <Input
+    id="blah"
+    name="blah"
+    value={firstInput}
+    onChange={this.handleChange}
+    placeholder="Hi"
+    float="true"
+  />
+  <Label htmlFor="blah" float="true">
+    Float On
+  </Label>
+</FloatingLabel>
+```
+
+However, declaring it twice felt really cumbersome to me, and it seemed a little unnecessary because we know that if we're looking to render a `FloatingLabel` then we definitely want the Input and Label to “float”... we shouldn't have to explicitly define this, it should just happen.
+
+Luckily, React provides some handy utilities to deal with situations like this, where the children props data structure is unknown and we need to dynamically pass props around.
+
+Using the [React.Children.map](https://legacy.reactjs.org/docs/react-api.html#reactchildrenmap) utility, we can map over each child and invoke a function on each. We can then use [React.cloneElement](https://react.dev/reference/react/cloneElement) to assign the float prop to each child, which we can then leverage for styling. The API for `FloatingLabel` ultimately ended up looking like this, where children is getting wrapped with the new props:
+
+```js mark=5[31:45] focus=4,5
+const FloatingLabel = props => {
+  const { children } = props;
+  const childrenWithProps = React.Children.map(children, child =>
+    // this is the magic!
+    React.cloneElement(child, { float: true })
+  );
+  return <StyledFloatingLabel>{childrenWithProps}</StyledFloatingLabel>;
+};
+export default FloatingLabel;
+
+// styled-components wrapper to make sure it's positioned relative
+const StyledFloatingLabel = styled.div`
+  position: relative;
+  ...rest of the styles
+`;
+```
+
+So basically, take each child (in our case, Input and Label) and clone them, then add on the `float` prop (an optional prop) and set it to true, which only gets added if Input and Label are rendered within the context of `FloatingLabel`.
+
+Inside Input and Label, we can access the float prop and if it's true, set the float styles (aka shrink the label to top left on input focus, show the placeholder on input focus, etc).
+
+To give you an idea of what that looks like, let's look at the Label component and how we could style that:
+
+```js
+const Label = props => (
+  // Access the props with spread attributes
+  // StyledLabel is a styled-components wrapper which then has
+  // access to the props (in particular, float)
+  <StyledLabel {...props}>{props.children}</StyledLabel>
+);
+export default Label;
+
+const StyledLabel = styled.label`
+  font-size: 1.2rem;
+  padding: 0 1rem;
+  transition: all 0.2s;
+  color: #8e2de2;
+  /* Here we can access the props, if float: true, then add some float-specific styles */
+  ${props =>
+    props.float &&
+    `
+     position: absolute;
+     top: 0;
+     left: 0;
+    `}
+`;
+```
+
+This saves us from having to pass the float prop explicitly to each child when called within `FloatingLabel`, and promotes reusability outside of that context, in case we need to render a label or input without floating, as you can see here:
+
+<Image
+  alt="Screenshot showcasing label and input reusability with non-floating labels"
+  src="/images/blog/thisorthat.png"
+  width={1400}
+  height={536}
+  sizes="100vw"
+/>
+
+## Conclusion
+
+I think using `React.cloneElement` for context-dependent props is a pretty neat way to cut down on component clutter. Passing those implicitly is one less thing a user has to reason about when navigating your API.
+
+I'm interested in hearing your thoughts about this method! Do you prefer to pass all props explicitly?

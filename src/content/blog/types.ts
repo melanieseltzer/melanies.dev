@@ -1,7 +1,5 @@
 import type { BlogPost as BlogPostOrig } from 'contentlayer/generated';
 
-import { KeysUndefinedToNull } from '~/types/utils';
-
 import type { BlogPostComputedFields, BlogPostSourceFields } from './schema';
 
 export type Tag = {
@@ -25,6 +23,6 @@ export type CLBlogPostMetadata = Pick<
 // Serialized types
 // ==============================
 
-export type BlogPost = KeysUndefinedToNull<CLBlogPost>;
+export type BlogPost = Required<CLBlogPost>;
 
-export type BlogPostMetadata = KeysUndefinedToNull<CLBlogPostMetadata>;
+export type BlogPostMetadata = Required<CLBlogPostMetadata>;

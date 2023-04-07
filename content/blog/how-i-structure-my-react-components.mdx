@@ -1,0 +1,90 @@
+---
+title: How I structure my React components
+date: 2019-01-17
+tags:
+  - React
+  - JavaScript
+summary: Maintain a clean and easy to navigate structure for your React components using folders, and without relying on index.js files!
+showLastModified: false
+---
+
+> This article was originally posted on Medium back in 2019, and I've ported it here for historical purposes. While I still think it provides some value, I no longer strictly follow the barrel file convention in all cases. [Read on medium.com](https://medium.com/@melanieseltzer/how-i-structure-my-react-components-79e8c0654ca0).
+
+I'm sure there are quite a few opinions floating around the Internet about this topic, and I'm not about to say that this is the _best_ way. I really just want to share what's working for me!
+
+I've been structuring my components this way for a while now, and I've found it has greatly increased my productivity (I know where everything is) and lowered my anxiety around mess (I'm the type of person that feels anxiety when things are cluttered, even at home 😐).
+
+You may be used to the following pattern of structuring your components:
+
+```md
+- src
+  - components
+    - Footer.js
+    - Header.js
+      ...etc
+```
+
+Where import statements would be `import Footer from './Footer'` or `import Header from './Header`. And to be honest, in a smaller application this probably works just fine.
+
+But what about if you have css files for styling, or test files? Pretty soon these can get out of hand:
+
+```md
+- src
+  - components
+    - Footer.test.js
+    - Footer.js
+    - Footer.css
+    - Header.test.js
+    - Header.css
+    - Header.js
+      ...etc
+```
+
+So you may be thinking, _"well that's easy, just put them a folder which will take care of the bloat"_.
+
+And you can do that for sure. But if you want to maintain short imports (rather than the cumbersome `import Footer from './Footer/Footer'`), you'll have to use index.js files inside the named folders.
+
+If you have a lot of components then pretty soon you will be lost in a sea of `index.js` files in your editor, which is not fun:
+
+```js
+- src
+  - components
+    - Footer
+      - Footer.css
+      - Footer.test.js
+      - index.js (component code lives here)
+    - Header
+      - Header.css
+      - Header.test.js
+      - index.js (component code lives here)
+```
+
+So I'm here to show you a slightly different way to achieve the same folder structure (to maintain short imports), AND enable you to not rely on `index.js` files to house your component code.
+
+Behold:
+
+```md
+- src
+  - components
+    - Footer
+      - Footer.css
+      - Footer.test.js
+      - Footer.js (where the actual component code lives!)
+      - index.js (exports the default from Footer.js)
+```
+
+```js Footer/index.js
+export { default } from './Footer';
+```
+
+It might seem a little weird at first, but I've really come to appreciate this structure.
+
+With the component code in a named file (instead of `index.js`), having multiple files open in the editor is no longer confusing, since files are properly named. And of course having a folder structure means we can keep related files (tests, css files, etc) tightly coupled with their respective components.
+
+So to sum up, with this structure we get:
+
+- Short, clean import statements
+- All the benefits of folders (tightly coupled related files)
+- Named files for component code (no barrage of `index.js` in the editor)
+
+Nice 🎉

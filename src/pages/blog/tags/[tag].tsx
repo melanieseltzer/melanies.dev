@@ -29,7 +29,6 @@ export default function TagPage({
       />
 
       <PageIntro
-        compact
         reverse
         heading={tag.displayName}
         subheading={`${count} ${count === 1 ? 'post' : 'posts'} tagged:`}
