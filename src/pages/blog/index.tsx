@@ -27,8 +27,6 @@ export default function BlogIndexPage({
       />
 
       <Section id="all-posts" heading="All Posts">
-        <Spacer size="4" />
-
         <PostList posts={posts} />
       </Section>
 
