@@ -24,6 +24,7 @@ export function BlogSEO({
   return (
     <>
       <SEO
+        canonical={canonicalUrl}
         titleTemplate="%s"
         title={title}
         description={description}

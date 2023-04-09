@@ -8,12 +8,14 @@ import { LatestPosts } from '~/content/blog/components/LatestPosts';
 import { MAX_POSTS_DISPLAY } from '~/content/blog/constants';
 import type { BlogPostMetadata } from '~/content/blog/types';
 
+import { siteMetadata } from '~/config/metadata';
+
 export default function IndexPage({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <SEO />
+      <SEO canonical={siteMetadata.siteUrl} />
 
       <HeroSection />
 

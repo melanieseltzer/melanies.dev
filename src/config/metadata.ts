@@ -9,7 +9,7 @@ export const authorMetadata = {
   },
 };
 
-const SITE_URL = 'https://melanies.dev';
+const SITE_URL = 'https://www.melanies.dev';
 
 export const siteMetadata = {
   siteUrl: SITE_URL,
