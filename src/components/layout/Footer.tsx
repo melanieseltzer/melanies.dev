@@ -1,7 +1,10 @@
+import { HiRss as RSSIcon } from 'react-icons/hi';
+
 import { Spacer } from '~/components/Spacer';
 
 import { authorMetadata } from '~/config/metadata';
 
+import { Link } from '../Link';
 import SocialLinks from '../SocialLinks';
 
 import { MaxWidthContainer } from './MaxWidthContainer';
@@ -17,8 +20,16 @@ export function Footer() {
             authorMetadata.name
           }`}</div>
 
-          <div className="mt-4 sm:mt-0">
+          <div className="mt-4 flex items-center sm:mt-0">
             <SocialLinks />
+
+            <Link
+              aria-label="RSS Feed"
+              href="/feed.xml"
+              className="ml-8 text-gray-700 hover:rotate-[-4deg] hover:text-gray-800 hover:transition-all dark:text-gray-300 dark:hover:text-gray-200"
+            >
+              <RSSIcon size={24} />
+            </Link>
           </div>
         </MaxWidthContainer>
       </footer>
