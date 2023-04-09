@@ -1,6 +1,7 @@
 import { Provider as ReactWrapBalancerProvider } from 'react-wrap-balancer';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'next-themes';
+import { Analytics } from '@vercel/analytics/react';
 
 import { PageLayout } from '~/components/layout/PageLayout';
 import { RouteProgressBar } from '~/components/navigation/RouteProgressBar';
@@ -15,7 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <DefaultSEO />
-
+      <Analytics />
       <RouteProgressBar />
 
       <ReactWrapBalancerProvider>
