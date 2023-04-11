@@ -2,7 +2,7 @@ const EXCLUDE = ['/blog/tags/*'];
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://melanies.dev',
+  siteUrl: 'https://www.melanies.dev',
   generateRobotsTxt: true,
   generateIndexSitemap: false,
   exclude: EXCLUDE,
