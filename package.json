@@ -1,7 +1,10 @@
 {
   "name": "melanies.dev",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "private": true,
+  "description": "My personal site/blog built with Next.js, Tailwind, and Contentlayer.",
+  "repository": "github:melanieseltzer/melanies.dev",
+  "author": "Melanie Seltzer <melanie.seltzer1@gmail.com>",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -16,6 +19,14 @@
     "generate-rss": "tsx ./scripts/generate-rss.ts",
     "postinstall": "husky install && contentlayer build",
     "postbuild": "yarn generate-sitemap && yarn generate-rss"
+  },
+  "lint-staged": {
+    "*.+(js|ts|tsx)": [
+      "eslint --cache --fix"
+    ],
+    "*.+(js|ts|tsx|json|css|md|mdx)": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@code-hike/mdx": "^0.8.1",
@@ -68,13 +79,5 @@
     "tailwindcss": "^3.2.7",
     "tsx": "^3.12.6",
     "typescript": "4.9.5"
-  },
-  "lint-staged": {
-    "*.+(js|ts|tsx)": [
-      "eslint --cache --fix"
-    ],
-    "*.+(js|ts|tsx|json|css|md|mdx)": [
-      "prettier --write"
-    ]
   }
 }
