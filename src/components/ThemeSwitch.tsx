@@ -10,7 +10,9 @@ export function ThemeSwitch() {
   const [mounted, setMounted] = React.useState(false);
   const { setTheme, resolvedTheme } = useTheme();
 
-  React.useEffect(() => setMounted(true), []);
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Force respect system theme preference changes.
   // ref: https://github.com/pacocoursey/next-themes/issues/164
@@ -26,7 +28,8 @@ export function ThemeSwitch() {
   }, [handleSystemThemeChange]);
 
   if (!mounted) {
-    return null;
+    // prevent layout shift when resolving theme
+    return <div className="h-10 w-10" />;
   }
 
   const mode = resolvedTheme === 'dark' ? 'light' : 'dark';
