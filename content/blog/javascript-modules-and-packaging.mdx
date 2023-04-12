@@ -1,0 +1,159 @@
+---
+title: JavaScript modules and packaging
+date: 2023-04-11
+tags:
+  - Node.js
+  - JavaScript
+summary: Compiling everything I've learned about modules and packaging into a simple cheat sheet.
+---
+
+As I've started dipping my toes into the world of publishing packages on [npm](https://www.npmjs.com/), I've often been overwhelmed with all the different terminology and options. This is my attempt at gathering as much information in one place for a quick reference.
+
+## Definitions
+
+### `"ECMAScript Modules"` aka `"ES modules"` aka `"ESM"`
+
+- The official standard format.
+- Works in many modern browsers.
+- Defined using import and export statements.
+- Tree-shakeable.
+
+### `"CommonJS"` aka `"CJS"`
+
+- Original way to package JavaScript code for Node.js.
+- Needs to be transpiled/bundled to work in browser.
+- In Node.js, each file is treated as a separate module.
+
+### `"Universal Module Definition"` aka `"UMD"`
+
+- Capable of working everywhere (client or server).
+- Usually used as a fallback module when using bundler like Rollup/Webpack.
+
+### `"dual packaging"`
+
+- Include both CommonJS and ES module JavaScript sources.
+- Be wary of the [dual package hazard](https://nodejs.org/api/packages.html#dual-package-hazard).
+
+## File Extensions
+
+### `.mjs`
+
+- JavaScript files that are ESM.
+
+### `.mts`
+
+- TypeScript files that are ESM.
+
+### `.cjs`
+
+- JavaScript files that are CommonJS.
+- `.cjs` file extension overrides `"type": "module"` in package.json.
+
+## Packaging (`package.json` fields)
+
+### `main`
+
+- Specify the CommonJS entry point.
+- Read more: https://nodejs.org/api/packages.html#main
+
+### `module`
+
+- Specify the ES module (ESM) entry point.
+- Not officially defined by Node.js (community went with `exports` instead).
+- It originally came from a [proposal](https://github.com/dherman/defense-of-dot-js/blob/master/proposal.md) for how to integrate ECMAScript modules into Node.
+- Used by JavaScript bundlers (esbuild, Webpack, Rollup) for ESM detection.
+
+### `type`
+
+- `"type": "commonjs"` tells Node.js to parse all `.js` files under the package.json as CommonJS.
+- `"type": "module"` tells Node.js to parse all `.js` files under the package.json as ESM.
+- If `type` is not specified, defaults to parsing `.js` files as CommonJS.
+- Node.js looks for the _closest_ package.json to decide whether to parse `.js` as ESM or CommonJS.
+  - Therefore, if a package in `node_modules` _does not_ have `"type": "module"` in its package.json _OR_ a dual export, its `.js` files will be parsed as CommonJS.
+- Read more: https://nodejs.org/api/packages.html#type
+
+### `exports`
+
+- Supported in Node.js 12+ as alternative to `"main"`.
+- Define **subpath exports** and **conditional exports** while encapsulating internal unexported modules.
+- Read more: https://nodejs.org/api/packages.html#exports
+
+#### Subpath exports
+
+- Custom subpaths can be defined along with the main entry point.
+- Read more: https://nodejs.org/api/packages.html#subpath-exports
+
+```json some-package/package.json
+{
+  "exports": {
+    ".": "./foo.js",
+    "./bar.js": "./src/bar.js"
+  }
+}
+```
+
+Only defined subpaths can then be imported by a consumer, other imports will error:
+
+```js
+import bar from 'some-package/bar'; // okay!
+import private from 'some-package/something-private.js'; // nope!
+```
+
+In the absence of multiple subpaths, `"."` has no purpose!
+
+```json package.json
+"exports": {
+  ".": {
+    "require": "./dist/index.cjs",
+    "default": "./dist/index.modern.js"
+  }
+}
+```
+
+...is equivalent to:
+
+```json package.json
+  "exports": {
+    "require": "./dist/index.cjs",
+    "default": "./dist/index.modern.js"
+  }
+```
+
+#### Conditional exports
+
+- Different package entry points per environment. A single module exports both ESM (allowing it to be imported) and CommonJS (allowing it to be required) via the `exports` field.
+- Read more: https://nodejs.org/api/packages.html#conditional-exports
+
+```json package.json
+{
+  "exports": {
+    "import": "./foo.js", // Entry-point for `import "foo"` in ESM
+    "require": "./foo.cjs" // Entry-point for `require("foo")` in CJS
+  }
+}
+```
+
+### `exports.types`
+
+- TypeScript typings for NodeNext modules (see: https://www.typescriptlang.org/docs/handbook/esm-node.html) aka the new support.
+- Must come first in the list:
+
+```json package.json
+{
+  "exports": {
+    "types": "./foo.d.ts", // TypeScript typings for NodeNext modules
+    "import": "./foo.js", // Entry-point for `import "foo"` in ESM
+    "require": "./foo.cjs" // Entry-point for `require("foo")` in CJS
+  }
+}
+```
+
+### `types`
+
+- TypeScript's original Node support aka fallback for older versions of TypeScript.
+- TypeScript looks for the `main` field then looks for declaration files that corresponded to that entry (e.g. if `"main"` points to `./foo.js`, TypeScript would look for a file called `./foo.d.ts`).
+
+## Thanks ❤️
+
+- [ESM in Node.js Series articles](https://dev.to/bnb/series/13240) by [Tierney Cyren](https://twitter.com/bitandbang)
+- [Example of how dual packaging works in Node](https://github.com/sheremet-va/dual-packaging) (repo)
