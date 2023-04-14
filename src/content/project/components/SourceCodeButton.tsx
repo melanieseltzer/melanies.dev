@@ -13,7 +13,7 @@ export function SourceCodeButton({ href }: Props) {
       aria-label="View the source code"
       className="inline-flex items-center gap-2"
     >
-      <GitHubIcon aria-hidden="true" size={16} />
+      <GitHubIcon aria-hidden="true" />
       Source
     </ButtonLink>
   );
