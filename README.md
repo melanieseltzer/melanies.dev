@@ -8,7 +8,9 @@
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Content**: [MDX](https://mdxjs.com/) + [Contentlayer](https://www.contentlayer.dev/)
 - **Code syntax highlighting**: [Code Hike](https://codehike.org/)
-- **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
+- **Icons**:
+  - **Tech icons (brands)**: [Simple Icons](https://simpleicons.org/)
+  - **Socials/UI**: [Heroicons](https://heroicons.dev/) or [Radix Icons](https://icons.radix-ui.com/)
 
 ## License Note
 

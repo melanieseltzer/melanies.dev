@@ -1,5 +1,4 @@
-import { FiArrowUpRight as ExternalIcon } from 'react-icons/fi';
-import { RiWindowFill as DemoIcon } from 'react-icons/ri';
+import { RxRocket as DemoIcon } from 'react-icons/rx';
 
 import { ButtonLink } from '~/components/ButtonLink';
 
@@ -14,9 +13,8 @@ export function DemoButton({ href }: Props) {
       aria-label="View the demo"
       className="inline-flex items-center gap-2"
     >
-      <DemoIcon aria-hidden="true" size={20} />
+      <DemoIcon aria-hidden="true" />
       Demo
-      <ExternalIcon aria-hidden="true" />
     </ButtonLink>
   );
 }

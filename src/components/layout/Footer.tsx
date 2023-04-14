@@ -26,7 +26,7 @@ export function Footer() {
             <Link
               aria-label="RSS Feed"
               href="/feed.xml"
-              className="ml-8 text-gray-700 hover:rotate-[-4deg] hover:text-gray-800 hover:transition-all dark:text-gray-300 dark:hover:text-gray-200"
+              className="ml-6 text-gray-700 hover:rotate-[-4deg] hover:text-gray-800 hover:transition-all dark:text-gray-300 dark:hover:text-gray-200"
             >
               <RSSIcon size={24} />
             </Link>
