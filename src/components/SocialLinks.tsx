@@ -1,9 +1,9 @@
-import { HiOutlineMail as EmailIcon } from 'react-icons/hi';
 import {
-  SiGithub as GitHubIcon,
-  SiLinkedin as LinkedInIcon,
-  SiTwitter as TwitterIcon,
-} from 'react-icons/si';
+  RxEnvelopeClosed as EmailIcon,
+  RxGithubLogo as GitHubIcon,
+  RxLinkedinLogo as LinkedInIcon,
+  RxTwitterLogo as TwitterIcon,
+} from 'react-icons/rx';
 
 import { Link } from '~/components/Link';
 
@@ -20,7 +20,7 @@ export default function SocialLinks() {
           <EmailIcon
             aria-hidden="true"
             className={sharedIconStyles}
-            size={28}
+            size={24}
           />
         </Link>
       </li>

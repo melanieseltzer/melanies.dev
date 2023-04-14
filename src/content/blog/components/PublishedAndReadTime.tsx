@@ -1,5 +1,7 @@
-import { HiOutlineClock as ReadingTimeIcon } from 'react-icons/hi';
-import { RxDividerVertical as Separator } from 'react-icons/rx';
+import {
+  RxClock as ReadingTimeIcon,
+  RxDividerVertical as Separator,
+} from 'react-icons/rx';
 import { twMerge } from 'tailwind-merge';
 
 import { GradientText } from '~/components/GradientText';
@@ -18,7 +20,7 @@ export function PublishedAndReadTime({ date, readingTime, className }: Props) {
   return (
     <div
       className={twMerge(
-        'flex flex-wrap items-center gap-1 text-base font-medium leading-6 text-gray-500 dark:text-gray-400',
+        'flex flex-wrap items-center gap-2 text-base font-medium leading-6 text-gray-500 dark:text-gray-400',
         className
       )}
     >
@@ -34,7 +36,7 @@ export function PublishedAndReadTime({ date, readingTime, className }: Props) {
       <div className="flex items-center gap-2">
         <ReadingTimeIcon
           aria-hidden="true"
-          className="text-gray-400"
+          className="text-gray-500 dark:text-gray-400"
           size={15}
         />
         <GradientText>{readingTime}</GradientText>

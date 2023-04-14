@@ -1,9 +1,5 @@
 import * as React from 'react';
-// import { BsFillMoonStarsFill as DarkIcon } from 'react-icons/bs';
-import {
-  HiOutlineMoon as DarkIcon,
-  HiOutlineSun as LightIcon,
-} from 'react-icons/hi2';
+import { RxMoon as DarkIcon, RxSun as LightIcon } from 'react-icons/rx';
 import { useTheme } from 'next-themes';
 
 export function ThemeSwitch() {
@@ -41,9 +37,9 @@ export function ThemeSwitch() {
       onClick={() => setTheme(mode)}
     >
       {resolvedTheme === 'dark' ? (
-        <DarkIcon size={24} />
+        <DarkIcon size={20} aria-hidden="true" />
       ) : (
-        <LightIcon size={24} />
+        <LightIcon size={20} aria-hidden="true" />
       )}
     </button>
   );

@@ -20,7 +20,7 @@ export function MobileNav() {
         className="rounded p-2 text-gray-600 hover:bg-neutral-100 hover:text-gray-900 hover:transition-colors hover:duration-300 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white"
         onClick={() => setIsOpen(true)}
       >
-        <OpenIcon size={24} />
+        <OpenIcon size={24} aria-hidden="true" />
       </button>
 
       <Transition show={isOpen} as={React.Fragment}>
@@ -55,7 +55,7 @@ export function MobileNav() {
                 aria-label="Close Menu"
                 onClick={() => setIsOpen(false)}
               >
-                <CloseIcon size={24} />
+                <CloseIcon size={24} aria-hidden="true" />
               </button>
 
               <Spacer size="12" />
