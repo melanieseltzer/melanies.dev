@@ -37,9 +37,9 @@ export function ThemeSwitch() {
       onClick={() => setTheme(mode)}
     >
       {resolvedTheme === 'dark' ? (
-        <DarkIcon size={20} />
+        <DarkIcon size={20} aria-hidden="true" />
       ) : (
-        <LightIcon size={20} />
+        <LightIcon size={20} aria-hidden="true" />
       )}
     </button>
   );
