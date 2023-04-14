@@ -1,9 +1,10 @@
 import { ParsedUrlQuery } from 'querystring';
 
-import { RxDividerVertical as Separator } from 'react-icons/rx';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 
+import { Heading } from '~/components/Heading';
 import { MDXComponent } from '~/components/MDXComponent';
+import { Paragraph } from '~/components/Paragraph';
 import { Prose } from '~/components/Prose';
 import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
@@ -26,22 +27,22 @@ export default function ProjectPage({
       <Spacer size="8" />
 
       <Prose autoLinkHeadings as="article" className="mx-auto">
-        <header className="mb-12 border-b dark:border-gray-700">
-          <h1>{title}</h1>
+        <header className="mb-12 border-b pb-8 dark:border-gray-700">
+          <div className="not-prose">
+            <Heading>{title}</Heading>
 
-          <div className="not-prose -mt-4 flex flex-wrap items-center gap-4">
+            <Paragraph lead>{summary}</Paragraph>
+          </div>
+
+          <div className="not-prose flex flex-wrap items-center gap-4">
             <div className="flex flex-wrap gap-2">
               {demoUrl && <DemoButton href={demoUrl} />}
 
               <SourceCodeButton href={repoUrl} />
             </div>
 
-            <Separator aria-hidden="true" size={15} className="text-gray-400" />
-
             <TechStack list={tech} size="lg" showLabel />
           </div>
-
-          <p className="lead">{summary}</p>
         </header>
 
         <MDXComponent source={project.body.code} />

@@ -32,19 +32,22 @@ export function ProjectsList({ projects }: Props) {
                 </Heading>
 
                 <Paragraph className="whitespace-break-spaces mb-2">
-                  {summary}{' '}
-                  {hasProjectArticle && (
+                  {summary}
+                </Paragraph>
+
+                {hasProjectArticle && (
+                  <Paragraph>
                     <Link
                       href={`/projects/${slug}`}
-                      className="hover:underline"
+                      className="font-semibold hover:underline"
                     >
                       <GradientText>
                         Read more <span aria-hidden="true">&rarr;</span>
                         <span className="sr-only">about this project</span>
                       </GradientText>
                     </Link>
-                  )}
-                </Paragraph>
+                  </Paragraph>
+                )}
 
                 <Spacer size="4" />
               </div>
