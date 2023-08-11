@@ -1,3 +1,5 @@
+import NextTopLoader from 'nextjs-toploader';
+
 interface Props {
   children: React.ReactNode;
 }
@@ -5,7 +7,10 @@ interface Props {
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <NextTopLoader />
+        {children}
+      </body>
     </html>
   );
 }
