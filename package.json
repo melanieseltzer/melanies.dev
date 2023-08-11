@@ -28,6 +28,10 @@
       "prettier --write"
     ]
   },
+  "resolutions": {
+    "//eslint-plugin-react-hooks": "Fix: https://github.com/vercel/next.js/issues/52365",
+    "eslint-plugin-react-hooks": "4.6.0"
+  },
   "dependencies": {
     "@code-hike/mdx": "^0.8.1",
     "@fontsource/inter": "^4.5.15",
@@ -37,7 +41,7 @@
     "contentlayer": "^0.3.0",
     "feed": "^4.2.2",
     "github-slugger": "^2.0.0",
-    "next": "^13.2.4",
+    "next": "^13.4.13",
     "next-contentlayer": "^0.3.0",
     "next-seo": "^5.15.0",
     "next-sitemap": "^4.0.6",
@@ -70,7 +74,7 @@
     "autoprefixer": "^10.4.13",
     "cross-env": "^7.0.3",
     "eslint": "^8.34.0",
-    "eslint-config-next": "^13.2.1",
+    "eslint-config-next": "^13.4.13",
     "husky": "^8.0.0",
     "lint-staged": "^13.1.2",
     "postcss": "^8.4.21",
