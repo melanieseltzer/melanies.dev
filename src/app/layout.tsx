@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import NextTopLoader from 'nextjs-toploader';
 
+import { PageLayout } from '~/components/layout/PageLayout';
+
 import { siteMetadata } from '~/config/metadata';
 import { clsxm } from '~/utils/clsxm';
 
@@ -44,7 +46,9 @@ export default function RootLayout({ children }: Props) {
       >
         <NextTopLoader />
 
-        <RootProviders>{children}</RootProviders>
+        <RootProviders>
+          <PageLayout>{children}</PageLayout>
+        </RootProviders>
       </body>
     </html>
   );

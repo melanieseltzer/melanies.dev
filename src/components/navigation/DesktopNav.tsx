@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 
 import { Link } from '~/components/Link';
 
@@ -7,13 +7,13 @@ import { clsxm } from '~/utils/clsxm';
 import { routes } from './routes';
 
 export function DesktopNav() {
-  const { pathname: currentRoute } = useRouter();
+  const pathname = usePathname();
 
   return (
     <nav className="hidden sm:block">
       <ul className="flex space-x-4">
         {routes.map(route => {
-          const active = currentRoute === route.href;
+          const active = pathname === route.href;
 
           return (
             <li key={route.title}>
