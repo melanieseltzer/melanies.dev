@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import NextTopLoader from 'nextjs-toploader';
 
 import { siteMetadata } from '~/config/metadata';
+import { clsxm } from '~/utils/clsxm';
 
 interface Props {
   children: React.ReactNode;
@@ -34,7 +35,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
-      <body>
+      <body
+        className={clsxm(
+          'bg-white text-gray-500 antialiased dark:bg-gray-900 dark:text-gray-400'
+        )}
+      >
         <NextTopLoader />
         {children}
       </body>
