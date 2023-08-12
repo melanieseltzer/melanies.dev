@@ -12,7 +12,7 @@ import { getPageContent } from '~/content/page/client';
 import Avatar from '../../../public/images/avatar.jpg';
 
 export const metadata: Metadata = {
-  title: 'About Melanie Seltzer',
+  title: 'About',
   description:
     'Software Engineer and perpetual tinkerer specializing in front-end JavaScript development.',
 };

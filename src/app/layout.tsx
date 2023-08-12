@@ -19,7 +19,10 @@ interface Props {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteMetadata.siteUrl),
-  title: siteMetadata.metaTitle,
+  title: {
+    template: `%s | ${siteMetadata.metaTitle}`,
+    default: siteMetadata.metaTitle,
+  },
   description: siteMetadata.metaDescription,
   icons: {
     icon: [
