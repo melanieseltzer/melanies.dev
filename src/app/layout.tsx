@@ -4,6 +4,8 @@ import NextTopLoader from 'nextjs-toploader';
 import { siteMetadata } from '~/config/metadata';
 import { clsxm } from '~/utils/clsxm';
 
+import { RootProviders } from './providers';
+
 interface Props {
   children: React.ReactNode;
 }
@@ -41,7 +43,8 @@ export default function RootLayout({ children }: Props) {
         )}
       >
         <NextTopLoader />
-        {children}
+
+        <RootProviders>{children}</RootProviders>
       </body>
     </html>
   );
