@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import NextTopLoader from 'nextjs-toploader';
+import { Analytics } from '@vercel/analytics/react';
 
 import { PageLayout } from '~/components/layout/PageLayout';
 
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: Props) {
           'bg-white text-gray-500 antialiased dark:bg-gray-900 dark:text-gray-400'
         )}
       >
+        <Analytics />
         <NextTopLoader />
 
         <RootProviders>
