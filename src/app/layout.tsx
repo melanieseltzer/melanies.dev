@@ -18,6 +18,7 @@ interface Props {
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteMetadata.siteUrl),
   title: siteMetadata.metaTitle,
   description: siteMetadata.metaDescription,
   icons: {
