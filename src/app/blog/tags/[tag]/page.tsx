@@ -13,6 +13,8 @@ import {
 import { PostList } from '~/content/blog/components/PostList';
 import type { Tag } from '~/content/blog/types';
 
+import { siteMetadata } from '~/config/metadata';
+
 interface Props {
   params: { tag: string };
 }
@@ -22,8 +24,7 @@ export function generateMetadata({ params }: Props): Metadata {
   const tagInfo = getTag(posts, params.tag) as Tag;
 
   return {
-    title: `${tagInfo.displayName} posts`,
-    description: 'Content focusing on React, JavaScript, Node.js, and more.',
+    title: `${tagInfo.displayName} posts | ${siteMetadata.metaTitle}`,
   };
 }
 

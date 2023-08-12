@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { getAllProjects, getProject } from '~/content/project/client';
@@ -9,7 +9,10 @@ interface Props {
   params: { slug: string };
 }
 
-export function generateMetadata({ params }: Props): Metadata | undefined {
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata | undefined> {
   const project = getProject(params.slug);
 
   if (!project) {
@@ -17,12 +20,16 @@ export function generateMetadata({ params }: Props): Metadata | undefined {
   }
 
   const { title, summary } = project;
+  const parentOpenGraph = (await parent).openGraph || {};
 
   return {
-    title: {
-      absolute: title,
-    },
+    title,
     description: summary,
+    openGraph: {
+      ...parentOpenGraph,
+      title,
+      description: summary,
+    },
   };
 }
 

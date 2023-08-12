@@ -8,8 +8,10 @@ import { getAllBlogTags, getLatestPosts } from '~/content/blog/client';
 import { ExploreByTopic } from '~/content/blog/components/ExploreByTopic';
 import { PostList } from '~/content/blog/components/PostList';
 
+import { siteMetadata } from '~/config/metadata';
+
 export const metadata: Metadata = {
-  title: 'Blog',
+  title: `Blog | ${siteMetadata.metaTitle}`,
   description: 'Content focusing on React, JavaScript, Node.js, and more.',
 };
 

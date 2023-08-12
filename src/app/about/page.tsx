@@ -9,10 +9,12 @@ import { TechStack } from '~/components/TechStack';
 
 import { getPageContent } from '~/content/page/client';
 
+import { siteMetadata } from '~/config/metadata';
+
 import Avatar from '../../../public/images/avatar.jpg';
 
 export const metadata: Metadata = {
-  title: 'About',
+  title: `About | ${siteMetadata.metaTitle}`,
   description:
     'Software Engineer and perpetual tinkerer specializing in front-end JavaScript development.',
 };

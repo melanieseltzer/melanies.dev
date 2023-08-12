@@ -19,10 +19,7 @@ interface Props {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteMetadata.siteUrl),
-  title: {
-    template: `%s | ${siteMetadata.metaTitle}`,
-    default: siteMetadata.metaTitle,
-  },
+  title: siteMetadata.metaTitle,
   description: siteMetadata.metaDescription,
   icons: {
     icon: [
@@ -47,13 +44,13 @@ export const metadata: Metadata = {
     title: siteMetadata.metaTitle,
     description: siteMetadata.metaDescription,
     url: siteMetadata.siteUrl,
-    siteName: 'Next.js',
+    siteName: siteMetadata.siteName,
     images: [
       {
         url: siteMetadata.images.socialBanner,
         width: 1200,
         height: 600,
-        alt: 'melanies.dev',
+        alt: 'Banner for melanies.dev',
       },
     ],
     locale: siteMetadata.locale,

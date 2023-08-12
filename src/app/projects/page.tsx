@@ -10,8 +10,10 @@ import {
 } from '~/content/project/client';
 import { ProjectsList } from '~/content/project/components/ProjectsList';
 
+import { siteMetadata } from '~/config/metadata';
+
 export const metadata: Metadata = {
-  title: 'Projects',
+  title: `Projects | ${siteMetadata.metaTitle}`,
   description:
     'A small showcase of my open-source work and side projects that I am tinkering on.',
 };

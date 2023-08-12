@@ -25,9 +25,7 @@ export async function generateMetadata(
   const parentOpenGraph = (await parent).openGraph || {};
 
   return {
-    title: {
-      absolute: title,
-    },
+    title,
     description: summary,
     alternates: {
       canonical: `${siteMetadata.siteUrl}/blog/${slug}`,
