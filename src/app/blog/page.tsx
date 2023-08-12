@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 
 import { PageIntro } from '~/components/PageIntro';
 import { Section } from '~/components/Section';

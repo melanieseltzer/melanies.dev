@@ -16,7 +16,7 @@ export const siteMetadata = {
   siteName: 'Developer blog of Melanie Seltzer',
   metaTitle: authorMetadata.name,
   metaDescription:
-    'Developer blog of Melanie Seltzer, a Senior Software Engineer specializing in front-end development.',
+    'Developer blog of Melanie Seltzer, a software engineer specializing in front-end development.',
   locale: 'en-US',
   timezone: 'America/Los_Angeles',
   images: {

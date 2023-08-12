@@ -22,13 +22,16 @@ export async function generateMetadata(
   }
 
   const { title, summary, date, lastModified, tags, slug } = post;
+
   const parentOpenGraph = (await parent).openGraph || {};
+
+  const url = `${siteMetadata.siteUrl}/blog/${slug}`;
 
   return {
     title,
     description: summary,
     alternates: {
-      canonical: `${siteMetadata.siteUrl}/blog/${slug}`,
+      canonical: url,
     },
     openGraph: {
       ...parentOpenGraph,
@@ -37,7 +40,7 @@ export async function generateMetadata(
       type: 'article',
       publishedTime: date,
       modifiedTime: lastModified,
-      url: `${siteMetadata.siteUrl}/blog/${slug}`,
+      url,
       tags: tags.map(tag => tag.displayName),
     },
   };
