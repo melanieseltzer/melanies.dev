@@ -15,10 +15,9 @@
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
     "typecheck": "tsc --noEmit",
-    "generate-sitemap": "next-sitemap",
     "generate-rss": "tsx ./scripts/generate-rss.ts",
     "postinstall": "husky install && contentlayer build",
-    "postbuild": "yarn generate-sitemap && yarn generate-rss"
+    "postbuild": "yarn generate-rss"
   },
   "lint-staged": {
     "*.+(js|ts|tsx)": [
@@ -42,7 +41,6 @@
     "github-slugger": "^2.0.0",
     "next": "^13.4.13",
     "next-contentlayer": "^0.3.0",
-    "next-sitemap": "^4.0.6",
     "next-themes": "^0.2.1",
     "nextjs-toploader": "^1.4.2",
     "react": "18.2.0",
