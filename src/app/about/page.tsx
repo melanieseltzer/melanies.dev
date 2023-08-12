@@ -1,28 +1,27 @@
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import type { Metadata } from 'next';
 
 import { Image } from '~/components/Image';
 import { MDXComponent } from '~/components/MDXComponent';
 import { PageIntro } from '~/components/PageIntro';
 import { Prose } from '~/components/Prose';
-import { SEO } from '~/components/seo';
 import SocialLinks from '~/components/SocialLinks';
 import { TechStack } from '~/components/TechStack';
 
 import { getPageContent } from '~/content/page/client';
-import type { Page } from '~/content/page/types';
 
-import Avatar from '../../public/images/avatar.jpg';
+import Avatar from '../../../public/images/avatar.jpg';
 
-export default function AboutPage({
-  content,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+const content = getPageContent('about');
+
+export const metadata: Metadata = {
+  title: 'About Melanie Seltzer',
+  description:
+    'Software Engineer and perpetual tinkerer specializing in front-end JavaScript development.',
+};
+
+export default function AboutPage() {
   return (
     <>
-      <SEO
-        title="About Melanie Seltzer"
-        description="Software Engineer and perpetual tinkerer specializing in front-end JavaScript development."
-      />
-
       <PageIntro
         heading="Hey there 👋 I'm Melanie"
         subheading="Software Engineer, perpetual tinkerer, and relentlessly curious."
@@ -50,11 +49,3 @@ export default function AboutPage({
     </>
   );
 }
-
-export const getStaticProps: GetStaticProps<{ content: Page }> = () => {
-  const content = getPageContent('about');
-
-  return {
-    props: { content },
-  };
-};
