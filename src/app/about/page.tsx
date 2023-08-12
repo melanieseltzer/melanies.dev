@@ -11,8 +11,6 @@ import { getPageContent } from '~/content/page/client';
 
 import Avatar from '../../../public/images/avatar.jpg';
 
-const content = getPageContent('about');
-
 export const metadata: Metadata = {
   title: 'About Melanie Seltzer',
   description:
@@ -20,6 +18,8 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  const content = getPageContent('about');
+
   return (
     <>
       <PageIntro
