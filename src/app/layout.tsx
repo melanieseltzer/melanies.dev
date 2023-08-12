@@ -7,7 +7,11 @@ import { PageLayout } from '~/components/layout/PageLayout';
 import { siteMetadata } from '~/config/metadata';
 import { clsxm } from '~/utils/clsxm';
 
+import { fontSans } from './fonts';
 import { RootProviders } from './providers';
+
+import '~/styles/globals.css';
+import '@code-hike/mdx/dist/index.css';
 
 interface Props {
   children: React.ReactNode;
@@ -42,7 +46,8 @@ export default function RootLayout({ children }: Props) {
     <html lang="en">
       <body
         className={clsxm(
-          'bg-white text-gray-500 antialiased dark:bg-gray-900 dark:text-gray-400'
+          'bg-white font-sans text-gray-500 antialiased dark:bg-gray-900 dark:text-gray-400',
+          fontSans.variable
         )}
       >
         <Analytics />
