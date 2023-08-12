@@ -1,8 +1,7 @@
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { Metadata } from 'next';
 
 import { PageIntro } from '~/components/PageIntro';
 import { Section } from '~/components/Section';
-import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 
 import {
@@ -10,19 +9,21 @@ import {
   getProjectsByCategory,
 } from '~/content/project/client';
 import { ProjectsList } from '~/content/project/components/ProjectsList';
-import type { Project } from '~/content/project/types';
 
-export default function ProjectsIndexPage({
-  ossProjects,
-  sideProjects,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+export const metadata: Metadata = {
+  title: 'Projects',
+  description:
+    'A small showcase of my open-source work and side projects that I am tinkering on.',
+};
+
+export default function ProjectsIndexPage() {
+  const projects = getAllProjects();
+
+  const ossProjects = getProjectsByCategory(projects, 'oss');
+  const sideProjects = getProjectsByCategory(projects, 'sideproject');
+
   return (
     <>
-      <SEO
-        title="Projects"
-        description="A small showcase of my open-source work and side projects that I am tinkering on."
-      />
-
       <PageIntro
         heading="Projects"
         subheading="A small showcase of my open-source work and side projects that I am tinkering on."
@@ -42,17 +43,3 @@ export default function ProjectsIndexPage({
     </>
   );
 }
-
-export const getStaticProps: GetStaticProps<{
-  ossProjects: Project[];
-  sideProjects: Project[];
-}> = () => {
-  const projects = getAllProjects();
-
-  return {
-    props: {
-      ossProjects: getProjectsByCategory(projects, 'oss'),
-      sideProjects: getProjectsByCategory(projects, 'sideproject'),
-    },
-  };
-};
