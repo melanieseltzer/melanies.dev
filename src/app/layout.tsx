@@ -4,7 +4,7 @@ import { Analytics } from '@vercel/analytics/react';
 
 import { PageLayout } from '~/components/layout/PageLayout';
 
-import { siteMetadata } from '~/config/metadata';
+import { authorMetadata, siteMetadata } from '~/config/metadata';
 import { clsxm } from '~/utils/clsxm';
 
 import { fontSans } from './fonts';
@@ -38,6 +38,26 @@ export const metadata: Metadata = {
   themeColor: '#fff',
   other: {
     'msapplication-TileColor': '#fff',
+  },
+  openGraph: {
+    title: siteMetadata.metaTitle,
+    description: siteMetadata.metaDescription,
+    url: siteMetadata.siteUrl,
+    siteName: 'Next.js',
+    images: [
+      {
+        url: siteMetadata.images.socialBanner,
+        width: 1200,
+        height: 600,
+        alt: 'melanies.dev',
+      },
+    ],
+    locale: siteMetadata.locale,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    creator: `@${authorMetadata.social.twitter}`,
   },
 };
 
