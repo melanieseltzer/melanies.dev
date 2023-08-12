@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import NextTopLoader from 'nextjs-toploader';
 import { Analytics } from '@vercel/analytics/react';
 
