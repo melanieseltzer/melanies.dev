@@ -1,5 +1,7 @@
 'use client';
 
+import { ArticleJsonLd } from 'next-seo';
+
 import { MDXComponent } from '~/components/MDXComponent';
 import { Prose } from '~/components/Prose';
 import { Spacer } from '~/components/Spacer';
@@ -8,6 +10,7 @@ import { BlogPost } from '~/content/blog';
 import { PublishedAndReadTime } from '~/content/blog/components/PublishedAndReadTime';
 import { TagsList } from '~/content/blog/components/TagsList';
 
+import { authorMetadata, siteMetadata } from '~/config/metadata';
 import { formatDate } from '~/utils/date';
 
 interface Props {
@@ -22,11 +25,26 @@ export function BlogPostPage({ post }: Props) {
     lastModified,
     showLastModified,
     tags,
+    slug,
     readingTime,
   } = post;
 
   return (
     <>
+      <ArticleJsonLd
+        type="BlogPosting"
+        useAppDir
+        authorName={{
+          name: authorMetadata.name,
+        }}
+        url={`${siteMetadata.siteUrl}/blog/${slug}`}
+        title={title}
+        description={summary}
+        datePublished={date}
+        dateModified={lastModified}
+        images={[siteMetadata.images.socialBanner]}
+      />
+
       <Spacer size="8" />
 
       <Prose autoLinkHeadings as="article" className="relative mx-auto pt-10">
