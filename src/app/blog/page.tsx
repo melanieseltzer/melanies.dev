@@ -1,26 +1,40 @@
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
 
 import { PageIntro } from '~/components/PageIntro';
 import { Section } from '~/components/Section';
-import { SEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 
 import { getAllBlogTags, getLatestPosts } from '~/content/blog/client';
 import { ExploreByTopic } from '~/content/blog/components/ExploreByTopic';
 import { PostList } from '~/content/blog/components/PostList';
-import type { BlogPostMetadata, Tag } from '~/content/blog/types';
 
-export default function BlogIndexPage({
-  posts,
-  tags,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+import { siteMetadata } from '~/config/metadata';
+
+export async function generateMetadata(
+  // @ts-ignore throwaway
+  _,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const parentOpenGraph = (await parent).openGraph || {};
+  const metaDesc = 'Content focusing on React, JavaScript, Node.js, and more.';
+
+  return {
+    title: `Blog | ${siteMetadata.metaTitle}`,
+    description: metaDesc,
+    openGraph: {
+      ...parentOpenGraph,
+      title: siteMetadata.siteName,
+      description: metaDesc,
+    },
+  };
+}
+
+export default function BlogIndexPage() {
+  const posts = getLatestPosts();
+  const tags = getAllBlogTags(posts);
+
   return (
     <>
-      <SEO
-        title="Blog"
-        description="Content focusing on React, JavaScript, Node.js, and more."
-      />
-
       <PageIntro
         heading="Blog"
         subheading="Thoughts, mental models, and notes on all things dev ✍️"
@@ -38,18 +52,3 @@ export default function BlogIndexPage({
     </>
   );
 }
-
-export const getStaticProps: GetStaticProps<{
-  posts: BlogPostMetadata[];
-  tags: Tag[];
-}> = () => {
-  const posts = getLatestPosts();
-  const tags = getAllBlogTags(posts);
-
-  return {
-    props: {
-      posts,
-      tags,
-    },
-  };
-};

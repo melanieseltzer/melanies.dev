@@ -1,23 +1,23 @@
-import { ParsedUrlQuery } from 'querystring';
+'use client';
 
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
+import { ArticleJsonLd } from 'next-seo';
 
 import { MDXComponent } from '~/components/MDXComponent';
 import { Prose } from '~/components/Prose';
-import { BlogSEO } from '~/components/seo';
 import { Spacer } from '~/components/Spacer';
 
-import { getBlogPost, getBlogPosts } from '~/content/blog/client';
+import { BlogPost } from '~/content/blog';
 import { PublishedAndReadTime } from '~/content/blog/components/PublishedAndReadTime';
 import { TagsList } from '~/content/blog/components/TagsList';
-import type { BlogPost } from '~/content/blog/types';
 
-import { siteMetadata } from '~/config/metadata';
+import { authorMetadata, siteMetadata } from '~/config/metadata';
 import { formatDate } from '~/utils/date';
 
-export default function BlogPage({
-  post,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+interface Props {
+  post: BlogPost;
+}
+
+export function BlogPostPage({ post }: Props) {
   const {
     title,
     summary,
@@ -31,15 +31,18 @@ export default function BlogPage({
 
   return (
     <>
-      <BlogSEO
+      <ArticleJsonLd
+        type="BlogPosting"
+        useAppDir
+        authorName={{
+          name: authorMetadata.name,
+        }}
+        url={`${siteMetadata.siteUrl}/blog/${slug}`}
         title={title}
         description={summary}
-        canonicalUrl={`${siteMetadata.siteUrl}/blog/${slug}`}
-        article={{
-          publishedTime: date,
-          modifiedTime: lastModified,
-          tags: tags.map(tag => tag.displayName),
-        }}
+        datePublished={date}
+        dateModified={lastModified}
+        images={[siteMetadata.images.socialBanner]}
       />
 
       <Spacer size="8" />
@@ -83,35 +86,3 @@ export default function BlogPage({
     </>
   );
 }
-
-export const getStaticPaths: GetStaticPaths = () => {
-  const posts = getBlogPosts();
-
-  return {
-    paths: posts.map(({ slug }) => ({ params: { slug } })),
-    fallback: false,
-  };
-};
-
-interface Params extends ParsedUrlQuery {
-  slug: string;
-}
-
-type Props = {
-  post: BlogPost;
-};
-
-export const getStaticProps: GetStaticProps<Props, Params> = context => {
-  const slug = context.params!.slug;
-  const post = getBlogPost(slug);
-
-  if (!post) {
-    return {
-      notFound: true,
-    };
-  }
-
-  return {
-    props: { post },
-  };
-};

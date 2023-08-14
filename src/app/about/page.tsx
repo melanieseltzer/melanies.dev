@@ -1,28 +1,41 @@
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
 
 import { Image } from '~/components/Image';
 import { MDXComponent } from '~/components/MDXComponent';
 import { PageIntro } from '~/components/PageIntro';
 import { Prose } from '~/components/Prose';
-import { SEO } from '~/components/seo';
 import SocialLinks from '~/components/SocialLinks';
 import { TechStack } from '~/components/TechStack';
 
 import { getPageContent } from '~/content/page/client';
-import type { Page } from '~/content/page/types';
 
-import Avatar from '../../public/images/avatar.jpg';
+import { siteMetadata } from '~/config/metadata';
 
-export default function AboutPage({
-  content,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+import Avatar from '../../../public/images/avatar.jpg';
+
+export async function generateMetadata(
+  // @ts-ignore throwaway
+  _,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const parentOpenGraph = (await parent).openGraph || {};
+
+  return {
+    title: `About | ${siteMetadata.metaTitle}`,
+    description:
+      'Software Engineer and perpetual tinkerer specializing in front-end JavaScript development.',
+    openGraph: {
+      ...parentOpenGraph,
+      title: 'About Me',
+    },
+  };
+}
+
+export default function AboutPage() {
+  const content = getPageContent('about');
+
   return (
     <>
-      <SEO
-        title="About Melanie Seltzer"
-        description="Software Engineer and perpetual tinkerer specializing in front-end JavaScript development."
-      />
-
       <PageIntro
         heading="Hey there 👋 I'm Melanie"
         subheading="Software Engineer, perpetual tinkerer, and relentlessly curious."
@@ -50,11 +63,3 @@ export default function AboutPage({
     </>
   );
 }
-
-export const getStaticProps: GetStaticProps<{ content: Page }> = () => {
-  const content = getPageContent('about');
-
-  return {
-    props: { content },
-  };
-};

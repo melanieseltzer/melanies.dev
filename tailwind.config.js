@@ -13,7 +13,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['InterVariable', ...defaultTheme.fontFamily.sans],
+        sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         primary: colors.pink,

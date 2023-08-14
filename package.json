@@ -15,10 +15,9 @@
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
     "typecheck": "tsc --noEmit",
-    "generate-sitemap": "next-sitemap",
     "generate-rss": "tsx ./scripts/generate-rss.ts",
     "postinstall": "husky install && contentlayer build",
-    "postbuild": "yarn generate-sitemap && yarn generate-rss"
+    "postbuild": "yarn generate-rss"
   },
   "lint-staged": {
     "*.+(js|ts|tsx)": [
@@ -28,21 +27,23 @@
       "prettier --write"
     ]
   },
+  "resolutions": {
+    "//eslint-plugin-react-hooks": "Fix: https://github.com/vercel/next.js/issues/52365",
+    "eslint-plugin-react-hooks": "4.6.0"
+  },
   "dependencies": {
     "@code-hike/mdx": "^0.8.1",
-    "@fontsource/inter": "^4.5.15",
     "@headlessui/react": "^1.7.12",
     "@vercel/analytics": "^0.1.11",
     "clsx": "^1.2.1",
     "contentlayer": "^0.3.0",
     "feed": "^4.2.2",
     "github-slugger": "^2.0.0",
-    "next": "^13.2.4",
+    "next": "^13.4.13",
     "next-contentlayer": "^0.3.0",
-    "next-seo": "^5.15.0",
-    "next-sitemap": "^4.0.6",
+    "next-seo": "^6.1.0",
     "next-themes": "^0.2.1",
-    "nprogress": "^0.2.0",
+    "nextjs-toploader": "^1.4.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
@@ -64,13 +65,12 @@
     "@next/bundle-analyzer": "^13.2.1",
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "18.14.1",
-    "@types/nprogress": "^0.2.0",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "autoprefixer": "^10.4.13",
     "cross-env": "^7.0.3",
     "eslint": "^8.34.0",
-    "eslint-config-next": "^13.2.1",
+    "eslint-config-next": "^13.4.13",
     "husky": "^8.0.0",
     "lint-staged": "^13.1.2",
     "postcss": "^8.4.21",
