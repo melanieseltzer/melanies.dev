@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
 
 import { Image } from '~/components/Image';
 import { MDXComponent } from '~/components/MDXComponent';
@@ -13,11 +13,23 @@ import { siteMetadata } from '~/config/metadata';
 
 import Avatar from '../../../public/images/avatar.jpg';
 
-export const metadata: Metadata = {
-  title: `About | ${siteMetadata.metaTitle}`,
-  description:
-    'Software Engineer and perpetual tinkerer specializing in front-end JavaScript development.',
-};
+export async function generateMetadata(
+  // @ts-ignore throwaway
+  _,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const parentOpenGraph = (await parent).openGraph || {};
+
+  return {
+    title: `About | ${siteMetadata.metaTitle}`,
+    description:
+      'Software Engineer and perpetual tinkerer specializing in front-end JavaScript development.',
+    openGraph: {
+      ...parentOpenGraph,
+      title: 'About Me',
+    },
+  };
+}
 
 export default function AboutPage() {
   const content = getPageContent('about');

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { PageIntro } from '~/components/PageIntro';
@@ -19,12 +19,22 @@ interface Props {
   params: { tag: string };
 }
 
-export function generateMetadata({ params }: Props): Metadata {
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
   const posts = getLatestPosts();
   const tagInfo = getTag(posts, params.tag) as Tag;
+  const parentOpenGraph = (await parent).openGraph || {};
+
+  const metaTitle = `Posts about ${tagInfo.displayName}`;
 
   return {
-    title: `${tagInfo.displayName} posts | ${siteMetadata.metaTitle}`,
+    title: `${metaTitle} | ${siteMetadata.metaTitle}`,
+    openGraph: {
+      ...parentOpenGraph,
+      title: metaTitle,
+    },
   };
 }
 

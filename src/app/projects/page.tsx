@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
 
 import { PageIntro } from '~/components/PageIntro';
 import { Section } from '~/components/Section';
@@ -12,11 +12,27 @@ import { ProjectsList } from '~/content/project/components/ProjectsList';
 
 import { siteMetadata } from '~/config/metadata';
 
-export const metadata: Metadata = {
-  title: `Projects | ${siteMetadata.metaTitle}`,
-  description:
-    'A small showcase of my open-source work and side projects that I am tinkering on.',
-};
+export async function generateMetadata(
+  // @ts-ignore throwaway
+  _,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const parentOpenGraph = (await parent).openGraph || {};
+
+  const metaTitle = 'Dev projects';
+  const metaDesc =
+    'A small showcase of my open-source work and side projects that I am tinkering on.';
+
+  return {
+    title: `${metaTitle} | ${siteMetadata.metaTitle}`,
+    description: metaDesc,
+    openGraph: {
+      ...parentOpenGraph,
+      title: `${metaTitle}`,
+      description: metaDesc,
+    },
+  };
+}
 
 export default function ProjectsIndexPage() {
   const projects = getAllProjects();

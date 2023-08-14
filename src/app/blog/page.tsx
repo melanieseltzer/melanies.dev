@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
 
 import { PageIntro } from '~/components/PageIntro';
 import { Section } from '~/components/Section';
@@ -10,10 +10,24 @@ import { PostList } from '~/content/blog/components/PostList';
 
 import { siteMetadata } from '~/config/metadata';
 
-export const metadata: Metadata = {
-  title: `Blog | ${siteMetadata.metaTitle}`,
-  description: 'Content focusing on React, JavaScript, Node.js, and more.',
-};
+export async function generateMetadata(
+  // @ts-ignore throwaway
+  _,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const parentOpenGraph = (await parent).openGraph || {};
+  const metaDesc = 'Content focusing on React, JavaScript, Node.js, and more.';
+
+  return {
+    title: `Blog | ${siteMetadata.metaTitle}`,
+    description: metaDesc,
+    openGraph: {
+      ...parentOpenGraph,
+      title: siteMetadata.siteName,
+      description: metaDesc,
+    },
+  };
+}
 
 export default function BlogIndexPage() {
   const posts = getLatestPosts();
