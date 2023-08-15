@@ -1,5 +1,5 @@
-import { SchemaFieldDefs } from '../config/types';
-import { getSlugFromFileName } from '../config/utils';
+import { SchemaFieldDefs } from '~/config/content/types';
+import { getSlugFromFileName } from '~/config/content/utils';
 
 export const projectSchema = {
   fields: {

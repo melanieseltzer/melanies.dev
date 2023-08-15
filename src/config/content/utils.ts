@@ -1,6 +1,6 @@
 import type { DocumentGen } from 'contentlayer/core';
 
-import { getFileLastModified } from '../../lib/git';
+import { getFileLastModified } from '~/lib/git';
 
 import { CONTENT_DIR_PATH } from './constants';
 

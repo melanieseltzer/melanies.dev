@@ -1,8 +1,11 @@
 import readingTime from 'reading-time';
 
-import { kebabCase } from '../../utils/case';
-import { SchemaFieldDefs } from '../config/types';
-import { getLastModifiedFromGit, getSlugFromFileName } from '../config/utils';
+import { SchemaFieldDefs } from '~/config/content/types';
+import {
+  getLastModifiedFromGit,
+  getSlugFromFileName,
+} from '~/config/content/utils';
+import { kebabCase } from '~/utils/case';
 
 export const blogSchema = {
   fields: {
