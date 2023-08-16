@@ -4,10 +4,7 @@ import { PageIntro } from '~/components/PageIntro';
 import { Section } from '~/components/Section';
 import { Spacer } from '~/components/Spacer';
 
-import {
-  getAllProjects,
-  getProjectsByCategory,
-} from '~/documents/Project/selectors';
+import { getAllProjects, getProjectsByCategory } from '~/documents/Project';
 
 import { siteConfig } from '~/config/site';
 
