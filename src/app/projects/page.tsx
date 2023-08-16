@@ -7,8 +7,8 @@ import { Spacer } from '~/components/Spacer';
 import {
   getAllProjects,
   getProjectsByCategory,
-} from '~/content/project/client';
-import { ProjectsList } from '~/content/project/components/ProjectsList';
+} from '~/documents/Project/client';
+import { ProjectsList } from '~/documents/Project/components/ProjectsList';
 
 import { siteConfig } from '~/config/site';
 

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 
-import { getBlogPosts } from '~/content/blog';
-import { getAllProjects } from '~/content/project';
+import { getBlogPosts } from '~/documents/BlogPost';
+import { getAllProjects } from '~/documents/Project';
 
 import { siteConfig } from '~/config/site';
 

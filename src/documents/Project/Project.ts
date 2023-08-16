@@ -1,8 +1,8 @@
 import { defineDocumentType } from 'contentlayer/source-files';
 
-import { projectSchema } from '~/content/project/schema';
+import { projectSchema } from '~/documents/Project/schema';
 
-export const Project = defineDocumentType(() => ({
+export const project = defineDocumentType(() => ({
   name: 'Project',
   filePathPattern: 'projects/**/*.mdx',
   contentType: 'mdx',

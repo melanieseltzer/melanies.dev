@@ -1,8 +1,8 @@
 import { defineDocumentType } from 'contentlayer/source-files';
 
-import { pageSchema } from '~/content/page/schema';
+import { pageSchema } from '~/documents/Page/schema';
 
-export const Page = defineDocumentType(() => ({
+export const page = defineDocumentType(() => ({
   name: 'Page',
   filePathPattern: 'pages/**/*.mdx',
   contentType: 'mdx',

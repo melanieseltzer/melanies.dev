@@ -1,7 +1,7 @@
 import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { getAllProjects, getProject } from '~/content/project/client';
+import { getAllProjects, getProject } from '~/documents/Project/client';
 
 import { ProjectPage } from './ProjectPage';
 

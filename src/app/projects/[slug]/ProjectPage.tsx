@@ -7,9 +7,9 @@ import { Prose } from '~/components/Prose';
 import { Spacer } from '~/components/Spacer';
 import { TechStack } from '~/components/TechStack';
 
-import type { Project } from '~/content/project';
-import { DemoButton } from '~/content/project/components/DemoButton';
-import { SourceCodeButton } from '~/content/project/components/SourceCodeButton';
+import type { Project } from '~/documents/Project';
+import { DemoButton } from '~/documents/Project/components/DemoButton';
+import { SourceCodeButton } from '~/documents/Project/components/SourceCodeButton';
 
 interface Props {
   project: Project;

@@ -1,8 +1,8 @@
 import { defineDocumentType } from 'contentlayer/source-files';
 
-import { blogSchema } from '~/content/blog/schema';
+import { blogSchema } from '~/documents/BlogPost/schema';
 
-export const BlogPost = defineDocumentType(() => ({
+export const blogPost = defineDocumentType(() => ({
   name: 'BlogPost',
   filePathPattern: 'blog/**/*.mdx',
   contentType: 'mdx',

@@ -6,9 +6,9 @@ import { MDXComponent } from '~/components/MDXComponent';
 import { Prose } from '~/components/Prose';
 import { Spacer } from '~/components/Spacer';
 
-import { BlogPost } from '~/content/blog';
-import { PublishedAndReadTime } from '~/content/blog/components/PublishedAndReadTime';
-import { TagsList } from '~/content/blog/components/TagsList';
+import { BlogPost } from '~/documents/BlogPost';
+import { PublishedAndReadTime } from '~/documents/BlogPost/components/PublishedAndReadTime';
+import { TagsList } from '~/documents/BlogPost/components/TagsList';
 
 import { siteConfig } from '~/config/site';
 import { formatDate } from '~/utils/date';

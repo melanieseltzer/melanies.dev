@@ -1,3 +1,3 @@
-export { BlogPost } from './document/BlogPost';
-export { Page } from './document/Page';
-export { Project } from './document/Project';
+export { blogPost } from '~/documents/BlogPost';
+export { page } from '~/documents/Page';
+export { project } from '~/documents/Project/Project';

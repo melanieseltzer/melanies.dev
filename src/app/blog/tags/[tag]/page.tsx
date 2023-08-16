@@ -9,9 +9,9 @@ import {
   getPostPreviews,
   getTag,
   getTaggedPosts,
-} from '~/content/blog/client';
-import { PostList } from '~/content/blog/components/PostList';
-import type { Tag } from '~/content/blog/types';
+} from '~/documents/BlogPost/client';
+import { PostList } from '~/documents/BlogPost/components/PostList';
+import type { Tag } from '~/documents/BlogPost/types';
 
 import { siteConfig } from '~/config/site';
 

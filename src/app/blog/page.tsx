@@ -4,9 +4,9 @@ import { PageIntro } from '~/components/PageIntro';
 import { Section } from '~/components/Section';
 import { Spacer } from '~/components/Spacer';
 
-import { getAllBlogTags, getLatestPosts } from '~/content/blog/client';
-import { ExploreByTopic } from '~/content/blog/components/ExploreByTopic';
-import { PostList } from '~/content/blog/components/PostList';
+import { getAllBlogTags, getLatestPosts } from '~/documents/BlogPost/client';
+import { ExploreByTopic } from '~/documents/BlogPost/components/ExploreByTopic';
+import { PostList } from '~/documents/BlogPost/components/PostList';
 
 import { siteConfig } from '~/config/site';
 

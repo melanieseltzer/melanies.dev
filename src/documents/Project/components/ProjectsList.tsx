@@ -5,9 +5,9 @@ import { Link } from '~/components/Link';
 import { Paragraph } from '~/components/Paragraph';
 import { Spacer } from '~/components/Spacer';
 
-import { DemoButton } from '~/content/project/components/DemoButton';
-import { SourceCodeButton } from '~/content/project/components/SourceCodeButton';
-import type { Project } from '~/content/project/types';
+import { DemoButton } from '~/documents/Project/components/DemoButton';
+import { SourceCodeButton } from '~/documents/Project/components/SourceCodeButton';
+import type { Project } from '~/documents/Project/types';
 
 import { RepoLanguage } from './RepoLanguage';
 
