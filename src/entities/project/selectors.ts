@@ -20,7 +20,9 @@ export const getAllProjects = (): Project[] => allProjects.map(serialize);
 export const getProjectBySlug = (slug: string) =>
   getAllProjects().find(project => project.slug === slug);
 
-export const getProjectsByCategory = (
-  projects: Project[],
-  category: ProjectCategory
-): Project[] => projects.filter(project => project.category === category);
+export const getProjectsByCategory = (category: ProjectCategory): Project[] =>
+  getAllProjects().filter(project => project.category === category);
+
+export const getAllOssProjects = () => getProjectsByCategory('oss');
+
+export const getAllSideProjects = () => getProjectsByCategory('sideproject');
