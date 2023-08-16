@@ -7,7 +7,7 @@ import { Spacer } from '~/components/Spacer';
 import {
   getAllProjects,
   getProjectsByCategory,
-} from '~/documents/Project/client';
+} from '~/documents/Project/selectors';
 import { ProjectsList } from '~/documents/Project/components/ProjectsList';
 
 import { siteConfig } from '~/config/site';

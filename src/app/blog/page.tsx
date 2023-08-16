@@ -4,7 +4,7 @@ import { PageIntro } from '~/components/PageIntro';
 import { Section } from '~/components/Section';
 import { Spacer } from '~/components/Spacer';
 
-import { getAllBlogTags, getLatestPosts } from '~/documents/BlogPost/client';
+import { getAllBlogTags, getLatestPosts } from '~/documents/BlogPost';
 import { ExploreByTopic } from '~/documents/BlogPost/components/ExploreByTopic';
 import { PostList } from '~/documents/BlogPost/components/PostList';
 

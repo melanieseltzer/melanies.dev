@@ -7,7 +7,7 @@ import { Prose } from '~/components/Prose';
 import SocialLinks from '~/components/SocialLinks';
 import { TechStack } from '~/components/TechStack';
 
-import { getPageContent } from '~/documents/Page/client';
+import { getPageContent } from '~/documents/Page';
 
 import { siteConfig } from '~/config/site';
 

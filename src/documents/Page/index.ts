@@ -1,3 +1,3 @@
-export { getPageContent } from './client';
 export { page } from './Page';
-export type { Page } from './types';
+export * from './selectors';
+export type { Page, PageMetadata } from './types';

@@ -1,3 +1,3 @@
 export { blogPost } from './BlogPost';
-export * from './client';
-export type { BlogPost, BlogPostMetadata } from './types';
+export * from './selectors';
+export type { BlogPost, BlogPostMetadata, Tag } from './types';

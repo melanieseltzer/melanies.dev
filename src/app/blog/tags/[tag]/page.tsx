@@ -4,14 +4,14 @@ import { notFound } from 'next/navigation';
 import { PageIntro } from '~/components/PageIntro';
 
 import {
+  type Tag,
   getAllBlogTags,
   getLatestPosts,
   getPostPreviews,
   getTag,
   getTaggedPosts,
-} from '~/documents/BlogPost/client';
+} from '~/documents/BlogPost';
 import { PostList } from '~/documents/BlogPost/components/PostList';
-import type { Tag } from '~/documents/BlogPost/types';
 
 import { siteConfig } from '~/config/site';
 
