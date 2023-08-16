@@ -1,6 +1,6 @@
 import { defineDocumentType } from 'contentlayer/source-files';
 
-import { blogSchema } from '~/documents/BlogPost/schema';
+import { blogSchema } from './schema';
 
 export const blogPost = defineDocumentType(() => ({
   name: 'BlogPost',

@@ -1,6 +1,6 @@
 import { defineDocumentType } from 'contentlayer/source-files';
 
-import { pageSchema } from '~/documents/Page/schema';
+import { pageSchema } from './schema';
 
 export const page = defineDocumentType(() => ({
   name: 'Page',

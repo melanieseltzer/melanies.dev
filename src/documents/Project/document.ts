@@ -1,6 +1,6 @@
 import { defineDocumentType } from 'contentlayer/source-files';
 
-import { projectSchema } from '~/documents/Project/schema';
+import { projectSchema } from './schema';
 
 export const project = defineDocumentType(() => ({
   name: 'Project',

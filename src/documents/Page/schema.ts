@@ -1,5 +1,5 @@
-import { SchemaFieldDefs } from '~/config/content/types';
-import { getSlugFromFileName } from '~/config/content/utils';
+import { SchemaFieldDefs } from '../types';
+import { getSlugFromFileName } from '../utils';
 
 export const pageSchema = {
   computedFields: {

@@ -1,13 +1,14 @@
 import { makeSource } from 'contentlayer/source-files';
 
-import * as documentTypes from './src/config/content';
-import { CONTENT_DIR_PATH } from './src/config/content/constants';
-import { rehypePlugins, remarkPlugins } from './src/config/content/plugins';
+import { contentConfig } from './src/config/content';
 import { siteConfig } from './src/config/site';
+import * as documentTypes from './src/documents/bootstrap';
+import { rehypePlugins } from './src/lib/rehype';
+import { remarkPlugins } from './src/lib/remark';
 
 export default makeSource({
-  contentDirPath: CONTENT_DIR_PATH,
   documentTypes,
+  contentDirPath: contentConfig.dirPath,
   date: {
     timezone: siteConfig.timezone,
   },
