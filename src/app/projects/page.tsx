@@ -8,9 +8,10 @@ import {
   getAllProjects,
   getProjectsByCategory,
 } from '~/documents/Project/selectors';
-import { ProjectsList } from '~/documents/Project/components/ProjectsList';
 
 import { siteConfig } from '~/config/site';
+
+import { ProjectsList } from './components/ProjectsList';
 
 export async function generateMetadata(
   // @ts-ignore throwaway

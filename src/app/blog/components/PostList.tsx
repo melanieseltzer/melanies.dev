@@ -4,7 +4,7 @@ import { Link } from '~/components/Link';
 import { Paragraph } from '~/components/Paragraph';
 import { Spacer } from '~/components/Spacer';
 
-import type { BlogPostMetadata } from '../types';
+import type { BlogPostMetadata } from '~/documents/BlogPost';
 
 import { PublishedAndReadTime } from './PublishedAndReadTime';
 import { TagsList } from './TagsList';

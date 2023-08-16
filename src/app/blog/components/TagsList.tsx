@@ -1,9 +1,9 @@
 import { Badge } from '~/components/Badge';
 import { Paragraph } from '~/components/Paragraph';
 
-import { clsxm } from '~/utils/clsxm';
+import type { Tag } from '~/documents/BlogPost';
 
-import { Tag } from '../types';
+import { clsxm } from '~/utils/clsxm';
 
 type Props = {
   tags: Tag[];

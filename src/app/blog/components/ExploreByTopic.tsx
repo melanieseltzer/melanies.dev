@@ -1,6 +1,6 @@
 import { Heading } from '~/components/Heading';
 
-import { Tag } from '../types';
+import type { Tag } from '~/documents/BlogPost';
 
 import { TagsList } from './TagsList';
 

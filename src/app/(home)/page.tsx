@@ -3,10 +3,11 @@ import type { Metadata } from 'next';
 import { HeroSection } from '~/components/home/HeroSection';
 
 import { getLatestPosts } from '~/documents/BlogPost';
-import { LatestPosts } from '~/documents/BlogPost/components/LatestPosts';
 import { MAX_POSTS_DISPLAY } from '~/documents/BlogPost/constants';
 
 import { siteConfig } from '~/config/site';
+
+import { LatestPosts } from './components/LatestPosts';
 
 export const metadata: Metadata = {
   alternates: {

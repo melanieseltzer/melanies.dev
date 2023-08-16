@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 
 import { getAllProjects, getProject } from '~/documents/Project';
 
-import { ProjectPage } from './ProjectPage';
+import { ProjectPage } from '../components/ProjectPage';
 
 interface Props {
   params: { slug: string };

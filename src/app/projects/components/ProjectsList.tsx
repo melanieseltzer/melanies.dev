@@ -5,11 +5,11 @@ import { Link } from '~/components/Link';
 import { Paragraph } from '~/components/Paragraph';
 import { Spacer } from '~/components/Spacer';
 
-import { DemoButton } from '~/documents/Project/components/DemoButton';
-import { SourceCodeButton } from '~/documents/Project/components/SourceCodeButton';
 import type { Project } from '~/documents/Project/types';
 
+import { DemoButton } from './DemoButton';
 import { RepoLanguage } from './RepoLanguage';
+import { SourceCodeButton } from './SourceCodeButton';
 
 type Props = {
   projects: Project[];

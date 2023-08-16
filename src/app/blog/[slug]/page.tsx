@@ -5,7 +5,7 @@ import { getBlogPost, getBlogPosts } from '~/documents/BlogPost';
 
 import { siteConfig } from '~/config/site';
 
-import { BlogPostPage } from './BlogPostPage';
+import { BlogPostPage } from '../components/BlogPostPage';
 
 interface Props {
   params: { slug: string };

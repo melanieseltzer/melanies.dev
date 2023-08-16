@@ -11,9 +11,10 @@ import {
   getTag,
   getTaggedPosts,
 } from '~/documents/BlogPost';
-import { PostList } from '~/documents/BlogPost/components/PostList';
 
 import { siteConfig } from '~/config/site';
+
+import { PostList } from '../../components/PostList';
 
 interface Props {
   params: { tag: string };

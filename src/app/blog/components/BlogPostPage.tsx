@@ -7,11 +7,12 @@ import { Prose } from '~/components/Prose';
 import { Spacer } from '~/components/Spacer';
 
 import { BlogPost } from '~/documents/BlogPost';
-import { PublishedAndReadTime } from '~/documents/BlogPost/components/PublishedAndReadTime';
-import { TagsList } from '~/documents/BlogPost/components/TagsList';
 
 import { siteConfig } from '~/config/site';
 import { formatDate } from '~/utils/date';
+
+import { PublishedAndReadTime } from './PublishedAndReadTime';
+import { TagsList } from './TagsList';
 
 interface Props {
   post: BlogPost;

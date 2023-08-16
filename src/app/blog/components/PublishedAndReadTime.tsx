@@ -6,9 +6,9 @@ import { twMerge } from 'tailwind-merge';
 
 import { GradientText } from '~/components/GradientText';
 
-import { formatDate } from '~/utils/date';
+import type { BlogPostMetadata } from '~/documents/BlogPost';
 
-import { BlogPostMetadata } from '../types';
+import { formatDate } from '~/utils/date';
 
 type Props = {
   className?: string;

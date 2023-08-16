@@ -5,10 +5,11 @@ import { Section } from '~/components/Section';
 import { Spacer } from '~/components/Spacer';
 
 import { getAllBlogTags, getLatestPosts } from '~/documents/BlogPost';
-import { ExploreByTopic } from '~/documents/BlogPost/components/ExploreByTopic';
-import { PostList } from '~/documents/BlogPost/components/PostList';
 
 import { siteConfig } from '~/config/site';
+
+import { ExploreByTopic } from './components/ExploreByTopic';
+import { PostList } from './components/PostList';
 
 export async function generateMetadata(
   // @ts-ignore throwaway
