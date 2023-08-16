@@ -32,7 +32,7 @@ export async function generateMetadata(
 
 export default function BlogIndexPage() {
   const posts = getLatestBlogPosts();
-  const tags = getAllBlogPostTags(posts);
+  const tags = getAllBlogPostTags();
 
   return (
     <>

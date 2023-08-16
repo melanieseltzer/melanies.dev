@@ -5,8 +5,6 @@ import { PageIntro } from '~/components/PageIntro';
 
 import {
   getAllBlogPostTags,
-  getBlogPostMetadata,
-  getLatestBlogPosts,
   getTagBySlug,
   getTaggedPosts,
 } from '~/entities/blog-post';
@@ -23,8 +21,7 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata | undefined> {
-  const posts = getLatestBlogPosts();
-  const tag = getTagBySlug(posts, params.tag);
+  const tag = getTagBySlug(params.tag);
 
   if (!tag) return;
 
@@ -44,23 +41,20 @@ export async function generateMetadata(
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  const posts = getBlogPostMetadata();
-  const allTags = getAllBlogPostTags(posts);
-
-  return allTags.map(({ slug }) => ({ tag: slug }));
+  const tags = getAllBlogPostTags();
+  return tags.map(({ slug }) => ({ tag: slug }));
 }
 
 export default function BlogTagPage({ params }: Props) {
-  const posts = getLatestBlogPosts();
-  const tag = getTagBySlug(posts, params.tag);
+  const tag = getTagBySlug(params.tag);
 
   if (!tag) {
     notFound();
   }
 
-  const allPostsTagged = getTaggedPosts(posts, params.tag);
+  const taggedPosts = getTaggedPosts(params.tag);
 
-  const count = allPostsTagged.length;
+  const count = taggedPosts.length;
 
   return (
     <>
@@ -70,7 +64,7 @@ export default function BlogTagPage({ params }: Props) {
         subheading={`${count} ${count === 1 ? 'post' : 'posts'} tagged:`}
       />
 
-      <PostList posts={allPostsTagged} />
+      <PostList posts={taggedPosts} />
     </>
   );
 }

@@ -1,6 +1,9 @@
-import type { BlogPostMetadata, Tag } from '../types';
+import type { Tag } from '../types';
 
-export const getAllBlogPostTags = (posts: BlogPostMetadata[]) => {
+import { getBlogPostMetadata } from './posts';
+
+export const getAllBlogPostTags = () => {
+  const posts = getBlogPostMetadata();
   const uniqueTags: Record<string, Tag> = {};
 
   for (const { tags } of posts) {
@@ -14,13 +17,12 @@ export const getAllBlogPostTags = (posts: BlogPostMetadata[]) => {
   return Object.values(uniqueTags);
 };
 
-export const getTagBySlug = (posts: BlogPostMetadata[], slug: string) => {
-  const tags = getAllBlogPostTags(posts);
+export const getTagBySlug = (slug: string) => {
+  const tags = getAllBlogPostTags();
   return tags.find(tag => tag.slug === slug);
 };
 
-export const getTaggedPosts = (
-  posts: BlogPostMetadata[],
-  tag: string
-): BlogPostMetadata[] =>
-  posts.filter(post => post.tags.map(tag => tag.slug).includes(tag));
+export const getTaggedPosts = (tag: string) => {
+  const posts = getBlogPostMetadata();
+  return posts.filter(post => post.tags.map(tag => tag.slug).includes(tag));
+};
