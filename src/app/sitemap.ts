@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-import { getBlogPosts } from '~/entities/blog-post';
+import { getAllBlogPosts } from '~/entities/blog-post';
 import { getAllProjects } from '~/entities/project';
 
 import { siteConfig } from '~/config/site';
@@ -8,7 +8,7 @@ import { siteConfig } from '~/config/site';
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date().toISOString().split('T')[0];
 
-  const posts = getBlogPosts().map(({ slug, lastModified }) => ({
+  const posts = getAllBlogPosts().map(({ slug, lastModified }) => ({
     url: `${siteConfig.siteUrl}/blog/${slug}`,
     lastModified,
   }));

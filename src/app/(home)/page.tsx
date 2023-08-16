@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 import { HeroSection } from '~/components/home/HeroSection';
 
-import { getLatestPosts } from '~/entities/blog-post';
+import { getLatestBlogPosts } from '~/entities/blog-post';
 
 import { siteConfig } from '~/config/site';
 
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const posts = getLatestPosts({ limit: MAX_POSTS_DISPLAY });
+  const posts = getLatestBlogPosts({ limit: MAX_POSTS_DISPLAY });
 
   return (
     <>

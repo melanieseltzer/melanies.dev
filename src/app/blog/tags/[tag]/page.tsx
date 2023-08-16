@@ -4,11 +4,8 @@ import { notFound } from 'next/navigation';
 import { PageIntro } from '~/components/PageIntro';
 
 import {
-  type Tag,
-  getAllBlogTags,
-  getLatestPosts,
-  getPostPreviews,
-  getTag,
+  getAllBlogPostTags,
+  getTagBySlug,
   getTaggedPosts,
 } from '~/entities/blog-post';
 
@@ -24,11 +21,13 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const posts = getLatestPosts();
-  const tagInfo = getTag(posts, params.tag) as Tag;
+  const tag = getTagBySlug(params.tag);
+
+  if (!tag) notFound();
+
   const parentOpenGraph = (await parent).openGraph || {};
 
-  const metaTitle = `Posts about ${tagInfo.displayName}`;
+  const metaTitle = `Posts about ${tag.displayName}`;
 
   return {
     title: `${metaTitle} | ${siteConfig.defaultMetaTitle}`,
@@ -42,33 +41,28 @@ export async function generateMetadata(
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  const posts = getPostPreviews();
-  const allTags = getAllBlogTags(posts);
-
-  return allTags.map(({ slug }) => ({ tag: slug }));
+  const tags = getAllBlogPostTags();
+  return tags.map(({ slug }) => ({ tag: slug }));
 }
 
-export default function BlogTagPage({ params: { tag } }: Props) {
-  const posts = getLatestPosts();
-  const tagInfo = getTag(posts, tag);
+export default function BlogTagPage({ params }: Props) {
+  const tag = getTagBySlug(params.tag);
 
-  if (!tagInfo) {
-    notFound();
-  }
+  if (!tag) notFound();
 
-  const allPostsTagged = getTaggedPosts(posts, tag);
+  const taggedPosts = getTaggedPosts(params.tag);
 
-  const count = allPostsTagged.length;
+  const count = taggedPosts.length;
 
   return (
     <>
       <PageIntro
         reverse
-        heading={tagInfo.displayName}
+        heading={tag.displayName}
         subheading={`${count} ${count === 1 ? 'post' : 'posts'} tagged:`}
       />
 
-      <PostList posts={allPostsTagged} />
+      <PostList posts={taggedPosts} />
     </>
   );
 }

@@ -1,7 +1,7 @@
 import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { getBlogPost, getBlogPosts } from '~/entities/blog-post';
+import { getAllBlogPosts, getBlogPostBySlug } from '~/entities/blog-post';
 
 import { siteConfig } from '~/config/site';
 
@@ -14,12 +14,10 @@ interface Props {
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
-): Promise<Metadata | undefined> {
-  const post = getBlogPost(params.slug);
+): Promise<Metadata> {
+  const post = getBlogPostBySlug(params.slug);
 
-  if (!post) {
-    return;
-  }
+  if (!post) notFound();
 
   const { title, summary, date, lastModified, tags, slug } = post;
 
@@ -49,16 +47,14 @@ export async function generateMetadata(
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  const posts = getBlogPosts();
+  const posts = getAllBlogPosts();
   return posts.map(({ slug }) => ({ slug }));
 }
 
 export default function Page({ params }: Props) {
-  const post = getBlogPost(params.slug);
+  const post = getBlogPostBySlug(params.slug);
 
-  if (!post) {
-    notFound();
-  }
+  if (!post) notFound();
 
   return <BlogPostPage post={post} />;
 }

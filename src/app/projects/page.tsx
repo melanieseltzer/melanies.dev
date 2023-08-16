@@ -4,7 +4,7 @@ import { PageIntro } from '~/components/PageIntro';
 import { Section } from '~/components/Section';
 import { Spacer } from '~/components/Spacer';
 
-import { getAllProjects, getProjectsByCategory } from '~/entities/project';
+import { getAllOssProjects, getAllSideProjects } from '~/entities/project';
 
 import { siteConfig } from '~/config/site';
 
@@ -33,10 +33,8 @@ export async function generateMetadata(
 }
 
 export default function ProjectsIndexPage() {
-  const projects = getAllProjects();
-
-  const ossProjects = getProjectsByCategory(projects, 'oss');
-  const sideProjects = getProjectsByCategory(projects, 'sideproject');
+  const ossProjects = getAllOssProjects();
+  const sideProjects = getAllSideProjects();
 
   return (
     <>

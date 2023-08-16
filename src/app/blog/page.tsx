@@ -4,7 +4,7 @@ import { PageIntro } from '~/components/PageIntro';
 import { Section } from '~/components/Section';
 import { Spacer } from '~/components/Spacer';
 
-import { getAllBlogTags, getLatestPosts } from '~/entities/blog-post';
+import { getAllBlogPostTags, getLatestBlogPosts } from '~/entities/blog-post';
 
 import { siteConfig } from '~/config/site';
 
@@ -31,8 +31,8 @@ export async function generateMetadata(
 }
 
 export default function BlogIndexPage() {
-  const posts = getLatestPosts();
-  const tags = getAllBlogTags(posts);
+  const posts = getLatestBlogPosts();
+  const tags = getAllBlogPostTags();
 
   return (
     <>

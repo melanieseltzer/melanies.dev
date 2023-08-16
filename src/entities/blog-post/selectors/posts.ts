@@ -42,26 +42,26 @@ const extractMetadata = (post: CLBlogPost): BlogPostMetadata => {
 // Client selectors
 // ==============================
 
-export const getBlogPosts = () =>
+export const getAllBlogPosts = () =>
   // Hacky assertion to get around typing issue with `tags` under the hood :/
   // ref: https://github.com/contentlayerdev/contentlayer/issues/398
   allBlogPosts as unknown as CLBlogPost[];
 
-export const getBlogPost = (slug: string): BlogPost | undefined => {
-  const post = getBlogPosts().find(post => post.slug === slug);
+export const getBlogPostBySlug = (slug: string): BlogPost | undefined => {
+  const post = getAllBlogPosts().find(post => post.slug === slug);
   if (!post) return;
   return serialize(post);
 };
 
-export const getPostPreviews = (): BlogPostMetadata[] =>
-  getBlogPosts().map(extractMetadata);
+export const getBlogPostMetadata = (): BlogPostMetadata[] =>
+  getAllBlogPosts().map(extractMetadata);
 
-export const getLatestPosts = (
+export const getLatestBlogPosts = (
   options: { limit?: number } = {}
 ): BlogPostMetadata[] => {
   const { limit } = options;
 
-  const posts = getBlogPosts();
+  const posts = getAllBlogPosts();
   const latestPosts = sortPostsByNew(posts);
 
   if (limit) {
