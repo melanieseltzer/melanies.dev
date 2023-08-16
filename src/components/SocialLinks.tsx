@@ -7,7 +7,7 @@ import {
 
 import { Link } from '~/components/Link';
 
-import { authorMetadata } from '~/config/metadata';
+import { siteConfig } from '~/config/site';
 
 export default function SocialLinks() {
   const sharedIconStyles =
@@ -16,7 +16,7 @@ export default function SocialLinks() {
   return (
     <ul className="flex items-center space-x-4 text-gray-700 dark:text-gray-300">
       <li>
-        <Link aria-label="Email me" href={`mailto:${authorMetadata.email}`}>
+        <Link aria-label="Email me" href={`mailto:${siteConfig.author.email}`}>
           <EmailIcon
             aria-hidden="true"
             className={sharedIconStyles}
@@ -28,7 +28,7 @@ export default function SocialLinks() {
       <li>
         <Link
           aria-label="View my code on GitHub"
-          href={`https://github.com/${authorMetadata.social.github}`}
+          href={siteConfig.author.social.github}
         >
           <GitHubIcon
             aria-hidden="true"
@@ -41,7 +41,7 @@ export default function SocialLinks() {
       <li>
         <Link
           aria-label="Connect with me on LinkedIn"
-          href={`https://www.linkedin.com/in/${authorMetadata.social.linkedin}`}
+          href={siteConfig.author.social.linkedin}
         >
           <LinkedInIcon
             aria-hidden="true"
@@ -54,7 +54,7 @@ export default function SocialLinks() {
       <li>
         <Link
           aria-label="Follow me on Twitter"
-          href={`https://twitter.com/${authorMetadata.social.twitter}`}
+          href={siteConfig.author.social.twitter}
         >
           <TwitterIcon
             aria-hidden="true"

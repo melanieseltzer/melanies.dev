@@ -6,11 +6,11 @@ import { getLatestPosts } from '~/content/blog/client';
 import { LatestPosts } from '~/content/blog/components/LatestPosts';
 import { MAX_POSTS_DISPLAY } from '~/content/blog/constants';
 
-import { siteMetadata } from '~/config/metadata';
+import { siteConfig } from '~/config/site';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: siteMetadata.siteUrl,
+    canonical: siteConfig.siteUrl,
   },
 };
 

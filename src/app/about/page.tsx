@@ -9,7 +9,7 @@ import { TechStack } from '~/components/TechStack';
 
 import { getPageContent } from '~/content/page/client';
 
-import { siteMetadata } from '~/config/metadata';
+import { siteConfig } from '~/config/site';
 
 import Avatar from '../../../public/images/avatar.jpg';
 
@@ -21,7 +21,7 @@ export async function generateMetadata(
   const parentOpenGraph = (await parent).openGraph || {};
 
   return {
-    title: `About | ${siteMetadata.metaTitle}`,
+    title: `About | ${siteConfig.defaultMetaTitle}`,
     description:
       'Software Engineer and perpetual tinkerer specializing in front-end JavaScript development.',
     openGraph: {

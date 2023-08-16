@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 
 import { getBlogPost, getBlogPosts } from '~/content/blog/client';
 
-import { siteMetadata } from '~/config/metadata';
+import { siteConfig } from '~/config/site';
 
 import { BlogPostPage } from './BlogPostPage';
 
@@ -25,7 +25,7 @@ export async function generateMetadata(
 
   const parentOpenGraph = (await parent).openGraph || {};
 
-  const url = `${siteMetadata.siteUrl}/blog/${slug}`;
+  const url = `${siteConfig.siteUrl}/blog/${slug}`;
 
   return {
     title,

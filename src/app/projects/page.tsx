@@ -10,7 +10,7 @@ import {
 } from '~/content/project/client';
 import { ProjectsList } from '~/content/project/components/ProjectsList';
 
-import { siteMetadata } from '~/config/metadata';
+import { siteConfig } from '~/config/site';
 
 export async function generateMetadata(
   // @ts-ignore throwaway
@@ -24,7 +24,7 @@ export async function generateMetadata(
     'A small showcase of my open-source work and side projects that I am tinkering on.';
 
   return {
-    title: `${metaTitle} | ${siteMetadata.metaTitle}`,
+    title: `${metaTitle} | ${siteConfig.defaultMetaTitle}`,
     description: metaDesc,
     openGraph: {
       ...parentOpenGraph,

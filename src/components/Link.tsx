@@ -2,7 +2,7 @@
 import { AnchorHTMLAttributes } from 'react';
 import NextLink, { LinkProps as NextLinkProps } from 'next/link';
 
-import { siteMetadata } from '~/config/metadata';
+import { siteConfig } from '~/config/site';
 
 export type LinkProps = Omit<NextLinkProps, 'href'> &
   Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & {
@@ -60,4 +60,4 @@ export function Link({
 }
 
 const trimSameDomain = (url: string) =>
-  url.replace(siteMetadata.siteUrl, '') || '/';
+  url.replace(siteConfig.siteUrl, '') || '/';

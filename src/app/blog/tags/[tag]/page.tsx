@@ -13,7 +13,7 @@ import {
 import { PostList } from '~/content/blog/components/PostList';
 import type { Tag } from '~/content/blog/types';
 
-import { siteMetadata } from '~/config/metadata';
+import { siteConfig } from '~/config/site';
 
 interface Props {
   params: { tag: string };
@@ -30,7 +30,7 @@ export async function generateMetadata(
   const metaTitle = `Posts about ${tagInfo.displayName}`;
 
   return {
-    title: `${metaTitle} | ${siteMetadata.metaTitle}`,
+    title: `${metaTitle} | ${siteConfig.defaultMetaTitle}`,
     openGraph: {
       ...parentOpenGraph,
       title: metaTitle,

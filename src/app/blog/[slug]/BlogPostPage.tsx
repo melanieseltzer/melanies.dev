@@ -10,7 +10,7 @@ import { BlogPost } from '~/content/blog';
 import { PublishedAndReadTime } from '~/content/blog/components/PublishedAndReadTime';
 import { TagsList } from '~/content/blog/components/TagsList';
 
-import { authorMetadata, siteMetadata } from '~/config/metadata';
+import { siteConfig } from '~/config/site';
 import { formatDate } from '~/utils/date';
 
 interface Props {
@@ -35,14 +35,14 @@ export function BlogPostPage({ post }: Props) {
         type="BlogPosting"
         useAppDir
         authorName={{
-          name: authorMetadata.name,
+          name: siteConfig.author.name,
         }}
-        url={`${siteMetadata.siteUrl}/blog/${slug}`}
+        url={`${siteConfig.siteUrl}/blog/${slug}`}
         title={title}
         description={summary}
         datePublished={date}
         dateModified={lastModified}
-        images={[siteMetadata.images.socialBanner]}
+        images={[siteConfig.images.socialBanner]}
       />
 
       <Spacer size="8" />
