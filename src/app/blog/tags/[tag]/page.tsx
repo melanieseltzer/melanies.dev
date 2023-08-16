@@ -20,10 +20,12 @@ interface Props {
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
-): Promise<Metadata | undefined> {
+): Promise<Metadata> {
   const tag = getTagBySlug(params.tag);
 
-  if (!tag) return;
+  if (!tag) {
+    notFound();
+  }
 
   const parentOpenGraph = (await parent).openGraph || {};
 
