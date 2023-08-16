@@ -4,17 +4,15 @@ import { getBlogPostMetadata } from './posts';
 
 export const getAllBlogPostTags = () => {
   const posts = getBlogPostMetadata();
-  const uniqueTags: Record<string, Tag> = {};
+  const uniqueTags = new Set<string>();
 
   for (const { tags } of posts) {
     for (const tag of tags) {
-      if (!(tag.slug in uniqueTags)) {
-        uniqueTags[tag.slug] = tag;
-      }
+      uniqueTags.add(JSON.stringify(tag));
     }
   }
 
-  return Object.values(uniqueTags);
+  return Array.from(uniqueTags).map(tag => JSON.parse(tag) as Tag);
 };
 
 export const getTagBySlug = (slug: string) =>
