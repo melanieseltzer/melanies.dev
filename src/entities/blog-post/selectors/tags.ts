@@ -17,12 +17,10 @@ export const getAllBlogPostTags = () => {
   return Object.values(uniqueTags);
 };
 
-export const getTagBySlug = (slug: string) => {
-  const tags = getAllBlogPostTags();
-  return tags.find(tag => tag.slug === slug);
-};
+export const getTagBySlug = (slug: string) =>
+  getAllBlogPostTags().find(tag => tag.slug === slug);
 
-export const getTaggedPosts = (tag: string) => {
-  const posts = getBlogPostMetadata();
-  return posts.filter(post => post.tags.map(tag => tag.slug).includes(tag));
-};
+export const getTaggedPosts = (tag: string) =>
+  getBlogPostMetadata().filter(post =>
+    post.tags.map(tag => tag.slug).includes(tag)
+  );
