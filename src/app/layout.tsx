@@ -4,7 +4,7 @@ import { Analytics } from '@vercel/analytics/react';
 
 import { PageLayout } from '~/components/layout/PageLayout';
 
-import { authorMetadata, siteMetadata } from '~/config/metadata';
+import { siteConfig } from '~/config/site';
 import { clsxm } from '~/utils/clsxm';
 
 import { fontSans } from './fonts';
@@ -18,9 +18,9 @@ interface Props {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteMetadata.siteUrl),
-  title: siteMetadata.metaTitle,
-  description: siteMetadata.metaDescription,
+  metadataBase: new URL(siteConfig.siteUrl),
+  title: siteConfig.defaultMetaTitle,
+  description: siteConfig.defaultMetaDescription,
   icons: {
     icon: [
       {
@@ -41,24 +41,24 @@ export const metadata: Metadata = {
     'msapplication-TileColor': '#fff',
   },
   openGraph: {
-    title: siteMetadata.metaTitle,
-    description: siteMetadata.metaDescription,
-    url: siteMetadata.siteUrl,
-    siteName: siteMetadata.siteName,
+    title: siteConfig.defaultMetaTitle,
+    description: siteConfig.defaultMetaDescription,
+    url: siteConfig.siteUrl,
+    siteName: siteConfig.siteName,
     images: [
       {
-        url: siteMetadata.images.socialBanner,
+        url: siteConfig.images.socialBanner,
         width: 1200,
         height: 600,
         alt: 'Banner for melanies.dev',
       },
     ],
-    locale: siteMetadata.locale,
+    locale: siteConfig.locale,
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    creator: `@${authorMetadata.social.twitter}`,
+    creator: `@${siteConfig.author.social.twitter}`,
   },
 };
 

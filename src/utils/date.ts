@@ -1,4 +1,4 @@
-import { siteMetadata } from '~/config/metadata';
+import { siteConfig } from '~/config/site';
 
 export function formatDate(date: string) {
   const options: Intl.DateTimeFormatOptions = {
@@ -7,5 +7,5 @@ export function formatDate(date: string) {
     day: 'numeric',
   };
 
-  return new Date(date).toLocaleDateString(siteMetadata.locale, options);
+  return new Date(date).toLocaleDateString(siteConfig.locale, options);
 }

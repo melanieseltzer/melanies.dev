@@ -4,11 +4,12 @@ import { PageIntro } from '~/components/PageIntro';
 import { Section } from '~/components/Section';
 import { Spacer } from '~/components/Spacer';
 
-import { getAllBlogTags, getLatestPosts } from '~/content/blog/client';
-import { ExploreByTopic } from '~/content/blog/components/ExploreByTopic';
-import { PostList } from '~/content/blog/components/PostList';
+import { getAllBlogTags, getLatestPosts } from '~/entities/blog-post';
 
-import { siteMetadata } from '~/config/metadata';
+import { siteConfig } from '~/config/site';
+
+import { ExploreByTopic } from './components/ExploreByTopic';
+import { PostList } from './components/PostList';
 
 export async function generateMetadata(
   // @ts-ignore throwaway
@@ -19,11 +20,11 @@ export async function generateMetadata(
   const metaDesc = 'Content focusing on React, JavaScript, Node.js, and more.';
 
   return {
-    title: `Blog | ${siteMetadata.metaTitle}`,
+    title: `Blog | ${siteConfig.defaultMetaTitle}`,
     description: metaDesc,
     openGraph: {
       ...parentOpenGraph,
-      title: siteMetadata.siteName,
+      title: siteConfig.siteName,
       description: metaDesc,
     },
   };

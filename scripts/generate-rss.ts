@@ -2,34 +2,36 @@ import fs from 'fs';
 
 import { Feed } from 'feed';
 
-import { authorMetadata, siteMetadata } from '~/config/metadata';
+import { siteConfig } from '~/config/site';
 
 export default async function generateRSS() {
   // have to import esm this way
   const { allBlogPosts } = await import('../.contentlayer/generated/index.mjs');
 
   const author = {
-    name: authorMetadata.name,
-    email: authorMetadata.email,
-    link: siteMetadata.siteUrl,
+    name: siteConfig.author.name,
+    email: siteConfig.author.email,
+    link: siteConfig.siteUrl,
   };
 
   const feed = new Feed({
-    title: siteMetadata.siteName,
-    description: siteMetadata.metaDescription,
-    id: siteMetadata.siteUrl,
-    link: siteMetadata.siteUrl,
-    image: `${siteMetadata.images.logo}`,
-    favicon: `${siteMetadata.images.favicon}`,
-    copyright: `Copyright © ${new Date().getFullYear()} ${authorMetadata.name}`,
+    title: siteConfig.siteName,
+    description: siteConfig.defaultMetaDescription,
+    id: siteConfig.siteUrl,
+    link: siteConfig.siteUrl,
+    image: `${siteConfig.images.logo}`,
+    favicon: `${siteConfig.images.favicon}`,
+    copyright: `Copyright © ${new Date().getFullYear()} ${
+      siteConfig.author.name
+    }`,
     feedLinks: {
-      rss2: `${siteMetadata.siteUrl}/feed.xml`,
+      rss2: `${siteConfig.siteUrl}/feed.xml`,
     },
     author,
   });
 
   allBlogPosts.forEach(post => {
-    const slug = `${siteMetadata.siteUrl}/blog/${post.slug}`;
+    const slug = `${siteConfig.siteUrl}/blog/${post.slug}`;
 
     feed.addItem({
       id: slug,

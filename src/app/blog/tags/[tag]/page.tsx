@@ -4,16 +4,17 @@ import { notFound } from 'next/navigation';
 import { PageIntro } from '~/components/PageIntro';
 
 import {
+  type Tag,
   getAllBlogTags,
   getLatestPosts,
   getPostPreviews,
   getTag,
   getTaggedPosts,
-} from '~/content/blog/client';
-import { PostList } from '~/content/blog/components/PostList';
-import type { Tag } from '~/content/blog/types';
+} from '~/entities/blog-post';
 
-import { siteMetadata } from '~/config/metadata';
+import { siteConfig } from '~/config/site';
+
+import { PostList } from '../../components/PostList';
 
 interface Props {
   params: { tag: string };
@@ -30,7 +31,7 @@ export async function generateMetadata(
   const metaTitle = `Posts about ${tagInfo.displayName}`;
 
   return {
-    title: `${metaTitle} | ${siteMetadata.metaTitle}`,
+    title: `${metaTitle} | ${siteConfig.defaultMetaTitle}`,
     openGraph: {
       ...parentOpenGraph,
       title: metaTitle,

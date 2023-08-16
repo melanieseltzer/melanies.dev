@@ -4,13 +4,11 @@ import { PageIntro } from '~/components/PageIntro';
 import { Section } from '~/components/Section';
 import { Spacer } from '~/components/Spacer';
 
-import {
-  getAllProjects,
-  getProjectsByCategory,
-} from '~/content/project/client';
-import { ProjectsList } from '~/content/project/components/ProjectsList';
+import { getAllProjects, getProjectsByCategory } from '~/entities/project';
 
-import { siteMetadata } from '~/config/metadata';
+import { siteConfig } from '~/config/site';
+
+import { ProjectsList } from './components/ProjectsList';
 
 export async function generateMetadata(
   // @ts-ignore throwaway
@@ -24,7 +22,7 @@ export async function generateMetadata(
     'A small showcase of my open-source work and side projects that I am tinkering on.';
 
   return {
-    title: `${metaTitle} | ${siteMetadata.metaTitle}`,
+    title: `${metaTitle} | ${siteConfig.defaultMetaTitle}`,
     description: metaDesc,
     openGraph: {
       ...parentOpenGraph,
