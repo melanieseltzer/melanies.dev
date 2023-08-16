@@ -1,7 +1,7 @@
 import { Badge } from '~/components/Badge';
 import { Paragraph } from '~/components/Paragraph';
 
-import type { Tag } from '~/documents/BlogPost';
+import type { Tag } from '~/entities/blog-post';
 
 import { clsxm } from '~/utils/clsxm';
 

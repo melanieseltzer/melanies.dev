@@ -6,7 +6,7 @@ import { MDXComponent } from '~/components/MDXComponent';
 import { Prose } from '~/components/Prose';
 import { Spacer } from '~/components/Spacer';
 
-import { BlogPost } from '~/documents/BlogPost';
+import { BlogPost } from '~/entities/blog-post';
 
 import { siteConfig } from '~/config/site';
 import { formatDate } from '~/utils/date';

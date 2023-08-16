@@ -10,7 +10,7 @@ import {
   getPostPreviews,
   getTag,
   getTaggedPosts,
-} from '~/documents/BlogPost';
+} from '~/entities/blog-post';
 
 import { siteConfig } from '~/config/site';
 

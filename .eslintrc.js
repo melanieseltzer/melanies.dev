@@ -21,7 +21,7 @@ module.exports = {
 
           // components + modules in their own separate groups first
           ['^(~/components/.*|$)'],
-          ['^(~/documents/.*|$)'],
+          ['^(~/entities/.*|$)'],
 
           ['^(~|@|src|app)(/.*|$)'],
           ['^\\.\\.(?!/?$)', '^\\.\\./?$'],

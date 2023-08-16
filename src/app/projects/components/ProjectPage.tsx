@@ -7,7 +7,7 @@ import { Prose } from '~/components/Prose';
 import { Spacer } from '~/components/Spacer';
 import { TechStack } from '~/components/TechStack';
 
-import type { Project } from '~/documents/Project';
+import type { Project } from '~/entities/project';
 
 import { DemoButton } from './DemoButton';
 import { SourceCodeButton } from './SourceCodeButton';

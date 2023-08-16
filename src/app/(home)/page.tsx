@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 import { HeroSection } from '~/components/home/HeroSection';
 
-import { getLatestPosts } from '~/documents/BlogPost';
+import { getLatestPosts } from '~/entities/blog-post';
 
 import { siteConfig } from '~/config/site';
 

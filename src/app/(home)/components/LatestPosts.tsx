@@ -2,7 +2,7 @@ import { ButtonLink } from '~/components/ButtonLink';
 import { Section } from '~/components/Section';
 import { Spacer } from '~/components/Spacer';
 
-import type { BlogPostMetadata } from '~/documents/BlogPost';
+import type { BlogPostMetadata } from '~/entities/blog-post';
 
 import { PostListCompact } from './PostListCompact';
 

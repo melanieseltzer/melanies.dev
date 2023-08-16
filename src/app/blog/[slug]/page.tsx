@@ -1,7 +1,7 @@
 import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { getBlogPost, getBlogPosts } from '~/documents/BlogPost';
+import { getBlogPost, getBlogPosts } from '~/entities/blog-post';
 
 import { siteConfig } from '~/config/site';
 

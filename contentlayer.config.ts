@@ -2,7 +2,7 @@ import { makeSource } from 'contentlayer/source-files';
 
 import { contentConfig } from './src/config/content';
 import { siteConfig } from './src/config/site';
-import * as documentTypes from './src/documents/bootstrap';
+import * as documentTypes from './src/entities/bootstrap';
 import { rehypePlugins } from './src/lib/rehype';
 import { remarkPlugins } from './src/lib/remark';
 

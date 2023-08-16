@@ -5,7 +5,7 @@ import { Link } from '~/components/Link';
 import { Paragraph } from '~/components/Paragraph';
 import { Spacer } from '~/components/Spacer';
 
-import type { Project } from '~/documents/Project/types';
+import type { Project } from '~/entities/project/types';
 
 import { DemoButton } from './DemoButton';
 import { RepoLanguage } from './RepoLanguage';

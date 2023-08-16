@@ -2,7 +2,7 @@ import { Heading } from '~/components/Heading';
 import { Link } from '~/components/Link';
 import { Paragraph } from '~/components/Paragraph';
 
-import type { BlogPostMetadata } from '~/documents/BlogPost';
+import type { BlogPostMetadata } from '~/entities/blog-post';
 
 import { formatDate } from '~/utils/date';
 
