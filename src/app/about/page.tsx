@@ -7,7 +7,7 @@ import { Prose } from '~/components/Prose';
 import SocialLinks from '~/components/SocialLinks';
 import { TechStack } from '~/components/TechStack';
 
-import { getPageContent } from '~/entities/page';
+import { getAboutPageContent } from '~/entities/page';
 
 import { siteConfig } from '~/config/site';
 
@@ -32,7 +32,7 @@ export async function generateMetadata(
 }
 
 export default function AboutPage() {
-  const content = getPageContent('about');
+  const content = getAboutPageContent();
 
   return (
     <>

@@ -17,7 +17,7 @@ const serialize = (project: CLProject): Project => ({
 
 export const getAllProjects = (): Project[] => allProjects.map(serialize);
 
-export const getProject = (slug: string) =>
+export const getProjectBySlug = (slug: string) =>
   getAllProjects().find(project => project.slug === slug);
 
 export const getProjectsByCategory = (

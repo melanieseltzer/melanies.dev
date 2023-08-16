@@ -1,7 +1,7 @@
 import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { getAllProjects, getProject } from '~/entities/project';
+import { getAllProjects, getProjectBySlug } from '~/entities/project';
 
 import { ProjectPage } from '../components/ProjectPage';
 
@@ -13,7 +13,7 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata | undefined> {
-  const project = getProject(params.slug);
+  const project = getProjectBySlug(params.slug);
 
   if (!project) {
     return;
@@ -44,7 +44,7 @@ export function generateStaticParams() {
 }
 
 export default function Page({ params }: Props) {
-  const project = getProject(params.slug);
+  const project = getProjectBySlug(params.slug);
 
   if (!project) {
     notFound();

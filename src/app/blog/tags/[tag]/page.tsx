@@ -4,11 +4,10 @@ import { notFound } from 'next/navigation';
 import { PageIntro } from '~/components/PageIntro';
 
 import {
-  type Tag,
-  getAllBlogTags,
-  getLatestPosts,
-  getPostPreviews,
-  getTag,
+  getAllBlogPostTags,
+  getBlogPostMetadata,
+  getLatestBlogPosts,
+  getTagBySlug,
   getTaggedPosts,
 } from '~/entities/blog-post';
 
@@ -23,12 +22,15 @@ interface Props {
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
-): Promise<Metadata> {
-  const posts = getLatestPosts();
-  const tagInfo = getTag(posts, params.tag) as Tag;
+): Promise<Metadata | undefined> {
+  const posts = getLatestBlogPosts();
+  const tag = getTagBySlug(posts, params.tag);
+
+  if (!tag) return;
+
   const parentOpenGraph = (await parent).openGraph || {};
 
-  const metaTitle = `Posts about ${tagInfo.displayName}`;
+  const metaTitle = `Posts about ${tag.displayName}`;
 
   return {
     title: `${metaTitle} | ${siteConfig.defaultMetaTitle}`,
@@ -42,21 +44,21 @@ export async function generateMetadata(
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  const posts = getPostPreviews();
-  const allTags = getAllBlogTags(posts);
+  const posts = getBlogPostMetadata();
+  const allTags = getAllBlogPostTags(posts);
 
   return allTags.map(({ slug }) => ({ tag: slug }));
 }
 
-export default function BlogTagPage({ params: { tag } }: Props) {
-  const posts = getLatestPosts();
-  const tagInfo = getTag(posts, tag);
+export default function BlogTagPage({ params }: Props) {
+  const posts = getLatestBlogPosts();
+  const tag = getTagBySlug(posts, params.tag);
 
-  if (!tagInfo) {
+  if (!tag) {
     notFound();
   }
 
-  const allPostsTagged = getTaggedPosts(posts, tag);
+  const allPostsTagged = getTaggedPosts(posts, params.tag);
 
   const count = allPostsTagged.length;
 
@@ -64,7 +66,7 @@ export default function BlogTagPage({ params: { tag } }: Props) {
     <>
       <PageIntro
         reverse
-        heading={tagInfo.displayName}
+        heading={tag.displayName}
         subheading={`${count} ${count === 1 ? 'post' : 'posts'} tagged:`}
       />
 
