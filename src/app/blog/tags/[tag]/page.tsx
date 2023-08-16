@@ -23,9 +23,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const tag = getTagBySlug(params.tag);
 
-  if (!tag) {
-    notFound();
-  }
+  if (!tag) notFound();
 
   const parentOpenGraph = (await parent).openGraph || {};
 
@@ -50,9 +48,7 @@ export function generateStaticParams() {
 export default function BlogTagPage({ params }: Props) {
   const tag = getTagBySlug(params.tag);
 
-  if (!tag) {
-    notFound();
-  }
+  if (!tag) notFound()
 
   const taggedPosts = getTaggedPosts(params.tag);
 

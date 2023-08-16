@@ -12,12 +12,10 @@ interface Props {
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
-): Promise<Metadata | undefined> {
+): Promise<Metadata> {
   const project = getProjectBySlug(params.slug);
 
-  if (!project) {
-    return;
-  }
+  if (!project) notFound();
 
   const { title, summary } = project;
   const parentOpenGraph = (await parent).openGraph || {};
@@ -46,9 +44,7 @@ export function generateStaticParams() {
 export default function Page({ params }: Props) {
   const project = getProjectBySlug(params.slug);
 
-  if (!project) {
-    notFound();
-  }
+  if (!project) notFound();
 
   return <ProjectPage project={project} />;
 }

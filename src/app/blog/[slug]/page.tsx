@@ -14,12 +14,10 @@ interface Props {
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
-): Promise<Metadata | undefined> {
+): Promise<Metadata> {
   const post = getBlogPostBySlug(params.slug);
 
-  if (!post) {
-    return;
-  }
+  if (!post) notFound();
 
   const { title, summary, date, lastModified, tags, slug } = post;
 
@@ -56,9 +54,7 @@ export function generateStaticParams() {
 export default function Page({ params }: Props) {
   const post = getBlogPostBySlug(params.slug);
 
-  if (!post) {
-    notFound();
-  }
+  if (!post) notFound();
 
   return <BlogPostPage post={post} />;
 }
