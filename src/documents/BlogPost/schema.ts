@@ -1,8 +1,9 @@
 import readingTime from 'reading-time';
 
-import { kebabCase } from '../../utils/case';
+import { contentConfig } from '../../config/content';
+import { getFileLastModified } from '../../lib/git';
+import { getSlugFromMdxFileName, kebabCase } from '../../utils/filename';
 import { SchemaFieldDefs } from '../types';
-import { getLastModifiedFromGit, getSlugFromFileName } from '../utils';
 
 export const blogSchema = {
   fields: {
@@ -23,11 +24,14 @@ export const blogSchema = {
     },
     slug: {
       type: 'string',
-      resolve: getSlugFromFileName,
+      resolve: doc => getSlugFromMdxFileName(doc._raw.sourceFileName),
     },
     lastModified: {
       type: 'string',
-      resolve: doc => getLastModifiedFromGit(doc) || doc.date,
+      resolve: doc => {
+        const fullFilePath = `${contentConfig.dirPath}/${doc._raw.sourceFilePath}`;
+        return getFileLastModified(fullFilePath) || doc.date;
+      },
     },
     // This takes all the tags defined in the frontmatter (list of strings) and automatically
     // derives slugs for them (saving us having to do it each time we consume them).

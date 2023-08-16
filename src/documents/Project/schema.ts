@@ -1,5 +1,5 @@
+import { getSlugFromMdxFileName } from '../../utils/filename';
 import { SchemaFieldDefs } from '../types';
-import { getSlugFromFileName } from '../utils';
 
 export const projectSchema = {
   fields: {
@@ -28,7 +28,7 @@ export const projectSchema = {
   computedFields: {
     slug: {
       type: 'string',
-      resolve: getSlugFromFileName,
+      resolve: doc => getSlugFromMdxFileName(doc._raw.sourceFileName),
     },
   },
 } satisfies SchemaFieldDefs<'Project'>;
